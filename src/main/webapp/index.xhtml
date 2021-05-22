@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/WEB-INF/templates/simple.xhtml">
+    <ui:define name="title">
+        #{bundle['application.loginpage.title']}
+    </ui:define>
+    <ui:define name="content">
+        <h:form>
+            <h:panelGrid columns="3">
+                <h:outputText value="#{bundle['user.name']}"></h:outputText>
+                <h:inputText id="userName"
+                             value="#{user.name}"
+                             required="true"
+                             requiredMessage="#{bundle['user.name.validation']}">
+                </h:inputText>
+                <h:message for="userName" styleClass="errorMessage"/>
+                <h:outputText value="#{bundle['user.password']}"></h:outputText>
+                <h:inputSecret id="password"
+                               value="#{user.password}"
+                               required="true"
+                               requiredMessage="#{bundle['user.password.validation']}">
+                </h:inputSecret>
+                <h:message for="password" styleClass="errorMessage"/>
+            </h:panelGrid>
+            <h:commandButton value="#{bundle['application.login']}" action="welcome">
+            </h:commandButton> <br/><br/>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>
