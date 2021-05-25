@@ -1083,10 +1083,10 @@ CREATE TABLE IF NOT EXISTS `training_plans` (
 
 
 
-    `level_id` int(11) NOT NULL,
-    `goal_id` int(11) NOT NULL,
-    `training_type_id` int(11) NOT NULL,
-    `subscription_id_minimum_rank` int(11) NOT NULL,
+    `level_id` int(11) DEFAULT NULL,
+    `goal_id` int(11) DEFAULT NULL,
+    `training_type_id` int(11) DEFAULT NULL,
+    `subscription_id_minimum_rank` int(11) DEFAULT NULL,
     `user_id_creator` int(11) DEFAULT NULL,
 
 
@@ -1213,7 +1213,7 @@ CREATE TABLE IF NOT EXISTS `exercises` (
 
 
 
-    `level_id` int(11) NOT NULL,
+    `level_id` int(11) DEFAULT NULL,
 
 
 
@@ -1986,14 +1986,15 @@ INSERT INTO `schedules_link` (`id`, `user_id`,`training_plan_id`,`execution_date
 (2, 2, 3, NOW()),
 (3, 3, 2, NOW());
 */
-' ||
-    '
-INSERT INTO `exercises` (`id`, `name`, `description`,`level_id`) VALUES
-(1, ''Developpé-couché aux haltères'', ''Description du benchpress aux haltères '', 1),
-(2, ''Squat'', ''Description du squat '', 2),
-(3, ''Soulevé de terre'', ''Description du deadlift'', 2),
-(4, ''Developpé-couché à la barre'', ''Description du benchpress à la barre '', 1);
 
+
+
+
+INSERT INTO `exercises` (`id`, `name`, `description`,`level_id`) VALUES
+(1, 'Developpé-couché aux haltères', 'Description du benchpress aux haltères ', 1),
+(2, 'Squat', 'Description du squat ', 2),
+(3, 'Soulevé de terre', 'Description du deadlift', 2),
+(4, 'Developpé-couché à la barre', 'Description du benchpress à la barre ', 1);
 
 
 
@@ -2006,9 +2007,6 @@ INSERT INTO `trainings_exercises_link` (`id`, `sequential_number_exercise`, `tra
 (5,2,2,1),
 
 (6,1,3,4);
-
-
-
 
 
 
