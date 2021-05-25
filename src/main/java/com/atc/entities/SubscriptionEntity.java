@@ -1,22 +1,27 @@
 package com.atc.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "subscriptions", schema = "shapp", catalog = "")
 public class SubscriptionEntity {
     private int id;
+    private String name;
+    private BigDecimal pricePerMonth;
+    private String description;
+    private int rank;
+    private Collection<TrainingPlanEntity> trainingPlansById;
+    private Collection<UserSubscriptionEntity> usersSubscriptionsById;
 
     @Id
+    @GeneratedValue
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -32,5 +37,65 @@ public class SubscriptionEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+
+
+    @Basic
+    @Column(name = "name", nullable = false, length = 100)
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Basic
+    @Column(name = "price_per_month", nullable = false, precision = 2)
+    public BigDecimal getPricePerMonth() {
+        return pricePerMonth;
+    }
+
+    public void setPricePerMonth(BigDecimal pricePerMonth) {
+        this.pricePerMonth = pricePerMonth;
+    }
+
+    @Basic
+    @Column(name = "description", nullable = false, length = -1)
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Basic
+    @Column(name = "rank", nullable = false)
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
+
+    @OneToMany(mappedBy = "subscriptionsBySubscriptionIdMinimumRank")
+    public Collection<TrainingPlanEntity> getTrainingPlansById() {
+        return trainingPlansById;
+    }
+
+    public void setTrainingPlansById(Collection<TrainingPlanEntity> trainingPlansById) {
+        this.trainingPlansById = trainingPlansById;
+    }
+
+    @OneToMany(mappedBy = "subscriptionsBySubscriptionId")
+    public Collection<UserSubscriptionEntity> getUsersSubscriptionsById() {
+        return usersSubscriptionsById;
+    }
+
+    public void setUsersSubscriptionsById(Collection<UserSubscriptionEntity> usersSubscriptionsById) {
+        this.usersSubscriptionsById = usersSubscriptionsById;
     }
 }

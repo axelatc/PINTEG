@@ -34,6 +34,30 @@ Ici on a java:comp/env/jdbc/schoolUX donc la ressource concernée est <Resource 
         <class>com.atc.entities.TrainingCategoryLinkEntity</class>
         <class>com.atc.entities.TrainingExerciseLinkEntity</class>
         <class>com.atc.entities.UserEntity</class>
+        <class>com.atc.entities.AddressEntity</class>
+        <class>com.atc.entities.CityEntity</class>
+        <class>com.atc.entities.CountryEntity</class>
+        <class>com.atc.entities.EventCommentEntity</class>
+        <class>com.atc.entities.EventParticipationEntity</class>
+        <class>com.atc.entities.EventPostEntity</class>
+        <class>com.atc.entities.EventEntity</class>
+        <class>com.atc.entities.GroupEntity</class>
+        <class>com.atc.entities.GroupPermissionEntity</class>
+        <class>com.atc.entities.MeasurandEntity</class>
+        <class>com.atc.entities.MeasureEntity</class>
+        <class>com.atc.entities.OrganizationEntity</class>
+        <class>com.atc.entities.PermissionEntity</class>
+        <class>com.atc.entities.ResearchAreaEntity</class>
+        <class>com.atc.entities.TeamCommentEntity</class>
+        <class>com.atc.entities.TeamPostEntity</class>
+        <class>com.atc.entities.TeamEntity</class>
+        <class>com.atc.entities.UnitEntity</class>
+        <class>com.atc.entities.UserAddressEntity</class>
+        <class>com.atc.entities.UserGroupEntity</class>
+        <class>com.atc.entities.UserOrganizationEntity</class>
+        <class>com.atc.entities.UserSubscriptionEntity</class>
+        <class>com.atc.entities.UsersTeamEntity</class>
+        <class>com.atc.entities.WorkoutPlaceEntity</class>
 
         <!-- Les <class> juste au-dessus sont auto-générées lors de l'import DB
 Si on souhaite re-générer la db, il faudra les delete ici juste avant -->
