@@ -8,7 +8,7 @@ import java.util.Objects;
 public class TrainingCategoryLinkEntity {
     private int id;
     private TrainingPlanEntity trainingPlansByTrainingPlanId;
-    private CategorieEntity categoriesByCategoryId;
+    private CategoryEntity categoriesByCategoryId;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -45,11 +45,11 @@ public class TrainingCategoryLinkEntity {
 
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id", nullable = false)
-    public CategorieEntity getCategoriesByCategoryId() {
+    public CategoryEntity getCategoriesByCategoryId() {
         return categoriesByCategoryId;
     }
 
-    public void setCategoriesByCategoryId(CategorieEntity categoriesByCategoryId) {
+    public void setCategoriesByCategoryId(CategoryEntity categoriesByCategoryId) {
         this.categoriesByCategoryId = categoriesByCategoryId;
     }
 }

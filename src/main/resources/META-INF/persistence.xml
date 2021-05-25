@@ -58,6 +58,7 @@ Ici on a java:comp/env/jdbc/schoolUX donc la ressource concernée est <Resource 
         <class>com.atc.entities.UserSubscriptionEntity</class>
         <class>com.atc.entities.UsersTeamEntity</class>
         <class>com.atc.entities.WorkoutPlaceEntity</class>
+        <class>com.atc.entities.CategoryEntity</class>
 
         <!-- Les <class> juste au-dessus sont auto-générées lors de l'import DB
 Si on souhaite re-générer la db, il faudra les delete ici juste avant -->
