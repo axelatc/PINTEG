@@ -18,7 +18,7 @@ public class TeamEntity {
     private Collection<UsersTeamEntity> usersTeamsById;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

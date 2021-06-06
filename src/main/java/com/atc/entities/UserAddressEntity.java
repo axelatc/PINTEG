@@ -12,7 +12,7 @@ public class UserAddressEntity {
     private AddressEntity addressesByAddressId;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

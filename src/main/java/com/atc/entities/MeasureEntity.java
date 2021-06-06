@@ -16,7 +16,7 @@ public class MeasureEntity {
     private MeasurandEntity measurandsByMeasurandId;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

@@ -15,7 +15,7 @@ public class EventParticipationEntity {
     private EventEntity eventsByEventId;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

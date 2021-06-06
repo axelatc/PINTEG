@@ -11,7 +11,7 @@ public class UserGroupEntity {
     private GroupEntity groupsByGroupId;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

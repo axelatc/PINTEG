@@ -18,7 +18,7 @@ public class AddressEntity {
     private Collection<WorkoutPlaceEntity> workoutPlacesById;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
