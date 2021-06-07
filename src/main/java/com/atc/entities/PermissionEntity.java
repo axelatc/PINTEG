@@ -6,6 +6,15 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "permissions", schema = "shapp", catalog = "")
+@NamedQueries(
+        value = {
+                @NamedQuery(name = "Permission.findAll",
+                        query = "SELECT p from PermissionEntity p"),
+                @NamedQuery(name = "Permission.findOneByLabel",
+                        query = "SELECT p from PermissionEntity p where p.label= :label")
+        }
+
+)
 public class PermissionEntity {
     private int id;
     private String label;
