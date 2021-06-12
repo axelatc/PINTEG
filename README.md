@@ -1,6 +1,7 @@
 # Projet d'intégration ATC 2020-2021
 
-mot de passe pour tous les utilisateurs: "mdp"
+mot de passe pour tous les utilisateurs: "mdp"  
+identifiants utilisateur admin: "ladministrateur01" - "mdp"
 
 ## Respecte les consignes données par Mr Diana
 - utilisation des règles de navigation explicites `navigation-rule` dans `faces-config.xml`
@@ -25,9 +26,14 @@ mot de passe pour tous les utilisateurs: "mdp"
 - Login Validator + error messages
 - Ajouter Bouton logout
 - Cacher le menu permissions si l’utilisateur n’est pas admin
+
 ### other
-- remplir le messages_fr.properties
 - center le page content avec le container bootstrap
+
+### CRUD many to many Groups<->Permissions
+- faire service group
+- ajouter @validations et @named @sessionscoped + @namedqueries sur groupEntity
+- copier CRUD permissions
 
 
   
