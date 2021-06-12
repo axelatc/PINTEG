@@ -5,7 +5,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <h:link styleClass="navbar-brand" value="Shapp"
-                        outcome="index"></h:link>
+                        outcome="dashboard"></h:link>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -25,8 +25,10 @@
                                 Permissions
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <h:link styleClass="dropdown-item" value="Permissions list"
-                                        outcome="permissions-list"/>
+                                <h:link styleClass="dropdown-item" value="#{bundle['permissionList.pageTitle']}"
+                                        outcome="permissionList"/>
+                                <h:link styleClass="dropdown-item" value="#{bundle['permissionCreate.pageTitle']}"
+                                        outcome="permissionCreate"/>
                                 <!--                                <li><a class="dropdown-item" href="#">Action</a></li>
                                                                 <li><a class="dropdown-item" href="#">Another action</a></li>
                                                                 <li><hr class="dropdown-divider" /></li>
@@ -37,6 +39,18 @@
                                                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                                                 </li>-->
                     </ul>
+                    <h:form>
+                        <h:commandButton value="#{bundle['french']}" id="fr" styleClass="french"
+                                         actionListener="#{internationalizationBean.languageSelection}">
+                        </h:commandButton>
+                        <h:commandButton value="#{bundle['english']}" id="en"
+                                         actionListener="#{internationalizationBean.languageSelection}">
+                        </h:commandButton>
+                    </h:form>
+<!--                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>-->
                 </div>
             </div>
         </nav>

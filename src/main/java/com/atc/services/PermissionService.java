@@ -7,45 +7,39 @@ import org.apache.log4j.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
-import java.util.Collection;
 import java.util.List;
 
-public class PermissionService extends ServiceImpl<PermissionEntity> {
+public class PermissionService implements Service<PermissionEntity> {
 
     private final static Logger LOG = Logger.getLogger(PermissionService.class);
 
-    public PermissionService(EntityManager em) {
-        super(em);
+
+    public boolean exist(PermissionEntity p, EntityManager em) {
+        return (findPermissionByLabelOrNull(p.getLabel(), em) != null);
     }
 
 
-    @Override
-    public boolean alreadyExist(PermissionEntity p) {
-        return (findPermissionByLabelOrNull(p.getLabel()) != null);
-    }
-
-    @Override
-    public PermissionEntity findOneByIdOrNull(int id) {
-        LOG.debug("Select a permission by the id : " + id);
+    public PermissionEntity findOneByIdOrNull(int id, EntityManager em) {
+        LOG.info("Select a permission by the id : " + id);
         return em.find(PermissionEntity.class, id);
     }
 
-    @Override
-    public Collection<PermissionEntity> findAllOrNull() {
+    public List<PermissionEntity> findAllOrNull(EntityManager em) {
         try {
+            LOG.info("Create named query Permission.findAll");
             TypedQuery<PermissionEntity> query = em.createNamedQuery("Permission.findAll", PermissionEntity.class);
             List<PermissionEntity> permissionList = query.getResultList();
-            LOG.debug("List " + PermissionEntity.class.getSimpleName() + " size: " + permissionList.size());
-            LOG.debug("Selected all permissions from database ");
+            LOG.info("List " + PermissionEntity.class.getSimpleName() + " size: " + permissionList.size());
+            LOG.info("Selected all permissions from database ");
             return permissionList;
-        } catch (NoResultException e) {
-            LOG.debug("The query found no permission to return", e);
+        } catch (Exception e) {
+            LOG.info("The query found no permission to return", e);
             return null;
         }
     }
 
-    public PermissionEntity findPermissionByLabelOrNull(String label) throws IllegalArgumentException {
-        LOG.debug("Finding permission of label " + label);
+    public PermissionEntity findPermissionByLabelOrNull(String label, EntityManager em) throws IllegalArgumentException {
+        LOG.info("Finding permission of label " + label);
 
         if (ValidationUtils.hasContent(label)) {
             try {
@@ -53,7 +47,7 @@ public class PermissionService extends ServiceImpl<PermissionEntity> {
                         .setParameter("label", label)
                         .getSingleResult();
             } catch (NoResultException e) {
-                LOG.debug("The query found no permission to return", e);
+                LOG.info("The query found no permission to return", e);
                 return null;
             }
         } else {

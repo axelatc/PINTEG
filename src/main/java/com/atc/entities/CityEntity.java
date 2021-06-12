@@ -90,6 +90,18 @@ public class CityEntity {
         this.countriesByCountryId = countriesByCountryId;
     }
 
+/*  Generate the following bug:   (Eclipse Persistence Services - 2.7.7.v20200504-69f2c2b80d): org.eclipse.persistence.exceptions.ValidationException
+Exception Description: The attribute [researchAreasById] in entity class [class com.atc.entities.CityEntity] has a mappedBy value of [citiesByCityId] which does not exist in its owning entity class [class com.atc.entities.ResearchAreaEntity]. If the owning entity class is a @MappedSuperclass, this is invalid, and your attribute should reference the correct subclass.
+		at org.eclipse.persistence.exceptions.ValidationException.noMappedByAttributeFound(ValidationException.java:1376)
+		at org.eclipse.persistence.internal.jpa.metadata.accessors.mappings.RelationshipAccessor.getOwningMapping(RelationshipAccessor.java:491)
+		at org.eclipse.persistence.internal.jpa.metadata.accessors.mappings.OneToManyAccessor.processOneToManyMapping(OneToManyAccessor.java:217)
+		at org.eclipse.persistence.internal.jpa.metadata.accessors.mappings.OneToManyAccessor.process(OneToManyAccessor.java:150)
+		at org.eclipse.persistence.internal.jpa.metadata.MetadataProject.processNonOwningRelationshipAccessors(MetadataProject.java:1652)
+		at org.eclipse.persistence.internal.jpa.metadata.MetadataProject.processStage3(MetadataProject.java:1941)
+		at org.eclipse.persistence.internal.jpa.metadata.MetadataProcessor.processORMMetadata(MetadataProcessor.java:584)
+		at org.eclipse.persistence.internal.jpa.deployment.PersistenceUnitProcessor.processORMetadata(PersistenceUnitProcessor.java:629)
+		at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.predeploy(EntityManagerSetupImpl.java:2006)
+
     @OneToMany(mappedBy = "citiesByCityId")
     public Collection<ResearchAreaEntity> getResearchAreasById() {
         return researchAreasById;
@@ -97,5 +109,5 @@ public class CityEntity {
 
     public void setResearchAreasById(Collection<ResearchAreaEntity> researchAreasById) {
         this.researchAreasById = researchAreasById;
-    }
+    }*/
 }

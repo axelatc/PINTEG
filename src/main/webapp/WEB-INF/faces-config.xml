@@ -3,9 +3,71 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
     http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd">
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>permissionList</from-outcome>
+            <to-view-id>/permissionList.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>permissionCreate</from-outcome>
+            <to-view-id>/permissionCreate.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/permissionList.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>permissionEdit</from-outcome>
+            <to-view-id>/permissionEdit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{permissionList.delete(permission)}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/success.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{permissionList.delete(permission)}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/failure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/permissionEdit.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/success.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/failure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{authenticationBean.validateUserCredentials(loginBean)}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/dashboard.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{authenticationBean.validateUserCredentials(loginBean)}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <lifecycle>
+        <phase-listener>com.atc.filters.SecurityFilter</phase-listener>
+    </lifecycle>
+
     <application>
+        <locale-config>
+            <default-locale>fr</default-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
         <resource-bundle>
-            <base-name>com.atc.messages</base-name>
+            <base-name>com.atc.i18n.messages</base-name>
             <var>bundle</var>
         </resource-bundle>
     </application>

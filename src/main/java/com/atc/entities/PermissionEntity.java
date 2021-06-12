@@ -1,6 +1,13 @@
 package com.atc.entities;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -15,11 +22,39 @@ import java.util.Objects;
         }
 
 )
-public class PermissionEntity {
+@RequestScoped
+@Named
+public class PermissionEntity implements Serializable {
+    @Positive
     private int id;
+
+    @NotBlank
+    @NotNull
+    @Size(min=1, max=100)
     private String label;
+
+    @NotBlank
+    @NotNull
+    @Size(min=1, max=2000)
     private String description;
+
+
     private Collection<GroupPermissionEntity> groupsPermissionsById;
+
+    public PermissionEntity(@Positive int id, @NotBlank @NotNull @Size(min = 1, max = 100) String label, @NotBlank @NotNull @Size(min = 1, max = 2000) String description) {
+        this.id = id;
+        this.label = label;
+        this.description = description;
+    }
+
+    public PermissionEntity() {
+
+    }
+
+    public PermissionEntity(@NotBlank @NotNull @Size(min = 1, max = 100) String label, @NotBlank @NotNull @Size(min = 1, max = 2000) String description) {
+        this.label = label;
+        this.description = description;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -67,12 +102,12 @@ public class PermissionEntity {
         return Objects.hash(id, label, description);
     }
 
-    @OneToMany(mappedBy = "permissionsByPermissionId")
+/*    @OneToMany(mappedBy = "permissionsByPermissionId")
     public Collection<GroupPermissionEntity> getGroupsPermissionsById() {
         return groupsPermissionsById;
     }
 
     public void setGroupsPermissionsById(Collection<GroupPermissionEntity> groupsPermissionsById) {
         this.groupsPermissionsById = groupsPermissionsById;
-    }
+    }*/
 }

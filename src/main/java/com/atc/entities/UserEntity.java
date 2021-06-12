@@ -7,6 +7,15 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "users", schema = "shapp", catalog = "")
+@NamedQueries(
+        value = {
+                @NamedQuery(name = "User.findAll",
+                        query = "SELECT u from UserEntity u"),
+                @NamedQuery(name = "User.findOneByUsername",
+                        query = "SELECT u from UserEntity u where u.username= :username")
+        }
+
+)
 public class UserEntity {
     private int id;
     private String firstName;

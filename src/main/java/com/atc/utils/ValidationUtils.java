@@ -8,12 +8,12 @@ public class ValidationUtils {
 
     public static boolean hasContent(String string) {
 
-        LOG.debug("Checking if the string has content : " + string);
+        LOG.info("Checking if the string has content : " + string);
         return (string != null && string.trim().length() > 0);
     }
 
     public static boolean isEntityId(String id) {
-        LOG.debug("Checking if a string can be parsed as a valid DB id integer : " + id);
+        LOG.info("Checking if a string can be parsed as a valid DB id integer : " + id);
         if (hasContent(id)){
             try {
                 int idAsInt = Integer.parseInt(id);

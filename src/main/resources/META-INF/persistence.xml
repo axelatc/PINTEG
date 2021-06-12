@@ -18,7 +18,7 @@ Ici on a java:comp/env/jdbc/schoolUX donc la ressource concernée est <Resource 
 -->
         <jta-data-source>java:comp/env/jdbc/DSshapp</jta-data-source>
         <class>com.atc.entities.BrandEntity</class>
-        <class>com.atc.entities.CategorieEntity</class>
+        <class>com.atc.entities.CategoryEntity</class>
         <class>com.atc.entities.EquipmentGenericEntity</class>
         <class>com.atc.entities.EquipmentItemLinkEntity</class>
         <class>com.atc.entities.ExerciseEntity</class>

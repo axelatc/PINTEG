@@ -1822,69 +1822,68 @@ ALTER TABLE equipment_items_link
 --  -----------------------------------------------------------
 --  -----------------------------------------------------------
 
-/*
-
-INSERT INTO `permissions` (`id`, `label`, `abbreviation`, `description`) VALUES
-(1, 'DeleteAnyUser', 'D-USER-01', 'Cette permission permet de supprimer n\'importe lequel des comptes-utilisateurs.'),
-(2, 'DeleteOwnUser', 'D-USER-02', 'Cette permission permet de supprimer son propre compte-utilisateur.'),
-(3, 'DeleteAnyGroup', 'D-GROUP-01', 'Cette permission permet de supprimer un rôle.'),
-(4, 'CreateNewGroup', 'C-GROUP-01', 'Cette permission permet de créer un nouveau rôle et de lui attribuer des permissions.'),
-(5, 'ReadAnyGroup', 'R-GROUP-01', 'Cette permission permet de lire la liste des rôles.'),
-(6, 'CreateNewUser', 'C-USER-01', 'Cette permission permet de créer un nouveau compte utilisateur'),
-(7, 'ReadAnyPermission', 'R-PERM-01', 'Cette permission permet de lire la liste des permissions'),
-(8, 'DeleteAnyPermission', 'D-PERM-01', 'Cette permission permet de supprimer une permission'),
-(9, 'CreateNewPermission', 'C-PERM-01', 'Cette permission permet de créer une nouvelle permission'),
-(10, 'UpdateAnyPermission', 'U-PERM-01', 'Cette permission permet de mettre à jour n\'importe laquelle des permissions.'),
-(11, 'UpdateAnyGroup', 'U-GROUP-01', 'Cette permission permet de mettre à jour n\'importe lequel des rôles'),
-(12, 'UpdateAnyUser', 'U-USER-01', 'Cette permission permet de mettre à jour n\'importe lequel des comptes utilisateurs'),
-(13, 'ReadAnyUser', 'R-USER-01', 'Cette permission permet de lire la liste des utilisateurs');
+-- The unencrypted password for all users is "mdp"
+INSERT INTO `users` (`id`,`first_name`,`last_name`,`username`,`password`,`birthdate`,`gender`,`email_address`,`phone_number`,
+					`creation_date_time`,`picture_URI`,`active`,`coach_degree_info`,`coach_career_start_date`)
+VALUES
+(1,'Arya','Secret','utilisateur01','euciAI2upg1Lrr3NX45dvg==++QQ==','1970-03-03','Féminin','arya.secret@gmail.com','+32486444444',
+	'2020-10-02 12:30:03',NULL,1,NULL,NULL),
+(2,'Gaspard','Ent','lecoach01','euciAI2upg1Lrr3NX45dvg==++QQ==','1980-05-05','Masculin','gaspard.ent@gmail.com','+32486325645',
+	'2020-08-09 17:46:03',NULL,1,'Dîplomé de l\Ecole de Kinésithérapie de Wavre, Promotion 1999','2001-01-01'),
+(3,'Viktor','Ganise','ladministrateur01','euciAI2upg1Lrr3NX45dvg==++QQ==','1991-01-01','Masculin','viktor.ganise@gmail.com','+32486888888',
+	'2020-08-09 17:46:03',NULL,1,NULL,NULL),
+(4,'Jean','Seigne','ladministrateur02','euciAI2upg1Lrr3NX45dvg==++QQ==','1985-02-02','Autre','jean.seigne@gmail.com','+32486555555',
+	'2020-10-05 10:46:03',NULL,1,NULL,NULL);
 
 
 
-INSERT INTO `groups` (`id`, `label`, `abbreviation`, `description`) VALUES
-(1, 'Eleve 1', 'ELE-01', 'Ce rôle est attribué aux utilisateurs identifiés en tant qu\'élèves de l\'école'),
-(2, 'Parent 1', 'PAR-01', 'Ce rôle est attribué aux utilisateurs identifiés en tant que parents d\'élève'),
-(3, 'Professeur 1', 'PRO-01', 'Ce rôle est attribué aux utilisateurs identifiés en tant que professeurs'),
-(4, 'Secretaire 1', 'SEC-01', 'Ce rôle est attribué aux utilisateurs identifiés en tant que secrétaires'),
-(5, 'Directeur 1', 'DIR-01', 'Ce rôle est attribué aux utilisateurs identifiés en tant que directeurs d\'école.'),
-(6, 'Administrateur 1', 'ADM-01', 'Ce rôle est attribué aux utilisateurs identifiés en tant qu\'administrateur.'),
-(7, 'Stagiaire 1', 'STA-01', 'Ce rôle est attribué aux utilisateurs identifiés en tant que professeurs stagiaires.'),
-(8, 'Stagiaire 2', 'STA-02', 'Ce rôle est attribué aux utilisateurs identifiés en tant que secrétaires stagiaires.');
+INSERT INTO `groups` (`id`, `label`, `description`) VALUES
+(1, 'users', 'Ce rôle est attribué aux utilisateurs identifiés basiques'),
+(2, 'team_creators', 'Ce rôle est attribué aux créateurs d\équipe'),
+(3, 'administrators', 'Ce rôle est attribué aux utilisateurs identifiés en tant qu\'administrateurs');
 
+INSERT INTO `users_groups` (`id`,`user_id`,`group_id`) VALUES 
+(1,1,1),
+(2,1,2),
+(3,2,1),
+(4,2,2),
+(5,3,1),
+(6,3,2),
+(7,3,3),
+(8,4,1),
+(9,4,2),
+(10,4,3);
 
+INSERT INTO `permissions` (`id`, `label`, `description`) VALUES
+(1, 'users:new', 'Créer utilisateur'),
+(2, 'users:read', 'Consulter utilisateur'),
+(3, 'users:edit', 'Éditer utilisateur');
 
-INSERT INTO `groups_permissions` (`id`, `id_group`, `id_permission`) VALUES
-(6, 6, 1),
-(7, 6, 2),
-(5, 6, 3),
-(2, 6, 4),
-(9, 6, 5),
-(3, 6, 6),
-(8, 6, 7),
-(4, 6, 8),
-(1, 6, 9),
-(11, 6, 10),
-(12, 6, 11),
-(13, 6, 12),
-(10, 6, 13);
+/* TODO: add a value property to the permissions table? If I do that I have to change all my schemas so I won't
+INSERT INTO `permissions` (`id`, `label`, `description`) VALUES
+(1, 'users:new', 'Créer utilisateur', 'Cette permission permet de créer un nouveau compte utilisateur'),
+(2, 'users:read', 'Consulter utilisateur', 'Cette permission permet de consulter les détails de n\'importe quel utilisateur.'),
+(3, 'users:edit', 'Éditer utilisateur', 'Cette permission permet d\'éditer les détails de n\'importe quel utilisateur.'),
+(4, 'users:deactivate', 'Désactiver utilisateur', 'Cette permission permet de désactiver un compte utilisateur.'),
+(5, 'groups:new', 'Créer groupe', 'Cette permission permet de créer un nouveau groupe.'),
+(6, 'groups:read', 'Consulter groupe', 'Cette permission permet de consulter les détails de n\'importe quel groupe.'),
+(7, 'groups:edit', 'Éditer groupe', 'Cette permission permet d\'éditer les détails de n\'importe quel groupe.'),
+(8, 'groups:delete', 'Supprimer groupe', 'Cette permission permet de supprimer un groupe.'),
+(9, 'groups:permissions:assign', 'Assigner une permission à un groupe', 'Cette permission permet d\'assigner une permission à un groupe.'),
+(10, 'groups:permissions:remove', 'Retirer une permission d\'un groupe', 'Cette permission permet de retirer une permission d\'un groupe.'),
+(11, 'permissions:new', 'Créer permission', 'Cette permission permet de créer une nouvelle permission'),
+(12, 'permissions:read', 'Consulter permission', 'Cette permission permet de consulter les détails de n\'importe quelle permission.'),
+(13, 'permissions:edit', 'Éditer permission', 'Cette permission permet d\'éditer les détails de n\'importe quelle permission.'),
+(14, 'permissions:delete', 'Supprimer permission', 'Cette permission permet de supprimer une permission.');*/
 
-
-
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `password`, `phone_number`, `birthdate`, `gender`, `email_address`, `active`, `inscription_date`, `title`, `photo`, `id_address`, `id_group`, `id_school`, `id_parent`) VALUES
-(1, 'Viktor', 'Ganise', 'ladministrateur01', 'mdp', NULL, '1991-01-01', 'Neutre', 'viktor.ganise@gmail.com', 1, '2020-08-09 17:46:03', 'Mr. l\'Administrateur', NULL, NULL, 6, NULL, NULL),
-(2, 'Jean', 'Seigne', 'leprofesseur01', 'mdp', NULL, '1990-01-01', 'Masculin', 'jean.seigne@gmail.com', 1, '2020-08-09 17:46:03', '', NULL, NULL, 3, NULL, NULL),
-(3, 'Arya', 'Secret', 'lasecretaire01', 'mdp', NULL, '1994-01-01', 'Féminin', 'arya.secret@gmail.com', 1, '2020-08-09 17:46:03', 'Mme la Secrétaire', NULL, NULL, 4, NULL, NULL),
-(4, 'Moundir', 'Ecteur', 'ledirecteur01', 'mdp', NULL, '1985-02-02', 'Masculin', 'moundir.ecteur@gmail.com', 1, '2020-08-09 17:46:03', 'Mr. le Directeur', NULL, NULL, 5, NULL, NULL),
-(5, 'Gaspard', 'Ent', 'leparent01', 'mdp', NULL, '1970-03-03', 'Masculin', 'gaspard.ent@gmail.com', 1, '2020-08-09 17:46:03', 'Mr. le Parent', NULL, NULL, 2, NULL, NULL),
-(6, 'Michael', 'Eve', 'leleve01', 'mdp', NULL, '2005-05-05', 'Masculin', 'michael.eve@gmail.com', 1, '2020-08-09 17:46:03', 'L\'Élève', NULL, NULL, 1, NULL, NULL),
-(7, 'Callista', 'Giaire', 'lastagiaire01', 'mdp', NULL, '2002-02-02', 'Féminin', 'callista.giaire@gmail.com', 1, '2020-08-09 17:46:03', 'Mme la Stagiaire-professeure', NULL, NULL, 7, NULL, NULL),
-(8, 'Kosta', 'Giaire', 'lestagiaire01', 'mdp', NULL, '2001-01-01', 'Masculin', 'kosta.giaire@gmail.com', 1, '2020-08-09 17:46:03', 'Mr le Stagiaire-secrétaire', NULL, NULL, 8, NULL, NULL),
-(9, 'Enf', 'Ent', 'lenfant01', 'mdp', NULL, '2004-04-04', 'Masculin', 'enf.ent@gmail.com', 1, '2020-08-09 17:49:31', 'Mr.', NULL, NULL, 1, NULL, 5);
+/*INSERT INTO `groups_permissions` (`id`,`group_id`,`permission_id`) VALUES
+(1,1,<{permission_id: }>);*/
 
 
 
 
-*/
+
+
 INSERT INTO `subscriptions` (`id`, `name`,`price_per_month`,`description`,`rank`) VALUES
 (1, 'Bronze',5,'Blabla desc', 1),
 (2, 'Silver',10,'Blabla desc',2),

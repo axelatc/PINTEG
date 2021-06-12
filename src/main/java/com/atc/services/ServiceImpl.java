@@ -22,20 +22,20 @@ public abstract class ServiceImpl<T> implements Service<T> {
 
 
 
-    public abstract boolean alreadyExist(T t);
+    public abstract boolean exist(T t);
 
     public abstract T findOneByIdOrNull(int id);
 
     public abstract Collection<T> findAllOrNull();
 
     public void insert(T t, EntityManager em) {
-        LOG.debug("Insert " + t.toString());
+        LOG.info("Insert " + t.toString());
         em.persist(t);
 
     }
 
     public void insertAndFlush(T t, EntityManager em) {
-        LOG.debug("Insert and flush " + t.toString());
+        LOG.info("Insert and flush " + t.toString());
         em.persist(t);
         em.flush();
 
@@ -43,13 +43,13 @@ public abstract class ServiceImpl<T> implements Service<T> {
     }
 
     public void update(T t, EntityManager em) {
-        LOG.debug("Update :" + t.toString());
+        LOG.info("Update :" + t.toString());
         em.merge(t);
 
     }
 
     public void delete(T t, EntityManager em) {
-        LOG.debug("Delete :" + t.toString());
+        LOG.info("Delete :" + t.toString());
         em.remove(t);
 
     }
@@ -71,19 +71,19 @@ public abstract class ServiceImpl<T> implements Service<T> {
 
     /*
     public void insert(T t) {
-        LOG.debug("Insert " + t.toString());
+        LOG.info("Insert " + t.toString());
         em.getTransaction().begin();
         em.persist(t);
         em.getTransaction().commit();
     }
     public void update(T t) {
-        LOG.debug("Update :" + t.toString());
+        LOG.info("Update :" + t.toString());
         em.getTransaction().begin();
         em.merge(t);
         em.getTransaction().commit();
     }
     public void delete(T t) {
-        LOG.debug("Delete :" + t.toString());
+        LOG.info("Delete :" + t.toString());
         em.getTransaction().begin();
         em.remove(t);
         em.getTransaction().commit();

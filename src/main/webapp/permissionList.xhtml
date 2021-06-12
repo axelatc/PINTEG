@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+    <ui:define name="title">
+        #{bundle['permissionList.pageTitle']}
+    </ui:define>
+    <ui:define name="content">
+        <h1 class="display-1">#{bundle['permissionList.pageTitle']}</h1>
+        <h:messages/>
+        <h:dataTable styleClass="table table-striped" value="#{permissionList.getPermissions()}" var="permission">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                #{permission.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Label</f:facet>
+                #{permission.label}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Description</f:facet>
+                #{permission.description}
+            </h:column>
+            <h:column>
+                <h:link value="#{bundle['permissionEdit.submitButtonName']}" outcome="/permissionEdit">
+                    <f:param name="id" value="#{permission.id}"/>
+                </h:link>
+            </h:column>
+            <h:column>
+                <h:form>
+                    <h:commandLink value="#{bundle['permissionDelete.actionName']}" action="#{permissionList.delete(permission)}">
+                    </h:commandLink>
+                </h:form>
+            </h:column>
+        </h:dataTable>
+    </ui:define>
+</ui:composition>
+</html>

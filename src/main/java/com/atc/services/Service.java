@@ -5,14 +5,9 @@ import java.util.Collection;
 
 public interface Service<T> {
 
-    boolean alreadyExist(T t);
-    T findOneByIdOrNull(int id);
-    Collection<T> findAllOrNull();
-
-    void insert(T t, EntityManager em);
-    void insertAndFlush(T t, EntityManager em);
-    void update(T t, EntityManager em);
-    void delete(T t, EntityManager em);
+    boolean exist(T t, EntityManager em);
+    T findOneByIdOrNull(int id, EntityManager em);
+    Collection<T> findAllOrNull(EntityManager em);
 
     /*
     void deleteLogically (T t); // modifie le boolean field isActive d'un objet et call la méthode update (T t) qui fait le merge()

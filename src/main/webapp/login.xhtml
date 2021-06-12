@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+    <ui:define name="title">
+        #{bundle['login.pageTitle']}
+    </ui:define>
+
+    <ui:define name="content">
+        <h1 class="display-1">#{bundle['login.pageTitle']}</h1>
+        <h:form id="loginForm">
+            <div id="userNameDiv" class="textPlacement">
+                <h:outputLabel value="Username: " />
+                <h:inputText value="#{loginBean.username}" />
+            </div>
+            <div id="passwordDiv" class="textPlacement">
+                <h:outputLabel value="Password: " />
+                <h:inputSecret value="#{loginBean.password}" />
+            </div>
+            <div id="submitBtn" class="textPlacement">
+                <h:commandButton value="Login" action="#{authenticationBean.validateUserCredentials(loginBean)}" />
+            </div>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+</html>
