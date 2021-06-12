@@ -47,7 +47,7 @@
                 </h:inputText>
                 <h:message for="description" styleClass="text-danger"/>
             </div>
-            <h:commandButton value="save" action="#{permissionEdit.save()}" styleClass="btn btn-primary"/>
+            <h:commandButton value="#{bundle['permissionEdit.submitButtonName']}" action="#{permissionEdit.save()}" styleClass="btn btn-primary"/>
         </h:form>
     </ui:define>
 </ui:composition>
