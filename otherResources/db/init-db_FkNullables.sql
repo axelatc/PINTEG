@@ -1798,11 +1798,11 @@ INSERT INTO `users` (`id`,`first_name`,`last_name`,`username`,`password`,`birthd
 VALUES
 (1,'Arya','Secret','utilisateur01','euciAI2upg1Lrr3NX45dvg==++QQ==','1970-03-03','Féminin','arya.secret@gmail.com','+32486444444',
 	'2020-10-02 12:30:03',NULL,1,NULL,NULL),
-(2,'Gaspard','Ent','lecoach01','euciAI2upg1Lrr3NX45dvg==++QQ==','1980-05-05','Masculin','gaspard.ent@gmail.com','+32486325645',
+(2,'Gaspard','Ent','coach01','euciAI2upg1Lrr3NX45dvg==++QQ==','1980-05-05','Masculin','gaspard.ent@gmail.com','+32486325645',
 	'2020-08-09 17:46:03',NULL,1,'Dîplomé de l\Ecole de Kinésithérapie de Wavre, Promotion 1999','2001-01-01'),
-(3,'Viktor','Ganise','ladministrateur01','euciAI2upg1Lrr3NX45dvg==++QQ==','1991-01-01','Masculin','viktor.ganise@gmail.com','+32486888888',
+(3,'Viktor','Ganise','admin01','euciAI2upg1Lrr3NX45dvg==++QQ==','1991-01-01','Masculin','viktor.ganise@gmail.com','+32486888888',
 	'2020-08-09 17:46:03',NULL,1,NULL,NULL),
-(4,'Jean','Seigne','ladministrateur02','euciAI2upg1Lrr3NX45dvg==++QQ==','1985-02-02','Autre','jean.seigne@gmail.com','+32486555555',
+(4,'Jean','Seigne','admin02','euciAI2upg1Lrr3NX45dvg==++QQ==','1985-02-02','Autre','jean.seigne@gmail.com','+32486555555',
 	'2020-10-05 10:46:03',NULL,1,NULL,NULL);
 
 
