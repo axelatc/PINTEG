@@ -1904,11 +1904,21 @@ INSERT INTO `groups_permissions` (`id`,`group_id`,`permission_id`) VALUES
 (44,3,27),
 (45,3,28);
 
-/*INSERT INTO `groups_permissions` (`id`,`group_id`,`permission_id`) VALUES
-(1,1,<{permission_id: }>);*/
+INSERT INTO `units` (`id`, `name`, `symbol`, `description`) VALUES
+(1, 'kilogramme', 'Kg', 'Unité de base du système international de mesure de masse'),
+(2, 'mètre', 'm', 'Unité de base du système international de mesure de longueur'),
+(3, 'centimètre', 'cm', 'Centième du mètre');
 
 
+INSERT INTO `measurands` (`id`,`name`,`description`,`unit_id`) VALUES
+(1, 'poids corporel', 'le poids du corps mesuré sur une balance amateure', 1),
+(2, 'tour de biceps', 'le tour du biceps', 3);
 
+INSERT INTO `measures` (`id`, `creation_date_time`, `measured_value`, `note`, `user_id`, `measurand_id`) VALUES
+(1,'2020-08-09 08:46:03',79.05,'poids mesuré à jeun le matin',1,1),
+(2,'2020-08-10 08:46:03',80.05,'poids mesuré après snacking nocture',1,1),
+(3,'2020-08-09 17:46:03',25.02,'biceps: après exercices des membres supérieurs',1,2),
+(4,'2020-08-11 17:46:03',24.65,'biceps: au repos',1,2);
 
 
 
