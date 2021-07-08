@@ -413,36 +413,6 @@ CREATE TABLE IF NOT EXISTS `teams` (
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=`latin1_general_ci`;
 
 
-
-
--- --------------------------------------------------------
-
---
--- Structure de la table `measures`
---
-
-DROP TABLE IF EXISTS `measures`;
-CREATE TABLE IF NOT EXISTS `measures` (
-
--- artificial id dans les tables intermediaires pour simplifier java (permet que la table intermédiaire existe en tant que classe java, et non pas en tant qu'annotations dans les 2 autres classes java des tables générant la jointure).
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `creation_date_time` datetime NOT NULL DEFAULT NOW(),
-    `measured_value` decimal(10,2) NOT NULL,
-    `note` text NULL,
-
-    `user_id` int(11) NULL DEFAULT NULL,
-    `measurand_id` int(11) NULL DEFAULT NULL,
-
-
-    CONSTRAINT PK_MEASURES PRIMARY KEY (`id`),
-    CONSTRAINT UNIQUE_CONSTRAINT_MEASURES_fkcomposite UNIQUE (`user_id`,`measurand_id`)
-
-
-    ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=`latin1_general_ci`;
-
-
-
-
 -- --------------------------------------------------------
 
 --
