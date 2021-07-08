@@ -1929,6 +1929,10 @@ INSERT INTO `subscriptions` (`id`, `name`,`price_per_month`,`description`,`rank`
 (4, 'Platinum',20, 'Blabla desc',4),
 (5, 'Diamond',25,'Blabla desc',5);
 
+INSERT INTO `users_subscriptions` (`id`,`begin_date_time`,`end_date_time`,`user_id`,`subscription_id`) VALUES
+(1,'2020-08-11 17:46:03','2020-09-11 17:46:03',1,1),
+(2,'2020-08-11 17:46:03','2020-09-11 17:46:03',2,3);
+
 
 
 
