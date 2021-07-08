@@ -242,8 +242,7 @@ CREATE TABLE IF NOT EXISTS `measures` (
     `measurand_id` int(11) NULL DEFAULT NULL,
 
 
-    CONSTRAINT PK_MEASURES PRIMARY KEY (`id`),
-    CONSTRAINT UNIQUE_CONSTRAINT_MEASURES_fkcomposite UNIQUE (`user_id`,`measurand_id`)
+    CONSTRAINT PK_MEASURES PRIMARY KEY (`id`)
 
 
 
