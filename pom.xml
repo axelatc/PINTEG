@@ -78,6 +78,7 @@
             <artifactId>shiro-web</artifactId>
             <version>1.7.1</version>
         </dependency>
+        <!--  Shiro requires `commons-beansutils` and the latter requires `commons-logging` to run -->
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
