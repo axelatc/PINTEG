@@ -57,9 +57,9 @@
         </navigation-case>
     </navigation-rule>
 
-    <lifecycle>
+<!--    <lifecycle>
         <phase-listener>com.atc.filters.SecurityFilter</phase-listener>
-    </lifecycle>
+    </lifecycle>-->
 
     <application>
         <locale-config>
