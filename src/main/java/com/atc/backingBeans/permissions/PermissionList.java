@@ -2,6 +2,7 @@ package com.atc.backingBeans.permissions;
 
 import com.atc.entities.PermissionEntity;
 import com.atc.services.PermissionService;
+import com.atc.utils.JpaUtils;
 import org.apache.log4j.Logger;
 
 import javax.annotation.PostConstruct;
@@ -45,7 +46,7 @@ public class PermissionList implements Serializable {
 
             tx = em.getTransaction();
             tx.begin();
-            em.remove(foundPermission);
+            permissionService.delete(foundPermission, em);
             tx.commit();
             LOG.info("Permission entity is removed.");
             addSuccessMessage(getLocaleMessageAsString(SUCCESS_LOCALE_MESSAGE_NAME));
@@ -64,9 +65,7 @@ public class PermissionList implements Serializable {
     }
 
     public List<PermissionEntity> getPermissions() {
-        EntityManager em = createEntityManager();
-        permissions = permissionService.findAllOrNull(em);
-        em.close();
+        permissions = permissionService.findAllOrNull(JpaUtils.createEntityManager());
         return permissions;
     }
     public void setPermissions(List<PermissionEntity> permissions) {

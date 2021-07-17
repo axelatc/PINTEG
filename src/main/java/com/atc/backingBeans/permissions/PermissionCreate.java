@@ -41,7 +41,7 @@ public class PermissionCreate implements Serializable {
             tx = em.getTransaction();
             tx.begin();
             PermissionEntity permissionToInsert = new PermissionEntity(permission.getLabel(), permission.getDescription());
-            em.persist(permissionToInsert);
+            permissionService.insert(permissionToInsert, em);
             tx.commit();
             LOG.info("Permission entity is created.");
 

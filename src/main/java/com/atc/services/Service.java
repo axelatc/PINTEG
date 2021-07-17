@@ -9,6 +9,11 @@ public interface Service<T> {
     T findOneByIdOrNull(int id, EntityManager em);
     Collection<T> findAllOrNull(EntityManager em);
 
+    void insert(T t, EntityManager em);
+    void insertAndFlush(T t, EntityManager em);
+    void update(T t, EntityManager em);
+    void delete(T t, EntityManager em);
+
     /*
     void deleteLogically (T t); // modifie le boolean field isActive d'un objet et call la méthode update (T t) qui fait le merge()
     On met cette methode dans l'interface courante dans le cas où toutes les tables ont un champ isActive afin de simuler une suppression logique sans supprimer réellement le record

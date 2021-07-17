@@ -8,25 +8,12 @@ public abstract class ServiceImpl<T> implements Service<T> {
 
 
     private final static Logger LOG = Logger.getLogger(ServiceImpl.class);
-    protected EntityManager em;
 
+    public abstract boolean exist(T t, EntityManager em);
 
-    public ServiceImpl(){}
+    public abstract T findOneByIdOrNull(int id, EntityManager em);
 
-    public ServiceImpl(EntityManager em) {
-        this.em = em;
-    }
-
-
-
-
-
-
-    public abstract boolean exist(T t);
-
-    public abstract T findOneByIdOrNull(int id);
-
-    public abstract Collection<T> findAllOrNull();
+    public abstract Collection<T> findAllOrNull(EntityManager em);
 
     public void insert(T t, EntityManager em) {
         LOG.info("Insert " + t.toString());

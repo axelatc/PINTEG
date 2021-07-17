@@ -1,6 +1,7 @@
 package com.atc.services;
 
 import com.atc.entities.PermissionEntity;
+import com.atc.utils.JpaUtils;
 import com.atc.utils.ValidationUtils;
 import org.apache.log4j.Logger;
 
@@ -9,13 +10,12 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class PermissionService implements Service<PermissionEntity> {
+public class PermissionService extends ServiceImpl<PermissionEntity> {
 
     private final static Logger LOG = Logger.getLogger(PermissionService.class);
 
-
     public boolean exist(PermissionEntity p, EntityManager em) {
-        return (findPermissionByLabelOrNull(p.getLabel(), em) != null);
+        return (findPermissionByLabelOrNull(p.getLabel()) != null);
     }
 
 
@@ -38,9 +38,10 @@ public class PermissionService implements Service<PermissionEntity> {
         }
     }
 
-    public PermissionEntity findPermissionByLabelOrNull(String label, EntityManager em) throws IllegalArgumentException {
+    public PermissionEntity findPermissionByLabelOrNull(String label) throws IllegalArgumentException {
         LOG.info("Finding permission of label " + label);
 
+        EntityManager em = JpaUtils.createEntityManager();
         if (ValidationUtils.hasContent(label)) {
             try {
                 return em.createNamedQuery("Permission.findOneByLabel", PermissionEntity.class)
@@ -49,8 +50,12 @@ public class PermissionService implements Service<PermissionEntity> {
             } catch (NoResultException e) {
                 LOG.info("The query found no permission to return", e);
                 return null;
+            } finally {
+                em.close();
             }
         } else {
+            em.clear();
+            em.close();
             throw new IllegalArgumentException("Can't query permission in database: the label is null or empty");
         }
     }

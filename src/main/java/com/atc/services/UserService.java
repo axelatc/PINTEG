@@ -9,7 +9,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class UserService implements Service<UserEntity> {
+public class UserService extends ServiceImpl<UserEntity> {
 
     private final static Logger LOG = Logger.getLogger(UserService.class);
 

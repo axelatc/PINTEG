@@ -42,7 +42,7 @@ public class PermissionEdit implements Serializable {
 
             tx = em.getTransaction();
             tx.begin();
-            em.merge(foundPermission);
+            permissionService.update(foundPermission, em);
             tx.commit();
             LOG.info("Permission entity is updated.");
 

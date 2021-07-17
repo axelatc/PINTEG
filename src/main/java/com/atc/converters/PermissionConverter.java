@@ -2,6 +2,7 @@ package com.atc.converters;
 
 import com.atc.entities.PermissionEntity;
 import com.atc.services.PermissionService;
+import com.atc.utils.JpaUtils;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.component.UIComponent;
@@ -10,8 +11,6 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
-
-import static com.atc.utils.JpaUtils.createEntityManager;
 
 @Named
 @RequestScoped
@@ -26,14 +25,16 @@ public class PermissionConverter implements Converter {
             return null;
         }
 
+        EntityManager em = JpaUtils.createEntityManager();
         try {
             Integer id = Integer.valueOf(value);
-            EntityManager em = createEntityManager();
             PermissionEntity permissionEntity = permissionService.findOneByIdOrNull(id, em);
-            em.close();
             return permissionEntity;
         } catch (NumberFormatException e) {
             throw new ConverterException("The value is not a valid Permission ID: " + value, e);
+        } finally {
+            em.clear();
+            em.close();
         }
     }
 
