@@ -41,8 +41,8 @@ Ici on a java:comp/env/jdbc/schoolUX donc la ressource concernée est <Resource 
         <class>com.atc.entities.EventParticipationEntity</class>
         <class>com.atc.entities.EventPostEntity</class>
         <class>com.atc.entities.EventEntity</class>
-        <class>com.atc.entities.GroupEntity</class>
-        <class>com.atc.entities.GroupPermissionEntity</class>
+        <class>com.atc.entities.RoleEntity</class>
+        <class>com.atc.entities.RolePermissionEntity</class>
         <class>com.atc.entities.MeasurandEntity</class>
         <class>com.atc.entities.MeasureEntity</class>
         <class>com.atc.entities.OrganizationEntity</class>

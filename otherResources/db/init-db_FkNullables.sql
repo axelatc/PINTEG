@@ -3,7 +3,7 @@
 --				MEMENTO DIFFICULTES RENCONTREES
 -- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- Remarque : les tables doivent être crées au préalable avant de faire les CONSTRAINT NomContrainte FOREIGN KEY
--- On ne peut pas dire que id_group dans la table users pointe vers la table groups si la table groups n'existe pas encore
+-- On ne peut pas dire que id_rol dans la table users pointe vers la table roles si la table roles n'existe pas encore
 -- Donc on crée bien les champs qui sont des foreign keys dans les tables, mais on attend d'avoir créer toutes les tables avant de dire que ce sont des foreign keys
 -- Du coup, vu que j'avais écrit toutes les CONSTRAINT FOREIGN KEY au sein de chaque table concernée,
 -- il a fallu sortir toutes les CONSTRAINT FOREIGN KEY de ces tables, et les remettre en fin de fichier via des ALTER TABLE ADD
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     `active` tinyint(1) NOT NULL DEFAULT 1,
     `coach_degree_info` text NULL,
     `coach_career_start_date` datetime NULL,
-    `group_id` int(11) NULL DEFAULT NULL,
+    `role_id` int(11) NULL DEFAULT NULL,
 
     CONSTRAINT PK_USERS PRIMARY KEY (`id`),
     CONSTRAINT UNIQUE_CONSTRAINT_USERS_username UNIQUE (`username`),
@@ -129,19 +129,19 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `groups`
+-- Structure de la table `roles`
 --
 
-DROP TABLE IF EXISTS `groups`;
-CREATE TABLE IF NOT EXISTS `groups` (
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE IF NOT EXISTS `roles` (
 
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `label` varchar(100) NOT NULL,
     `description` text NULL,
 
 
-    CONSTRAINT PK_GROUPS PRIMARY KEY (`id`),
-    CONSTRAINT UNIQUE_CONSTRAINT_GROUPS_label UNIQUE (`label`)
+    CONSTRAINT PK_ROLES PRIMARY KEY (`id`),
+    CONSTRAINT UNIQUE_CONSTRAINT_ROLES_label UNIQUE (`label`)
 
 
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -150,22 +150,22 @@ CREATE TABLE IF NOT EXISTS `groups` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `groups_permissions`
+-- Structure de la table `roles_permissions`
 --
 
-DROP TABLE IF EXISTS `groups_permissions`;
-CREATE TABLE IF NOT EXISTS `groups_permissions` (
+DROP TABLE IF EXISTS `roles_permissions`;
+CREATE TABLE IF NOT EXISTS `roles_permissions` (
 
 -- artificial id dans les tables intermediaires pour simplifier java (permet que la table intermédiaire existe en tant que classe java, et non pas en tant qu'annotations dans les 2 autres classes java des tables générant la jointure).
     `id` int(11) NOT NULL AUTO_INCREMENT,
 
 
-    `group_id` int(11) NULL DEFAULT NULL,
+    `role_id` int(11) NULL DEFAULT NULL,
     `permission_id` int(11) NULL DEFAULT NULL,
 
 
-    CONSTRAINT PK_GROUPS_PERMISSIONS PRIMARY KEY (`id`),
-    CONSTRAINT UNIQUE_CONSTRAINT_GROUPS_PERMISSIONS_fkcomposite UNIQUE (`group_id`,`permission_id`)
+    CONSTRAINT PK_ROLES_PERMISSIONS PRIMARY KEY (`id`),
+    CONSTRAINT UNIQUE_CONSTRAINT_ROLES_PERMISSIONS_fkcomposite UNIQUE (`role_id`,`permission_id`)
 
 
 
@@ -1420,15 +1420,15 @@ CREATE TABLE IF NOT EXISTS `equipment_items_link` (
 ALTER TABLE users
 
     ADD(
-        CONSTRAINT FK_USERS_GROUP FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+        CONSTRAINT FK_USERS_ROLE FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
         );
 
 
-ALTER TABLE groups_permissions
+ALTER TABLE roles_permissions
 
     ADD(
-		CONSTRAINT FK_GROUPS_PERMISSIONS_GROUPS FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-		CONSTRAINT FK_GROUPS_PERMISSIONS_PERMISSIONS FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+		CONSTRAINT FK_ROLES_PERMISSIONS_ROLES FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+		CONSTRAINT FK_ROLES_PERMISSIONS_PERMISSIONS FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
 	);
 
 
@@ -1762,13 +1762,13 @@ ALTER TABLE equipment_items_link
 --  -----------------------------------------------------------
 --  -----------------------------------------------------------
 
-INSERT INTO `groups` (`id`, `label`, `description`) VALUES
+INSERT INTO `roles` (`id`, `label`, `description`) VALUES
 (1, 'users', 'Ce rôle est attribué aux utilisateurs identifiés basiques'),
 (3, 'administrators', 'Ce rôle est attribué aux utilisateurs identifiés en tant qu\'administrateurs');
 
 -- The unencrypted password for all users is "mdp"
 INSERT INTO `users` (`id`,`first_name`,`last_name`,`username`,`password`,`birthdate`,`gender`,`email_address`,`phone_number`,
-					`creation_date_time`,`picture_URI`,`active`,`coach_degree_info`,`coach_career_start_date`, `group_id`)
+					`creation_date_time`,`picture_URI`,`active`,`coach_degree_info`,`coach_career_start_date`, `role_id`)
 VALUES
 (1,'Arya','Secret','utilisateur01','euciAI2upg1Lrr3NX45dvg==++QQ==','1970-03-03','Féminin','arya.secret@gmail.com','+32486444444',
 	'2020-10-02 12:30:03',NULL,1,NULL,NULL, 1),
@@ -1785,14 +1785,14 @@ INSERT INTO `permissions` (`id`, `label`, `description`) VALUES
 (2, 'users:read', 'Permet de consulter les détails de n\'importe quel utilisateur.'),
 (3, 'users:edit', 'Permet d\'éditer les détails de n\'importe quel utilisateur.'),
 (4, 'users:deactivate', 'Permet de désactiver un compte utilisateur.'),
-(5, 'groups:new', 'Permet de créer un nouveau groupe.'),
-(6, 'groups:read', 'Permet de consulter les détails de n\'importe quel groupe.'),
-(7, 'groups:edit', 'Permet d\'éditer les détails de n\'importe quel groupe.'),
-(8, 'groups:delete', 'Permet de supprimer un groupe.'),
-(9, 'groups:assign_permission', 'Permet d\'assigner une permission à un groupe.'),
-(10, 'groups:remove_permission', 'Permet de retirer une permission d\'un groupe.'),
-(11, 'groups:add_user', 'Permet d\'ajouter un utilisateur à un groupe.'),
-(12, 'groups:remove_user', 'Permet de retirer un utilisateur d\'un groupe.'),
+(5, 'roles:new', 'Permet de créer un nouveau rôle.'),
+(6, 'roles:read', 'Permet de consulter les détails de n\'importe quel rôle.'),
+(7, 'roles:edit', 'Permet d\'éditer les détails de n\'importe quel rôle.'),
+(8, 'roles:delete', 'Permet de supprimer un rôle.'),
+(9, 'roles:assign_permission', 'Permet d\'assigner une permission à un rôle.'),
+(10, 'roles:remove_permission', 'Permet de retirer une permission d\'un rôle.'),
+(11, 'roles:add_user', 'Permet d\'ajouter un utilisateur à un rôle.'),
+(12, 'roles:remove_user', 'Permet de retirer un utilisateur d\'un rôle.'),
 (13, 'permissions:new', 'Permet de créer une nouvelle permission'),
 (14, 'permissions:read', 'Permet de consulter les détails de n\'importe quelle permission.'),
 (15, 'permissions:edit', 'Permet d\'éditer les détails de n\'importe quelle permission.'),
@@ -1812,8 +1812,8 @@ INSERT INTO `permissions` (`id`, `label`, `description`) VALUES
 (29, 'subscriptions:downgrade', 'Permet de déclasser son rang d\'abonnement'),
 (30, 'subscriptions:unsubscribe', 'Permet de mettre fin à son abonnement.');
 
-INSERT INTO `groups_permissions` (`id`,`group_id`,`permission_id`) VALUES
--- group utilisateur
+INSERT INTO `roles_permissions` (`id`,`role_id`,`permission_id`) VALUES
+-- role utilisateur
 (1,1,2),
 (2,1,3),
 (3,1,4),
@@ -1831,7 +1831,7 @@ INSERT INTO `groups_permissions` (`id`,`group_id`,`permission_id`) VALUES
 (15,1,28),
 (16,1,29),
 (17,1,30),
--- group admin
+-- role admin
 (18,3,1),
 (19,3,2),
 (20,3,3),

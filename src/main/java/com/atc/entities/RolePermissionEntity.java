@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "groups_permissions", schema = "shapp", catalog = "")
-public class GroupPermissionEntity {
+@Table(name = "roles_permissions", schema = "shapp", catalog = "")
+public class RolePermissionEntity {
     private int id;
-    private GroupEntity groupsByGroupId;
+    private RoleEntity rolesByRoleId;
     private PermissionEntity permissionsByPermissionId;
 
     @Id
@@ -27,7 +27,7 @@ public class GroupPermissionEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GroupPermissionEntity that = (GroupPermissionEntity) o;
+        RolePermissionEntity that = (RolePermissionEntity) o;
         return Objects.equals(id, that.id);
     }
 
@@ -37,13 +37,13 @@ public class GroupPermissionEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "group_id", referencedColumnName = "id")
-    public GroupEntity getGroupsByGroupId() {
-        return groupsByGroupId;
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
+    public RoleEntity getRolesByRoleId() {
+        return rolesByRoleId;
     }
 
-    public void setGroupsByGroupId(GroupEntity groupsByGroupId) {
-        this.groupsByGroupId = groupsByGroupId;
+    public void setRolesByRoleId(RoleEntity rolesByRoleId) {
+        this.rolesByRoleId = rolesByRoleId;
     }
 
     @ManyToOne

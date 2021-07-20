@@ -39,7 +39,7 @@ public class PermissionEntity implements Serializable {
     private String description;
 
 
-    private Collection<GroupPermissionEntity> groupsPermissionsById;
+    private Collection<RolePermissionEntity> rolesPermissionsById;
 
     public PermissionEntity(@Positive int id, @NotBlank @NotNull @Size(min = 1, max = 100) String label, @NotBlank @NotNull @Size(min = 1, max = 2000) String description) {
         this.id = id;
@@ -103,11 +103,11 @@ public class PermissionEntity implements Serializable {
     }
 
 /*    @OneToMany(mappedBy = "permissionsByPermissionId")
-    public Collection<GroupPermissionEntity> getGroupsPermissionsById() {
-        return groupsPermissionsById;
+    public Collection<RolePermissionEntity> getRolesPermissionsById() {
+        return rolesPermissionsById;
     }
 
-    public void setGroupsPermissionsById(Collection<GroupPermissionEntity> groupsPermissionsById) {
-        this.groupsPermissionsById = groupsPermissionsById;
+    public void setRolesPermissionsById(Collection<RolePermissionEntity> rolesPermissionsById) {
+        this.rolesPermissionsById = rolesPermissionsById;
     }*/
 }

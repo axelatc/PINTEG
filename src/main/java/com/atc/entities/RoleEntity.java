@@ -5,12 +5,12 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "groups", schema = "shapp", catalog = "")
-public class GroupEntity {
+@Table(name = "roles", schema = "shapp", catalog = "")
+public class RoleEntity {
     private int id;
     private String label;
     private String description;
-    private Collection<GroupPermissionEntity> groupsPermissionsById;
+    private Collection<RolePermissionEntity> rolesPermissionsById;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,7 +49,7 @@ public class GroupEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GroupEntity that = (GroupEntity) o;
+        RoleEntity that = (RoleEntity) o;
         return Objects.equals(id, that.id) && Objects.equals(label, that.label) && Objects.equals(description, that.description);
     }
 
@@ -58,12 +58,12 @@ public class GroupEntity {
         return Objects.hash(id, label, description);
     }
 
-    @OneToMany(mappedBy = "groupsByGroupId")
-    public Collection<GroupPermissionEntity> getGroupsPermissionsById() {
-        return groupsPermissionsById;
+    @OneToMany(mappedBy = "rolesByRoleId")
+    public Collection<RolePermissionEntity> getRolesPermissionsById() {
+        return rolesPermissionsById;
     }
 
-    public void setGroupsPermissionsById(Collection<GroupPermissionEntity> groupsPermissionsById) {
-        this.groupsPermissionsById = groupsPermissionsById;
+    public void setRolesPermissionsById(Collection<RolePermissionEntity> rolesPermissionsById) {
+        this.rolesPermissionsById = rolesPermissionsById;
     }
 }
