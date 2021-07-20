@@ -53,7 +53,6 @@ Ici on a java:comp/env/jdbc/schoolUX donc la ressource concernée est <Resource 
         <class>com.atc.entities.TeamEntity</class>
         <class>com.atc.entities.UnitEntity</class>
         <class>com.atc.entities.UserAddressEntity</class>
-        <class>com.atc.entities.UserGroupEntity</class>
         <class>com.atc.entities.UserOrganizationEntity</class>
         <class>com.atc.entities.UserSubscriptionEntity</class>
         <class>com.atc.entities.UsersTeamEntity</class>
