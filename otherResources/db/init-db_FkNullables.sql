@@ -1764,7 +1764,6 @@ ALTER TABLE equipment_items_link
 
 INSERT INTO `groups` (`id`, `label`, `description`) VALUES
 (1, 'users', 'Ce rôle est attribué aux utilisateurs identifiés basiques'),
-(2, 'team_creators', 'Ce rôle est attribué aux créateurs d\équipe'),
 (3, 'administrators', 'Ce rôle est attribué aux utilisateurs identifiés en tant qu\'administrateurs');
 
 -- The unencrypted password for all users is "mdp"
@@ -1832,7 +1831,6 @@ INSERT INTO `groups_permissions` (`id`,`group_id`,`permission_id`) VALUES
 (15,1,28),
 (16,1,29),
 (17,1,30),
--- TODO pour EI: group créateur d'équipe
 -- group admin
 (18,3,1),
 (19,3,2),
