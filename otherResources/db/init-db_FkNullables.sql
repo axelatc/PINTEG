@@ -3,7 +3,7 @@
 --				MEMENTO DIFFICULTES RENCONTREES
 -- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- Remarque : les tables doivent être crées au préalable avant de faire les CONSTRAINT NomContrainte FOREIGN KEY
--- On ne peut pas dire que id_role dans la table users pointe vers la table roles si la table roles n'existe pas encore
+-- On ne peut pas dire que id_group dans la table users pointe vers la table groups si la table groups n'existe pas encore
 -- Donc on crée bien les champs qui sont des foreign keys dans les tables, mais on attend d'avoir créer toutes les tables avant de dire que ce sont des foreign keys
 -- Du coup, vu que j'avais écrit toutes les CONSTRAINT FOREIGN KEY au sein de chaque table concernée,
 -- il a fallu sortir toutes les CONSTRAINT FOREIGN KEY de ces tables, et les remettre en fin de fichier via des ALTER TABLE ADD
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     `active` tinyint(1) NOT NULL DEFAULT 1,
     `coach_degree_info` text NULL,
     `coach_career_start_date` datetime NULL,
-
+    `group_id` int(11) NULL DEFAULT NULL,
 
     CONSTRAINT PK_USERS PRIMARY KEY (`id`),
     CONSTRAINT UNIQUE_CONSTRAINT_USERS_username UNIQUE (`username`),
@@ -124,32 +124,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-
-
--- --------------------------------------------------------
-
---
--- Structure de la table `users_groups`
---
-DROP TABLE IF EXISTS `users_groups`;
-CREATE TABLE IF NOT EXISTS `users_groups` (
-
-    -- artificial id dans les tables intermediaires pour simplifier java (permet que la table intermédiaire existe en tant que classe java, et non pas en tant qu'annotations dans les 2 autres classes java des tables générant la jointure).
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-
-    `user_id` int(11) NOT NULL,
-    `group_id` int(11) NOT NULL,
-
-
-    CONSTRAINT PK_USERS_GROUPS PRIMARY KEY (`id`),
-    CONSTRAINT UNIQUE_CONSTRAINT_USERS_GROUPS_fkcomposite UNIQUE (`user_id`,`group_id`)
-
-
-    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
 
 
 -- --------------------------------------------------------
@@ -1443,14 +1417,11 @@ CREATE TABLE IF NOT EXISTS `equipment_items_link` (
 --  -----------------------------------------------------------
 --  -----------------------------------------------------------
 
-ALTER TABLE users_groups
+ALTER TABLE users
 
     ADD(
-		CONSTRAINT FK_USERS_GROUPS_USERS FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-		CONSTRAINT FK_USERS_GROUPS_GROUPS FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-	);
-
-
+        CONSTRAINT FK_USERS_GROUP FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+        );
 
 
 ALTER TABLE groups_permissions
@@ -1791,37 +1762,24 @@ ALTER TABLE equipment_items_link
 --  -----------------------------------------------------------
 --  -----------------------------------------------------------
 
--- The unencrypted password for all users is "mdp"
-INSERT INTO `users` (`id`,`first_name`,`last_name`,`username`,`password`,`birthdate`,`gender`,`email_address`,`phone_number`,
-					`creation_date_time`,`picture_URI`,`active`,`coach_degree_info`,`coach_career_start_date`)
-VALUES
-(1,'Arya','Secret','utilisateur01','euciAI2upg1Lrr3NX45dvg==++QQ==','1970-03-03','Féminin','arya.secret@gmail.com','+32486444444',
-	'2020-10-02 12:30:03',NULL,1,NULL,NULL),
-(2,'Gaspard','Ent','coach01','euciAI2upg1Lrr3NX45dvg==++QQ==','1980-05-05','Masculin','gaspard.ent@gmail.com','+32486325645',
-	'2020-08-09 17:46:03',NULL,1,'Dîplomé de l\Ecole de Kinésithérapie de Wavre, Promotion 1999','2001-01-01'),
-(3,'Viktor','Ganise','admin01','euciAI2upg1Lrr3NX45dvg==++QQ==','1991-01-01','Masculin','viktor.ganise@gmail.com','+32486888888',
-	'2020-08-09 17:46:03',NULL,1,NULL,NULL),
-(4,'Jean','Seigne','admin02','euciAI2upg1Lrr3NX45dvg==++QQ==','1985-02-02','Autre','jean.seigne@gmail.com','+32486555555',
-	'2020-10-05 10:46:03',NULL,1,NULL,NULL);
-
-
-
 INSERT INTO `groups` (`id`, `label`, `description`) VALUES
 (1, 'users', 'Ce rôle est attribué aux utilisateurs identifiés basiques'),
 (2, 'team_creators', 'Ce rôle est attribué aux créateurs d\équipe'),
 (3, 'administrators', 'Ce rôle est attribué aux utilisateurs identifiés en tant qu\'administrateurs');
 
-INSERT INTO `users_groups` (`id`,`user_id`,`group_id`) VALUES 
-(1,1,1),
-(2,1,2),
-(3,2,1),
-(4,2,2),
-(5,3,1),
-(6,3,2),
-(7,3,3),
-(8,4,1),
-(9,4,2),
-(10,4,3);
+-- The unencrypted password for all users is "mdp"
+INSERT INTO `users` (`id`,`first_name`,`last_name`,`username`,`password`,`birthdate`,`gender`,`email_address`,`phone_number`,
+					`creation_date_time`,`picture_URI`,`active`,`coach_degree_info`,`coach_career_start_date`, `group_id`)
+VALUES
+(1,'Arya','Secret','utilisateur01','euciAI2upg1Lrr3NX45dvg==++QQ==','1970-03-03','Féminin','arya.secret@gmail.com','+32486444444',
+	'2020-10-02 12:30:03',NULL,1,NULL,NULL, 1),
+(2,'Gaspard','Ent','coach01','euciAI2upg1Lrr3NX45dvg==++QQ==','1980-05-05','Masculin','gaspard.ent@gmail.com','+32486325645',
+	'2020-08-09 17:46:03',NULL,1,'Dîplomé de l\Ecole de Kinésithérapie de Wavre, Promotion 1999','2001-01-01', 1),
+(3,'Viktor','Ganise','admin01','euciAI2upg1Lrr3NX45dvg==++QQ==','1991-01-01','Masculin','viktor.ganise@gmail.com','+32486888888',
+	'2020-08-09 17:46:03',NULL,1,NULL,NULL, 3),
+(4,'Jean','Seigne','admin02','euciAI2upg1Lrr3NX45dvg==++QQ==','1985-02-02','Autre','jean.seigne@gmail.com','+32486555555',
+	'2020-10-05 10:46:03',NULL,1,NULL,NULL, 3);
+
 
 INSERT INTO `permissions` (`id`, `label`, `description`) VALUES
 (1, 'users:new', 'Permet de créer un nouveau compte utilisateur'),
@@ -1856,7 +1814,7 @@ INSERT INTO `permissions` (`id`, `label`, `description`) VALUES
 (30, 'subscriptions:unsubscribe', 'Permet de mettre fin à son abonnement.');
 
 INSERT INTO `groups_permissions` (`id`,`group_id`,`permission_id`) VALUES
--- role utilisateur
+-- group utilisateur
 (1,1,2),
 (2,1,3),
 (3,1,4),
@@ -1874,8 +1832,8 @@ INSERT INTO `groups_permissions` (`id`,`group_id`,`permission_id`) VALUES
 (15,1,28),
 (16,1,29),
 (17,1,30),
--- TODO pour EI: role créateur d'équipe
--- role admin
+-- TODO pour EI: group créateur d'équipe
+-- group admin
 (18,3,1),
 (19,3,2),
 (20,3,3),

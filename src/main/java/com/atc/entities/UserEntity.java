@@ -43,7 +43,7 @@ public class UserEntity {
     private Collection<TeamEntity> teamsById;
     private Collection<TrainingPlanEntity> trainingPlansById;
     private Collection<UserAddressEntity> usersAddressesById;
-    private Collection<UserGroupEntity> usersGroupsById;
+    private GroupEntity groupsByGroupId;
     private Collection<UserOrganizationEntity> usersOrganizationsById;
     private Collection<UserSubscriptionEntity> usersSubscriptionsById;
     private Collection<UsersTeamEntity> usersTeamsById;
@@ -311,13 +311,14 @@ public class UserEntity {
         this.usersAddressesById = usersAddressesById;
     }
 
-    @OneToMany(mappedBy = "usersByUserId")
-    public Collection<UserGroupEntity> getUsersGroupsById() {
-        return usersGroupsById;
+    @ManyToOne
+    @JoinColumn(name = "group_id", referencedColumnName = "id")
+    public GroupEntity getGroupsByGroupId() {
+        return groupsByGroupId;
     }
 
-    public void setUsersGroupsById(Collection<UserGroupEntity> usersGroupsById) {
-        this.usersGroupsById = usersGroupsById;
+    public void setGroupsByGroupId(GroupEntity groupsByGroupId) {
+        this.groupsByGroupId = groupsByGroupId;
     }
 
     @OneToMany(mappedBy = "usersByUserId")

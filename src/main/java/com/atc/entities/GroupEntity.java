@@ -11,7 +11,6 @@ public class GroupEntity {
     private String label;
     private String description;
     private Collection<GroupPermissionEntity> groupsPermissionsById;
-    private Collection<UserGroupEntity> usersGroupsById;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -66,14 +65,5 @@ public class GroupEntity {
 
     public void setGroupsPermissionsById(Collection<GroupPermissionEntity> groupsPermissionsById) {
         this.groupsPermissionsById = groupsPermissionsById;
-    }
-
-    @OneToMany(mappedBy = "groupsByGroupId")
-    public Collection<UserGroupEntity> getUsersGroupsById() {
-        return usersGroupsById;
-    }
-
-    public void setUsersGroupsById(Collection<UserGroupEntity> usersGroupsById) {
-        this.usersGroupsById = usersGroupsById;
     }
 }
