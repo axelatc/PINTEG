@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     `picture_URI` varchar(2083) NULL,
     `active` tinyint(1) NOT NULL DEFAULT 1,
     `coach_degree_info` text NULL,
-    `coach_career_start_date` datetime NULL,
+    `coach_career_start_date` date NULL,
     `role_id` int(11) NULL DEFAULT NULL,
 
     CONSTRAINT PK_USERS PRIMARY KEY (`id`),

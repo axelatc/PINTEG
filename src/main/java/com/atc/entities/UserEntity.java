@@ -1,6 +1,7 @@
 package com.atc.entities;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Objects;
@@ -22,7 +23,7 @@ public class UserEntity {
     private String lastName;
     private String username;
     private String password;
-    private LocalDateTime birthdate;
+    private LocalDate birthdate;
     private Gender gender;
     private String emailAddress;
     private String phoneNumber;
@@ -30,7 +31,7 @@ public class UserEntity {
     private String pictureUri;
     private boolean isActive;
     private String coachDegreeInfo;
-    private LocalDateTime coachCareerStartDate;
+    private LocalDate coachCareerStartDate;
     private Collection<EventCommentEntity> eventCommentsById;
     private Collection<EventParticipationEntity> eventParticipationsById;
     private Collection<EventParticipationEntity> eventParticipationsById_0;
@@ -115,11 +116,11 @@ public class UserEntity {
 
     @Basic
     @Column(name = "birthdate", nullable = false)
-    public LocalDateTime getBirthdate() {
+    public LocalDate getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(LocalDateTime birthdate) {
+    public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
 
@@ -196,11 +197,11 @@ public class UserEntity {
 
     @Basic
     @Column(name = "coach_career_start_date", nullable = true)
-    public LocalDateTime getCoachCareerStartDate() {
+    public LocalDate getCoachCareerStartDate() {
         return coachCareerStartDate;
     }
 
-    public void setCoachCareerStartDate(LocalDateTime coachCareerStartDate) {
+    public void setCoachCareerStartDate(LocalDate coachCareerStartDate) {
         this.coachCareerStartDate = coachCareerStartDate;
     }
 
