@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     `username` varchar(100) NOT NULL,
     `password` varchar(255) NOT NULL,
     `birthdate` date NOT NULL,
-    `gender` ENUM('Féminin', 'Masculin', 'Autre') NOT NULL DEFAULT 'Autre',
+    `gender` ENUM('FEMININ', 'MASCULIN', 'AUTRE') NOT NULL DEFAULT 'AUTRE',
     `email_address` varchar(255) NOT NULL,
     `phone_number` varchar(100) NOT NULL,
     `creation_date_time` datetime NOT NULL DEFAULT NOW(),
