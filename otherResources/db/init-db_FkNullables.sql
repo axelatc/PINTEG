@@ -1763,7 +1763,7 @@ ALTER TABLE equipment_items_link
 --  -----------------------------------------------------------
 
 INSERT INTO `roles` (`id`, `label`, `description`) VALUES
-(1, 'users', 'Ce rôle est attribué aux utilisateurs identifiés basiques'),
+(1, 'user_bronze', 'Ce rôle est attribué aux utilisateurs identifiés qui bénéficient de l\'abonnement gratuit `bronze`'),
 (3, 'administrators', 'Ce rôle est attribué aux utilisateurs identifiés en tant qu\'administrateurs');
 
 -- The unencrypted password for all users is "mdp"
