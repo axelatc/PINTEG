@@ -4,6 +4,15 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
+@NamedQueries(
+        value = {
+                @NamedQuery(name = "Role.findAll",
+                        query = "SELECT p from RoleEntity p"),
+                @NamedQuery(name = "Role.findOneByLabel",
+                        query = "SELECT p from RoleEntity p where p.label= :label")
+        }
+
+)
 @Entity
 @Table(name = "roles", schema = "shapp", catalog = "")
 public class RoleEntity {
