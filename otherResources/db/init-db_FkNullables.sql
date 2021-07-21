@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     `email_address` varchar(255) NOT NULL,
     `phone_number` varchar(16) NOT NULL,
     `creation_date_time` datetime NOT NULL DEFAULT NOW(),
-    `picture_URI` varchar(20000) NULL,
+    `picture_URI` varchar(2000) NULL,
     `active` tinyint(1) NOT NULL DEFAULT 1,
     `coach_degree_info` text NULL,
     `coach_career_start_date` date NULL,
