@@ -62,7 +62,7 @@ public class RoleService extends ServiceImpl<RoleEntity> {
     }
 
     public RoleEntity findRoleForNewlyRegisteredUserOrNull() {
-        LOG.info("Finding the role appropriate for a newly registered user");
+        LOG.info("Finding the role appropriate for a newly registered user by its label: " + NEWLY_REGISTERED_USER_ROLE_LABEL);
         return findRoleByLabelOrNull(NEWLY_REGISTERED_USER_ROLE_LABEL);
     }
 }

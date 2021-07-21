@@ -1813,7 +1813,7 @@ INSERT INTO `permissions` (`id`, `label`, `description`) VALUES
 (30, 'subscriptions:unsubscribe', 'Permet de mettre fin à son abonnement.');
 
 INSERT INTO `roles_permissions` (`id`,`role_id`,`permission_id`) VALUES
--- role utilisateur
+-- role utilisateur_bronze
 (1,1,2),
 (2,1,3),
 (3,1,4),
