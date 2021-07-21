@@ -23,7 +23,7 @@ public class UserEntity {
     private String username;
     private String password;
     private LocalDateTime birthdate;
-    private String gender;
+    private Gender gender;
     private String emailAddress;
     private String phoneNumber;
     private LocalDateTime creationDateTime;
@@ -124,12 +124,13 @@ public class UserEntity {
     }
 
     @Basic
+    @Enumerated(EnumType.STRING)
     @Column(name = "gender", nullable = false)
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
