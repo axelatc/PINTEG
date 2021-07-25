@@ -43,20 +43,6 @@
         </navigation-case>
     </navigation-rule>
 
-    <navigation-rule>
-        <from-view-id>/login.xhtml</from-view-id>
-        <navigation-case>
-            <from-action>#{authenticationBean.validateUserCredentials(loginBean)}</from-action>
-            <from-outcome>success</from-outcome>
-            <to-view-id>/dashboard.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-action>#{authenticationBean.validateUserCredentials(loginBean)}</from-action>
-            <from-outcome>failure</from-outcome>
-            <to-view-id>/login.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-
 <!--    <lifecycle>
         <phase-listener>com.atc.filters.SecurityFilter</phase-listener>
     </lifecycle>-->
