@@ -7,6 +7,39 @@
     <ui:define name="title">
         #{bundle['landingPage.title']}
     </ui:define>
+    <ui:define name="header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <h:link styleClass="navbar-brand" value="Shapp"
+                        outcome="landing.xhtml"></h:link>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <h:link styleClass="nav-link" value="#{bundle['landing.loginLink']}"
+                                    outcome="login.xhtml"></h:link>
+                        </li>
+                        <li class="nav-item">
+                            <h:link styleClass="nav-link" value="#{bundle['landing.registerLink']}"
+                                    outcome="register.xhtml"></h:link>
+                        </li>
+                    </ul>
+                    <h:form>
+                        <h:commandButton value="#{bundle['french']}" id="fr" styleClass="french"
+                                         actionListener="#{internationalizationBean.languageSelection}">
+                        </h:commandButton>
+                        <h:commandButton value="#{bundle['english']}" id="en"
+                                         actionListener="#{internationalizationBean.languageSelection}">
+                        </h:commandButton>
+                    </h:form>
+                </div>
+            </div>
+        </nav>
+    </ui:define>
     <ui:define name="content">
         <h1>#{bundle['landingPage.welcomeMessage']}</h1>
     </ui:define>
