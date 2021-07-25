@@ -39,7 +39,7 @@
     </listener>
 
     <welcome-file-list>
-        <welcome-file>login.xhtml</welcome-file>
+        <welcome-file>landing.xhtml</welcome-file>
     </welcome-file-list>
 
     <!--Shiro's configuration-->
