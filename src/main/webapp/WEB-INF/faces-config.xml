@@ -7,18 +7,18 @@
         <from-view-id>/*</from-view-id>
         <navigation-case>
             <from-outcome>permissionList</from-outcome>
-            <to-view-id>/permissionList.xhtml</to-view-id>
+            <to-view-id>/admin/permissionList.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>permissionCreate</from-outcome>
-            <to-view-id>/permissionCreate.xhtml</to-view-id>
+            <to-view-id>/admin/permissionCreate.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
-        <from-view-id>/permissionList.xhtml</from-view-id>
+        <from-view-id>/admin/permissionList.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>permissionEdit</from-outcome>
-            <to-view-id>/permissionEdit.xhtml</to-view-id>
+            <to-view-id>/admin/permissionEdit.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-action>#{permissionList.delete(permission)}</from-action>
@@ -32,7 +32,7 @@
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
-        <from-view-id>/permissionEdit.xhtml</from-view-id>
+        <from-view-id>/admin/permissionEdit.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>success</from-outcome>
             <to-view-id>/success.xhtml</to-view-id>
