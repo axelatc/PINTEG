@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     `creation_date_time` datetime NOT NULL DEFAULT NOW(),
     `picture_URI` varchar(2000) NULL,
     `active` tinyint(1) NOT NULL DEFAULT 1,
-    `coach_degree_info` text NULL,
+    `coach_degree_info` varchar(2000) NULL,
     `coach_career_start_date` date NULL,
     `role_id` int(11) NULL DEFAULT NULL,
 
@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `label` varchar(100) NOT NULL,
-    `description` text NULL,
+    `description` varchar(2000) NULL,
 
 
     CONSTRAINT PK_ROLES PRIMARY KEY (`id`),
@@ -185,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `permissions` (
 
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `label` varchar(100) NOT NULL,
-    `description` text NOT NULL,
+    `description` varchar(2000) NOT NULL,
 
 
     CONSTRAINT PK_PERMISSIONS PRIMARY KEY (`id`),
@@ -210,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `measures` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `creation_date_time` datetime NOT NULL DEFAULT NOW(),
     `measured_value` double NOT NULL,
-    `note` text NOT NULL,
+    `note` varchar(2000) NOT NULL,
 
     `user_id` int(11) NULL DEFAULT NULL,
     `measurand_id` int(11) NULL DEFAULT NULL,
@@ -236,7 +236,7 @@ CREATE TABLE IF NOT EXISTS `measurands` (
 
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `name` varchar(100) NOT NULL,
-    `description` text NOT NULL,
+    `description` varchar(2000) NOT NULL,
 
     `unit_id` int(11) NULL DEFAULT NULL,
 
@@ -263,7 +263,7 @@ CREATE TABLE IF NOT EXISTS `units` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `name` varchar(100) NOT NULL,
     `symbol` varchar(100) NOT NULL DEFAULT 'NONE',
-    `description` text NOT NULL,
+    `description` varchar(2000) NOT NULL,
 
 
 
@@ -318,7 +318,7 @@ CREATE TABLE IF NOT EXISTS `subscriptions` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `name` varchar(100) NOT NULL,
     `price_per_month` decimal(10,2) NOT NULL,
-    `description` text NOT NULL,
+    `description` varchar(2000) NOT NULL,
     `rank` int(11) NOT NULL,
 
 
@@ -372,7 +372,7 @@ CREATE TABLE IF NOT EXISTS `teams` (
 -- artificial id dans les tables intermediaires pour simplifier java (permet que la table intermédiaire existe en tant que classe java, et non pas en tant qu'annotations dans les 2 autres classes java des tables générant la jointure).
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `name` varchar(100) NOT NULL,
-    `description` text NOT NULL,
+    `description` varchar(2000) NOT NULL,
     `creation_date_time` datetime NOT NULL DEFAULT NOW(),
 
 
@@ -398,7 +398,7 @@ CREATE TABLE IF NOT EXISTS `team_posts` (
 -- artificial id dans les tables intermediaires pour simplifier java (permet que la table intermédiaire existe en tant que classe java, et non pas en tant qu'annotations dans les 2 autres classes java des tables générant la jointure).
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `creation_date_time` datetime NOT NULL DEFAULT NOW(),
-    `message` text NOT NULL,
+    `message` varchar(2000) NOT NULL,
 
 
     `team_id` int(11) NULL DEFAULT NULL,
@@ -427,7 +427,7 @@ CREATE TABLE IF NOT EXISTS `team_comments` (
 -- artificial id dans les tables intermediaires pour simplifier java (permet que la table intermédiaire existe en tant que classe java, et non pas en tant qu'annotations dans les 2 autres classes java des tables générant la jointure).
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `creation_date_time` datetime NOT NULL DEFAULT NOW(),
-    `message` text NOT NULL,
+    `message` varchar(2000) NOT NULL,
 
 
     `team_id` int(11) NULL DEFAULT NULL,
@@ -589,7 +589,7 @@ CREATE TABLE IF NOT EXISTS `organizations` (
 
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `name` varchar(100) NOT NULL,
-    `description` text NULL ,
+    `description` varchar(2000) NULL ,
 
 
 
@@ -681,8 +681,8 @@ CREATE TABLE IF NOT EXISTS `events` (
     `status` enum('Available','Full','Cancelled') NOT NULL DEFAULT 'Available',
     `range` enum('Private','Public','SharedLink','Limted') NOT NULL DEFAULT 'Private',
     `creation_date_time` datetime NOT NULL DEFAULT NOW(),
-    `description` text NULL,
-    `pratical_information` text NULL,
+    `description` varchar(2000) NULL,
+    `pratical_information` varchar(2000) NULL,
     `name` varchar(100) NOT NULL,
 
 
@@ -747,7 +747,7 @@ DROP TABLE IF EXISTS `event_comments`;
 CREATE TABLE IF NOT EXISTS `event_comments` (
 
     `id` int(11) NOT NULL AUTO_INCREMENT,
-    `content` text NOT NULL,
+    `content` varchar(2000) NOT NULL,
     `creation_date_time` datetime NOT NULL DEFAULT NOW(),
 
 
@@ -897,7 +897,7 @@ CREATE TABLE IF NOT EXISTS `levels` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `code` varchar(10) NOT NULL,
     `name` varchar(100) NOT NULL,
-    `description` text  NULL,
+    `description` varchar(2000)  NULL,
     `keyword_en` varchar(100) NOT NULL,
     `keyword_fr` varchar(100) NOT NULL,
 
@@ -928,7 +928,7 @@ CREATE TABLE IF NOT EXISTS `goals` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `code` varchar(10) NOT NULL,
     `name` varchar(100) NOT NULL,
-    `description` text NULL  ,
+    `description` varchar(2000) NULL  ,
     `keyword_en` varchar(100) NOT NULL,
     `keyword_fr` varchar(100) NOT NULL,
 
@@ -959,7 +959,7 @@ CREATE TABLE IF NOT EXISTS `training_types` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `code` varchar(10) NOT NULL,
     `name` varchar(100) NOT NULL,
-    `description` text NULL ,
+    `description` varchar(2000) NULL ,
     `keyword_en` varchar(100) NOT NULL,
     `keyword_fr` varchar(100) NOT NULL,
 
@@ -989,7 +989,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `code` varchar(10) NOT NULL,
     `name` varchar(100) NOT NULL,
-    `description` text NULL,
+    `description` varchar(2000) NULL,
     `keyword_en` varchar(100) NOT NULL,
     `keyword_fr` varchar(100) NOT NULL,
 
@@ -1018,7 +1018,7 @@ CREATE TABLE IF NOT EXISTS `training_plans` (
 
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `name` varchar(100) NOT NULL,
-    `description` text NULL,
+    `description` varchar(2000) NULL,
     `access_range` ENUM('PRIVATE', 'PUBLIC', 'SHAREDLINK', 'LIMITED') NOT NULL DEFAULT 'PRIVATE',
     `duration_estimation` double NOT NULL DEFAULT -1,
     `calories_estimation` double NOT NULL DEFAULT -1,
@@ -1151,7 +1151,7 @@ CREATE TABLE IF NOT EXISTS `exercises` (
 
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
-    `description` text NULL,
+    `description` varchar(2000) NULL,
 
 
 
@@ -1182,7 +1182,7 @@ CREATE TABLE IF NOT EXISTS `muscles` (
 
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
-    `description` text NULL,
+    `description` varchar(2000) NULL,
     `picture_URI` varchar(2083) DEFAULT NULL,
 
 
@@ -1209,7 +1209,7 @@ CREATE TABLE IF NOT EXISTS `exercises_muscles_link` (
 
     -- artificial id dans les tables intermediaires pour simplifier java (permet que la table intermédiaire existe en tant que classe java, et non pas en tant qu'annotations dans les 2 autres classes java des tables générant la jointure).
     `id` int(11) NOT NULL AUTO_INCREMENT,
-    `details` text NULL,
+    `details` varchar(2000) NULL,
 
 
 
@@ -1241,7 +1241,7 @@ CREATE TABLE IF NOT EXISTS `equipment_generics` (
 
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
-    `description` text NULL,
+    `description` varchar(2000) NULL,
 
 
 
@@ -1298,7 +1298,7 @@ CREATE TABLE IF NOT EXISTS `brands` (
 
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `name` varchar(100) NOT NULL,
-    `description` text NULL,
+    `description` varchar(2000) NULL,
 
 
 
@@ -1325,7 +1325,7 @@ CREATE TABLE IF NOT EXISTS `equipment_items_link` (
     -- artificial id dans les tables intermediaires pour simplifier java (permet que la table intermédiaire existe en tant que classe java, et non pas en tant qu'annotations dans les 2 autres classes java des tables générant la jointure).
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `name` varchar(100) NOT NULL,
-    `description` text NULL,
+    `description` varchar(2000) NULL,
     `price` decimal(10,2) DEFAULT NULL,
     `referal_buy_URL` varchar(2083) DEFAULT 'NONE',
 
