@@ -1,6 +1,7 @@
 package com.atc.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -18,19 +19,66 @@ import java.util.Objects;
 
 )
 public class UserEntity {
+    @Positive
     private int id;
+
+    @NotBlank
+    @NotNull
+    @Size(min=1, max=100)
     private String firstName;
+
+    @NotBlank
+    @NotNull
+    @Size(min=1, max=100)
     private String lastName;
+
+    @NotBlank
+    @NotNull
+    @Size(min=1, max=100)
     private String username;
+
+    @NotBlank
+    @NotNull
+    @Size(min=1, max=255)
     private String password;
+
+    @NotNull
+    @PastOrPresent
     private LocalDate birthdate;
+
+    @NotNull
     private Gender gender;
+
+    @NotNull
+    @NotBlank
+    @Size(min=3, max=254)
+    @Email(regexp = "[\\w\\.-]*[a-zA-Z0-9_]@[\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]")
     private String emailAddress;
+
+    @NotNull
+    @NotBlank
+    @Size(min=8, max=16)
+    @Pattern(regexp = "^([+]?[\\d]+)?$")
     private String phoneNumber;
+
+    @NotNull
+    @PastOrPresent
     private LocalDateTime creationDateTime;
+
+    @NotNull
+    @NotBlank
+    @Size(min=1, max=2000)
+    @Pattern(regexp = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]")
     private String pictureUri;
+
+    @NotNull
     private boolean isActive;
+
+    @NotBlank
+    @Size(min=1, max=2000)
     private String coachDegreeInfo;
+
+    @PastOrPresent
     private LocalDate coachCareerStartDate;
     private Collection<EventCommentEntity> eventCommentsById;
     private Collection<EventParticipationEntity> eventParticipationsById;
