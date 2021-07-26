@@ -5,11 +5,13 @@ import com.atc.utils.JpaUtils;
 import com.atc.utils.ValidationUtils;
 import org.apache.log4j.Logger;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+@ApplicationScoped
 public class RoleService extends ServiceImpl<RoleEntity> {
 
     private final static Logger LOG = Logger.getLogger(RoleService.class);

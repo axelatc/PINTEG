@@ -4,11 +4,13 @@ import com.atc.entities.UserEntity;
 import com.atc.utils.ValidationUtils;
 import org.apache.log4j.Logger;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+@ApplicationScoped
 public class UserService extends ServiceImpl<UserEntity> {
 
     private final static Logger LOG = Logger.getLogger(UserService.class);

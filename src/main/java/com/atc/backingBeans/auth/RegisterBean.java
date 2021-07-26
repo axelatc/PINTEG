@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -29,8 +30,10 @@ public class RegisterBean implements Serializable {
 
     private UserEntity user;
 
-    private final UserService userService = new UserService();
-    private final RoleService roleService = new RoleService();
+    @Inject
+    private UserService userService;
+    @Inject
+    private RoleService roleService;
 
     @PostConstruct
     public void init() {
