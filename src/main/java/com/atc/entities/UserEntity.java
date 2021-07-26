@@ -40,6 +40,7 @@ public class UserEntity {
     @NotBlank
     @NotNull
     @Size(min=1, max=255)
+    @Pattern(regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,255})")
     private String password;
 
     @NotNull
