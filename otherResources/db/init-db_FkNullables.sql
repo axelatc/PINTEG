@@ -1766,17 +1766,17 @@ INSERT INTO `roles` (`id`, `label`, `description`) VALUES
 (1, 'user_bronze', 'Ce rôle est attribué aux utilisateurs identifiés qui bénéficient de l\'abonnement gratuit `bronze`'),
 (3, 'administrators', 'Ce rôle est attribué aux utilisateurs identifiés en tant qu\'administrateurs');
 
--- The unencrypted password for all users is "mdp"
+-- The unencrypted password for all users is "Password1@"
 INSERT INTO `users` (`id`,`first_name`,`last_name`,`username`,`password`,`birthdate`,`gender`,`email_address`,`phone_number`,
 					`creation_date_time`,`picture_URI`,`active`,`coach_degree_info`,`coach_career_start_date`, `role_id`)
 VALUES
-(1,'Arya','Secret','utilisateur01','euciAI2upg1Lrr3NX45dvg==++QQ==','1970-03-03','Féminin','arya.secret@gmail.com','+32486444444',
+(1,'Arya','Secret','utilisateur01','$shiro1$SHA-256$500000$U6c6oOh4vW5QRvXotD8Ywg==$rQeHywWeulrE1cok0AcMLklqJ7stY0dtzWiJoA4Yp8M=','1970-03-03','Féminin','arya.secret@gmail.com','+32486444444',
 	'2020-10-02 12:30:03',NULL,1,NULL,NULL, 1),
-(2,'Gaspard','Ent','coach01','euciAI2upg1Lrr3NX45dvg==++QQ==','1980-05-05','Masculin','gaspard.ent@gmail.com','+32486325645',
+(2,'Gaspard','Ent','coach01','$shiro1$SHA-256$500000$U6c6oOh4vW5QRvXotD8Ywg==$rQeHywWeulrE1cok0AcMLklqJ7stY0dtzWiJoA4Yp8M=','1980-05-05','Masculin','gaspard.ent@gmail.com','+32486325645',
 	'2020-08-09 17:46:03',NULL,1,'Dîplomé de l\Ecole de Kinésithérapie de Wavre, Promotion 1999','2001-01-01', 1),
-(3,'Viktor','Ganise','admin01','euciAI2upg1Lrr3NX45dvg==++QQ==','1991-01-01','Masculin','viktor.ganise@gmail.com','+32486888888',
+(3,'Viktor','Ganise','admin01','$shiro1$SHA-256$500000$U6c6oOh4vW5QRvXotD8Ywg==$rQeHywWeulrE1cok0AcMLklqJ7stY0dtzWiJoA4Yp8M=','1991-01-01','Masculin','viktor.ganise@gmail.com','+32486888888',
 	'2020-08-09 17:46:03',NULL,1,NULL,NULL, 3),
-(4,'Jean','Seigne','admin02','euciAI2upg1Lrr3NX45dvg==++QQ==','1985-02-02','Autre','jean.seigne@gmail.com','+32486555555',
+(4,'Jean','Seigne','admin02','$shiro1$SHA-256$500000$U6c6oOh4vW5QRvXotD8Ywg==$rQeHywWeulrE1cok0AcMLklqJ7stY0dtzWiJoA4Yp8M=','1985-02-02','Autre','jean.seigne@gmail.com','+32486555555',
 	'2020-10-05 10:46:03',NULL,1,NULL,NULL, 3);
 
 
