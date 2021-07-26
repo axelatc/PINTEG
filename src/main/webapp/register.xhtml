@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<ui:composition template="/WEB-INF/templates/guestTemplate.xhtml">
+    <ui:define name="title">
+        #{bundle['register.pageTitle']}
+    </ui:define>
+
+    <ui:define name="content">
+        <h1 class="display-1">#{bundle['register.pageTitle']}</h1>
+        <h:form id="registerForm">
+            <div class="mb-3">
+                <h:outputLabel for="firstName"
+                               styleClass="form-label">#{bundle['register.firstName.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{registerBean.user.firstName}"
+                             id="firstName"
+                             styleClass="form-control"
+                             required="true"
+                             requiredMessage="#{bundle['register.firstName.requiredMessage']}"
+                             validatorMessage="#{bundle['register.firstName.validationMessage']}">
+                    <f:validateLength minimum="1" maximum="100"/>
+                </h:inputText>
+                <h:message for="firstName" styleClass="text-danger"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="lastName"
+                               styleClass="form-label">#{bundle['register.lastName.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{registerBean.user.lastName}"
+                             id="lastName"
+                             styleClass="form-control"
+                             required="true"
+                             requiredMessage="#{bundle['register.lastName.requiredMessage']}"
+                             validatorMessage="#{bundle['register.lastName.validationMessage']}">
+                    <f:validateLength minimum="1" maximum="100"/>
+                </h:inputText>
+                <h:message for="lastName" styleClass="text-danger"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="username"
+                               styleClass="form-label">#{bundle['register.username.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{registerBean.user.username}"
+                             id="username"
+                             styleClass="form-control"
+                             required="true"
+                             requiredMessage="#{bundle['register.username.requiredMessage']}"
+                             validatorMessage="#{bundle['register.username.validationMessage']}">
+                    <f:validateLength minimum="1" maximum="100"/>
+                </h:inputText>
+                <h:message for="username" styleClass="text-danger"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="password"
+                               styleClass="form-label">#{bundle['register.password.inputLabel']}</h:outputLabel>
+                <h:inputSecret value="#{registerBean.user.password}"
+                             id="password"
+                             styleClass="form-control"
+                             required="true"
+                             requiredMessage="#{bundle['register.password.requiredMessage']}"
+                             validatorMessage="#{bundle['register.password.validationMessage']}">
+                    <f:validateLength minimum="6" maximum="255"/>
+                    <f:validateRegex
+                            pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,255})" />
+                </h:inputSecret>
+                <h:message for="password" styleClass="text-danger"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="birthdate"
+                               styleClass="form-label">#{bundle['register.birthdate.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{registerBean.user.birthdate}"
+                               a:type="date"
+                               a:min="1900-01-01"
+                               a:max="#{registerBean.today}"
+                               id="birthdate"
+                               styleClass="form-control"
+                               required="true"
+                               requiredMessage="#{bundle['register.birthdate.requiredMessage']}"
+                               validatorMessage="#{bundle['register.birthdate.validationMessage']}">
+                    <f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
+                </h:inputText>
+                <h:message for="birthdate" styleClass="text-danger"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="gender"
+                               styleClass="form-label">#{bundle['register.gender.inputLabel']}</h:outputLabel>
+                <h:selectOneMenu value="#{registerBean.user.gender}"
+                                 id="gender"
+                                 styleClass="form-control"
+                                 required="true"
+                                 requiredMessage="#{bundle['register.gender.requiredMessage']}"
+                                 validatorMessage="#{bundle['register.gender.validationMessage']}">
+                    <f:selectItems value="#{registerBean.genders}" />
+                </h:selectOneMenu>
+                <h:message for="gender" styleClass="text-danger"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="emailAddress"
+                               styleClass="form-label">#{bundle['register.emailAddress.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{registerBean.user.emailAddress}"
+                               id="emailAddress"
+                               styleClass="form-control"
+                               required="true"
+                               requiredMessage="#{bundle['register.emailAddress.requiredMessage']}"
+                               validatorMessage="#{bundle['register.emailAddress.validationMessage']}">
+                    <f:validateLength minimum="3" maximum="254"/>
+                    <f:validateRegex
+                            pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                </h:inputText>
+                <h:message for="emailAddress" styleClass="text-danger"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="phoneNumber"
+                               styleClass="form-label">#{bundle['register.phoneNumber.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{registerBean.user.phoneNumber}"
+                               id="phoneNumber"
+                               styleClass="form-control"
+                               required="true"
+                               requiredMessage="#{bundle['register.phoneNumber.requiredMessage']}"
+                               validatorMessage="#{bundle['register.phoneNumber.validationMessage']}">
+                    <f:validateLength minimum="8" maximum="16"/>
+                    <f:validateRegex
+                            pattern="^([+]?[\d]+)?$" />
+                </h:inputText>
+                <h:message for="phoneNumber" styleClass="text-danger"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="pictureUri"
+                               styleClass="form-label">#{bundle['register.pictureUri.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{registerBean.user.pictureUri}"
+                               id="pictureUri"
+                               styleClass="form-control"
+                               required="false"
+                               requiredMessage="#{bundle['register.pictureUri.requiredMessage']}"
+                               validatorMessage="#{bundle['register.pictureUri.validationMessage']}">
+                    <f:validateLength minimum="1" maximum="2000"/>
+                    <f:validateRegex
+                            pattern="^(https?|ftp|file)://[-a-zA-Z0-9+&amp;@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&amp;@#/%=~_|]" />
+                </h:inputText>
+                <h:message for="pictureUri" styleClass="text-danger"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="coachDegreeInfo"
+                               styleClass="form-label">#{bundle['register.coachDegreeInfo.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{registerBean.user.coachDegreeInfo}"
+                             id="coachDegreeInfo"
+                             styleClass="form-control"
+                             required="false"
+                             requiredMessage="#{bundle['register.coachDegreeInfo.requiredMessage']}"
+                             validatorMessage="#{bundle['register.coachDegreeInfo.validationMessage']}">
+                    <f:validateLength minimum="1" maximum="2000"/>
+                </h:inputText>
+                <h:message for="coachDegreeInfo" styleClass="text-danger"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="coachCareerStartDate"
+                               styleClass="form-label">#{bundle['register.coachCareerStartDate.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{registerBean.user.coachCareerStartDate}"
+                             a:type="date"
+                             a:min="1900-01-01"
+                             a:max="#{registerBean.today}"
+                             id="coachCareerStartDate"
+                             styleClass="form-control"
+                             required="false"
+                             requiredMessage="#{bundle['register.coachCareerStartDate.requiredMessage']}"
+                             validatorMessage="#{bundle['register.coachCareerStartDate.validationMessage']}">
+                    <f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
+                </h:inputText>
+                <h:message for="coachCareerStartDate" styleClass="text-danger"/>
+            </div>
+            <div id="submitBtn"  class="textPlacement">
+                <h:commandButton styleClass="btn btn-primary"
+                                 type="submit"
+                                 value="#{bundle['register.submitButton']}"
+                                 action="#{registerBean.submit}" />
+            </div>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+</html>
