@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <h:link styleClass="navbar-brand" value="Shapp"
+                        outcome="landing.xhtml"></h:link>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <h:link styleClass="nav-link" value="#{bundle['landing.loginLink']}"
+                                    outcome="login.xhtml"></h:link>
+                        </li>
+                        <li class="nav-item">
+                            <h:link styleClass="nav-link" value="#{bundle['landing.registerLink']}"
+                                    outcome="register.xhtml"></h:link>
+                        </li>
+                    </ul>
+                    <ui:include src="/WEB-INF/includes/languagePicker.xhtml" />
+                </div>
+            </div>
+        </nav>
+</ui:composition>
