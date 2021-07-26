@@ -5,30 +5,49 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
 
-<ui:composition template="/WEB-INF/templates/template.xhtml">
+<ui:composition template="/WEB-INF/templates/guestTemplate.xhtml">
     <ui:define name="title">
         #{bundle['login.pageTitle']}
     </ui:define>
 
     <ui:define name="content">
         <h1 class="display-1">#{bundle['login.pageTitle']}</h1>
+        <h:panelGroup styleClass="alert alert-danger" rendered="#{(shiroLoginFailure != null) and (not facesContext.validationFailed)}" layout="block">
+            #{bundle[shiroLoginFailure]}
+        </h:panelGroup>
         <h:form id="loginForm">
-            <div id="userNameDiv" class="textPlacement">
-                <h:outputLabel value="Username: " />
-                <h:inputText value="#{loginBean.username}"
-                             required="true">
-                    <f:validateLength minimum="1" maximum="255"/>
+            <div class="mb-3">
+                <h:outputLabel for="username"
+                               styleClass="form-label">#{bundle['login.username.inputLabel']}</h:outputLabel>
+                <h:inputText
+                             id="username"
+                             styleClass="form-control"
+                             required="true"
+                             requiredMessage="#{bundle['login.username.requiredMessage']}"
+                             validatorMessage="#{bundle['login.username.validationMessage']}">
+                    <f:validateLength minimum="1" maximum="100"/>
                 </h:inputText>
+                <h:message for="username" styleClass="text-danger" />
             </div>
-            <div id="passwordDiv" class="textPlacement">
-                <h:outputLabel value="Password: " />
-                <h:inputSecret value="#{loginBean.password}"
-                               required="true">
-                    <f:validateLength minimum="1" maximum="255"/>
+            <div class="mb-3">
+                <h:outputLabel for="password"
+                               styleClass="form-label">#{bundle['login.password.inputLabel']}</h:outputLabel>
+                <h:inputSecret
+                               id="password"
+                               styleClass="form-control"
+                               required="true"
+                               requiredMessage="#{bundle['login.password.requiredMessage']}"
+                               validatorMessage="#{bundle['login.password.validationMessage']}">
+                    <f:validateLength minimum="6" maximum="255"/>
+                    <f:validateRegex
+                            pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,255})" />
                 </h:inputSecret>
+                <h:message for="password" styleClass="text-danger"/>
             </div>
             <div id="submitBtn" class="textPlacement">
-                <h:commandButton value="Login" action="#{authenticationBean.validateUserCredentials(loginBean)}" />
+                <h:commandButton styleClass="btn btn-primary"
+                                 type="submit"
+                                 value="#{bundle['login.submitButton']}" />
             </div>
         </h:form>
 
