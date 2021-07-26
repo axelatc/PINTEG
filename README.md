@@ -1,7 +1,7 @@
 # Projet d'intégration ATC 2020-2021
 
-mot de passe pour tous les utilisateurs: "mdp"  
-identifiants utilisateur admin: "ladministrateur01" - "mdp"
+- Mot de passe pour tous les utilisateurs: `Password1@` 
+- *username* d'utilisateurs pré-enregistrés: `utilisateur01`, `coach01`, `admin01`, `admin02`
 
 ## Respecte les consignes données par Mr Diana
 - utilisation des règles de navigation explicites `navigation-rule` dans `faces-config.xml`
@@ -17,23 +17,6 @@ identifiants utilisateur admin: "ladministrateur01" - "mdp"
 - les exceptions ne sont pas gérées à la manière JSF mais de manière classique
 - ne pas faire de composants JSF custom
 - ne pas utiliser l'annotation @FlashScope sur les beans
-
-## TODOs
-### login
-- Cacher la navbar si non login
-- Que boostrap soit reconnu si pas login
-- Page d’erreur si login échoué
-- Login Validator + error messages
-- Ajouter Bouton logout
-- Cacher le menu permissions si l’utilisateur n’est pas admin
-
-### other
-- center le page content avec le container bootstrap
-
-### CRUD many to many Groups<->Permissions
-- faire service group
-- ajouter @validations et @named @sessionscoped + @namedqueries sur groupEntity
-- copier CRUD permissions
 
 
   
