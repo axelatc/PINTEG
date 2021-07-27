@@ -8,6 +8,7 @@
         #{bundle['dashboardPage.title']}
     </ui:define>
     <ui:define name="content">
-        <h1>#{bundle['dashboardPage.welcomeMessage']}</h1>
+
+        <h1> #{authUtils.username} : #{bundle['dashboardPage.welcomeMessage']}</h1>
     </ui:define>
 </ui:composition>
