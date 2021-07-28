@@ -1810,7 +1810,9 @@ INSERT INTO `permissions` (`id`, `label`, `description`) VALUES
 (27, 'subscriptions:subscribe', 'Permet de souscrire à un abonnement.'),
 (28, 'subscriptions:upgrade', 'Permet de surclasser son rang d\'abonnement'),
 (29, 'subscriptions:downgrade', 'Permet de déclasser son rang d\'abonnement'),
-(30, 'subscriptions:unsubscribe', 'Permet de mettre fin à son abonnement.');
+(30, 'subscriptions:unsubscribe', 'Permet de mettre fin à son abonnement.'),
+(31, '*', 'Permet toutes les actions sur l\'ensemble de l\'application.'),
+(32, 'administrator', 'Identifie un administrateur.');
 
 INSERT INTO `roles_permissions` (`id`,`role_id`,`permission_id`) VALUES
 -- role utilisateur_bronze
@@ -1832,36 +1834,9 @@ INSERT INTO `roles_permissions` (`id`,`role_id`,`permission_id`) VALUES
 (16,1,29),
 (17,1,30),
 -- role admin
-(18,3,1),
-(19,3,2),
-(20,3,3),
-(21,3,4),
-(22,3,5),
-(23,3,6),
-(24,3,7),
-(25,3,8),
-(26,3,9),
-(27,3,10),
-(28,3,11),
-(29,3,12),
-(30,3,13),
-(31,3,14),
-(32,3,15),
-(33,3,16),
-(34,3,17),
-(35,3,18),
-(36,3,19),
-(37,3,20),
-(38,3,21),
-(39,3,22),
-(40,3,23),
-(41,3,24),
-(42,3,25),
-(43,3,26),
-(44,3,27),
-(45,3,28),
-(46,3,29),
-(47,3,30);
+(18,3,31),
+(19,3,32);
+
 
 INSERT INTO `units` (`id`, `name`, `symbol`, `description`) VALUES
 (1, 'kilogramme', 'Kg', 'Unité de base du système international de mesure de masse'),
