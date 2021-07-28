@@ -15,6 +15,11 @@
         <h:panelGroup styleClass="alert alert-danger" rendered="#{(shiroLoginFailure != null) and (not facesContext.validationFailed)}" layout="block">
             #{bundle[shiroLoginFailure]}
         </h:panelGroup>
+        <ui:fragment rendered="#{authUtils.subject.authenticated}">
+            <div class="alert alert-danger">
+                #{authUtils.username}: #{bundle['login.isAuthenticated']}
+            </div>
+        </ui:fragment>
         <h:form id="loginForm">
             <div class="mb-3">
                 <h:outputLabel for="username"
