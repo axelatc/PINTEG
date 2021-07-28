@@ -1764,7 +1764,7 @@ ALTER TABLE equipment_items_link
 
 INSERT INTO `roles` (`id`, `label`, `description`) VALUES
 (1, 'user_bronze', 'Ce rôle est attribué aux utilisateurs identifiés qui bénéficient de l\'abonnement gratuit `bronze`'),
-(3, 'administrators', 'Ce rôle est attribué aux utilisateurs identifiés en tant qu\'administrateurs');
+(3, 'administrator', 'Ce rôle est attribué aux utilisateurs identifiés en tant qu\'administrateurs');
 
 -- The unencrypted password for all users is "Password1@"
 INSERT INTO `users` (`id`,`first_name`,`last_name`,`username`,`password`,`birthdate`,`gender`,`email_address`,`phone_number`,
