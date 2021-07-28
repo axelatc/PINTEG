@@ -1,0 +1,10 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+        <ui:fragment rendered="#{authUtils.subject.authenticated}">
+                <li class="nav-item">
+                        <h:link styleClass="nav-link" value="#{bundle['navbar.dashboardButton']}"
+                                outcome="/app/dashboard.xhtml"></h:link>
+                </li>
+        </ui:fragment>
+</ui:composition>
