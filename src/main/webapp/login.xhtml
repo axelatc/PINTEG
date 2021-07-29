@@ -12,9 +12,7 @@
 
     <ui:define name="content">
         <h1 class="display-1">#{bundle['login.pageTitle']}</h1>
-        <h:panelGroup styleClass="alert alert-danger" rendered="#{(shiroLoginFailure != null) and (not facesContext.validationFailed)}" layout="block">
-            #{bundle[shiroLoginFailure]}
-        </h:panelGroup>
+        <ui:include src="/WEB-INF/includes/InfoAndErrorMessages.xhtml" />
         <ui:fragment rendered="#{authUtils.subject.authenticated}">
             <div class="alert alert-danger">
                 #{authUtils.username}: #{bundle['login.isAuthenticated']}
@@ -26,6 +24,7 @@
                                styleClass="form-label">#{bundle['login.username.inputLabel']}</h:outputLabel>
                 <h:inputText
                              id="username"
+                             value="#{loginBean.username}"
                              styleClass="form-control"
                              required="true"
                              requiredMessage="#{bundle['login.username.requiredMessage']}"
@@ -37,8 +36,8 @@
             <div class="mb-3">
                 <h:outputLabel for="password"
                                styleClass="form-label">#{bundle['login.password.inputLabel']}</h:outputLabel>
-                <h:inputSecret
-                               id="password"
+                <h:inputSecret id="password"
+                               value="#{loginBean.password}"
                                styleClass="form-control"
                                required="true"
                                requiredMessage="#{bundle['login.password.requiredMessage']}"
@@ -52,7 +51,8 @@
             <div id="submitBtn" class="textPlacement">
                 <h:commandButton styleClass="btn btn-primary"
                                  type="submit"
-                                 value="#{bundle['login.submitButton']}" />
+                                 value="#{bundle['login.submitButton']}"
+                                 action="#{loginBean.submit}"/>
             </div>
         </h:form>
 
