@@ -15,13 +15,18 @@ public class JsfUtils {
         return resourceBundle.getString(message);
     }
 
-    public static void addSuccessMessage(String errorMessage) {
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, errorMessage, null));
+    public static void addSuccessMessage(String successMessage) {
+        addMessageWithSeverity(successMessage, FacesMessage.SEVERITY_INFO);
     }
 
     public static void addErrorMessage(String errorMessage) {
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, errorMessage, null));
+        addMessageWithSeverity(errorMessage, FacesMessage.SEVERITY_ERROR);
+    }
+
+    private static void addMessageWithSeverity(String message, FacesMessage.Severity severity) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        FacesMessage successMessageToAdd = new FacesMessage(severity, message, null);
+        context.addMessage(null, successMessageToAdd);
+        context.getExternalContext().getFlash().setKeepMessages(true);
     }
 }
