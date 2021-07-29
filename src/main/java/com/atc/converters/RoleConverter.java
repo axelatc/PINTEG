@@ -1,7 +1,7 @@
 package com.atc.converters;
 
-import com.atc.entities.PermissionEntity;
-import com.atc.services.PermissionService;
+import com.atc.entities.RoleEntity;
+import com.atc.services.RoleService;
 import com.atc.utils.JpaUtils;
 
 import javax.enterprise.context.RequestScoped;
@@ -14,10 +14,10 @@ import javax.persistence.EntityManager;
 
 @Named
 @RequestScoped
-public class PermissionConverter implements Converter {
+public class RoleConverter implements Converter {
 
 
-    private PermissionService permissionService = new PermissionService();
+    private RoleService roleService = new RoleService();
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
@@ -28,10 +28,10 @@ public class PermissionConverter implements Converter {
         EntityManager em = JpaUtils.createEntityManager();
         try {
             Integer id = Integer.valueOf(value);
-            PermissionEntity permissionEntity = permissionService.findOneByIdOrNull(id, em);
-            return permissionEntity;
+            RoleEntity roleEntity = roleService.findOneByIdOrNull(id, em);
+            return roleEntity;
         } catch (NumberFormatException e) {
-            throw new ConverterException("The value is not a valid Permission ID: " + value, e);
+            throw new ConverterException("The value is not a valid Role ID: " + value, e);
         } finally {
             em.clear();
             em.close();
@@ -44,11 +44,11 @@ public class PermissionConverter implements Converter {
             return "";
         }
 
-        if (value instanceof PermissionEntity) {
-            Integer id = ((PermissionEntity) value).getId();
+        if (value instanceof RoleEntity) {
+            Integer id = ((RoleEntity) value).getId();
             return (id != null) ? String.valueOf(id) : null;
         } else {
-            throw new ConverterException("The value is not a valid Permission instance: " + value);
+            throw new ConverterException("The value is not a valid Role instance: " + value);
         }
     }
 }

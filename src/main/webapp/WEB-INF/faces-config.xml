@@ -6,38 +6,53 @@
     <navigation-rule>
         <from-view-id>/*</from-view-id>
         <navigation-case>
-            <from-outcome>permissionList</from-outcome>
-            <to-view-id>/admin/permissionList.xhtml</to-view-id>
+            <from-outcome>roleList</from-outcome>
+            <to-view-id>/admin/roleList.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-outcome>permissionCreate</from-outcome>
-            <to-view-id>/admin/permissionCreate.xhtml</to-view-id>
+            <from-outcome>roleCreate</from-outcome>
+            <to-view-id>/admin/roleCreate.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
-        <from-view-id>/admin/permissionList.xhtml</from-view-id>
+        <from-view-id>/admin/roleList.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>permissionEdit</from-outcome>
-            <to-view-id>/admin/permissionEdit.xhtml</to-view-id>
+            <from-outcome>roleEdit</from-outcome>
+            <to-view-id>/admin/roleEdit.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-action>#{permissionList.delete(permission)}</from-action>
+            <from-action>#{roleList.delete(role)}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/success.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-action>#{permissionList.delete(permission)}</from-action>
+            <from-action>#{roleList.delete(role)}</from-action>
             <from-outcome>failure</from-outcome>
             <to-view-id>/failure.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
-        <from-view-id>/admin/permissionEdit.xhtml</from-view-id>
+        <from-view-id>/admin/roleEdit.xhtml</from-view-id>
         <navigation-case>
+            <from-action>#{roleEdit.save}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/success.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
+            <from-action>#{roleEdit.save}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/failure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/admin/roleCreate.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{roleCreate.save}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/success.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{roleCreate.save}</from-action>
             <from-outcome>failure</from-outcome>
             <to-view-id>/failure.xhtml</to-view-id>
         </navigation-case>

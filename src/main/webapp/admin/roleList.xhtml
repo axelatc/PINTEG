@@ -6,32 +6,32 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <ui:composition template="/WEB-INF/templates/userTemplate.xhtml">
     <ui:define name="title">
-        #{bundle['permissionList.pageTitle']}
+        #{bundle['roleList.pageTitle']}
     </ui:define>
     <ui:define name="content">
-        <h1 class="display-1">#{bundle['permissionList.pageTitle']}</h1>
+        <h1 class="display-1">#{bundle['roleList.pageTitle']}</h1>
         <h:messages/>
-        <h:dataTable styleClass="table table-striped" value="#{permissionList.getPermissions()}" var="permission">
+        <h:dataTable styleClass="table table-striped" value="#{roleList.getRoles()}" var="role">
             <h:column>
                 <f:facet name="header">ID</f:facet>
-                #{permission.id}
+                #{role.id}
             </h:column>
             <h:column>
                 <f:facet name="header">Label</f:facet>
-                #{permission.label}
+                #{role.label}
             </h:column>
             <h:column>
                 <f:facet name="header">Description</f:facet>
-                #{permission.description}
+                #{role.description}
             </h:column>
             <h:column>
-                <h:link value="#{bundle['permissionEdit.submitButtonName']}" outcome="/admin/permissionEdit">
-                    <f:param name="id" value="#{permission.id}"/>
+                <h:link value="#{bundle['roleEdit.submitButtonName']}" outcome="/admin/roleEdit">
+                    <f:param name="id" value="#{role.id}"/>
                 </h:link>
             </h:column>
             <h:column>
                 <h:form>
-                    <h:commandLink value="#{bundle['permissionDelete.actionName']}" action="#{permissionList.delete(permission)}">
+                    <h:commandLink value="#{bundle['roleDelete.actionName']}" action="#{roleList.delete(role)}">
                     </h:commandLink>
                 </h:form>
             </h:column>

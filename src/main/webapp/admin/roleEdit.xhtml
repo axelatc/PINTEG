@@ -7,47 +7,47 @@
 
 <ui:composition template="/WEB-INF/templates/userTemplate.xhtml">
     <ui:define name="title">
-        #{bundle['permissionEdit.pageTitle']}
+        #{bundle['roleEdit.pageTitle']}
     </ui:define>
 
     <f:metadata>
-        <f:viewParam name="id" value="#{permissionEdit.permission}"
-                     converter="#{permissionConverter}"
-                     converterMessage="Unknown permission, please use a link from within the system."
+        <f:viewParam name="id" value="#{roleEdit.role}"
+                     converter="#{roleConverter}"
+                     converterMessage="Unknown role, please use a link from within the system."
                      required="true" requiredMessage="Bad request, please use a link from within the system."
         />
     </f:metadata>
 
     <ui:define name="content">
-        <h1 class="display-1">#{bundle['permissionEdit.pageTitle']}</h1>
-        <h:form rendered="#{not empty permissionEdit.permission}">
+        <h1 class="display-1">#{bundle['roleEdit.pageTitle']}</h1>
+        <h:form rendered="#{not empty roleEdit.role}">
             <div class="mb-3">
                 <h:outputLabel for="label"
-                               styleClass="form-label">#{bundle['permission.label.inputLabel']}</h:outputLabel>
-                <h:inputText value="#{permissionEdit.permission.label}"
+                               styleClass="form-label">#{bundle['role.label.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{roleEdit.role.label}"
                              id="label"
                              styleClass="form-control"
                              required="true"
-                             requiredMessage="#{bundle['permission.label.requiredMessage']}"
-                            validatorMessage="#{bundle['permission.label.validationMessage']}">
+                             requiredMessage="#{bundle['role.label.requiredMessage']}"
+                            validatorMessage="#{bundle['role.label.validationMessage']}">
                     <f:validateLength minimum="1" maximum="100"/>
                 </h:inputText>
                 <h:message for="label" styleClass="text-danger"/>
             </div>
             <div class="mb-3">
                 <h:outputLabel for="description"
-                               styleClass="form-label">#{bundle['permission.description.inputLabel']}</h:outputLabel>
-                <h:inputText value="#{permissionEdit.permission.description}"
+                               styleClass="form-label">#{bundle['role.description.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{roleEdit.role.description}"
                              id="description"
                              styleClass="form-control"
                              required="true"
-                             requiredMessage="#{bundle['permission.description.requiredMessage']}"
-                             validatorMessage="#{bundle['permission.description.validationMessage']}">
+                             requiredMessage="#{bundle['role.description.requiredMessage']}"
+                             validatorMessage="#{bundle['role.description.validationMessage']}">
                     <f:validateLength minimum="1" maximum="2000"/>
                 </h:inputText>
                 <h:message for="description" styleClass="text-danger"/>
             </div>
-            <h:commandButton value="#{bundle['permissionEdit.submitButtonName']}" action="#{permissionEdit.save()}" styleClass="btn btn-primary"/>
+            <h:commandButton value="#{bundle['roleEdit.submitButtonName']}" action="#{roleEdit.save}" styleClass="btn btn-primary"/>
         </h:form>
     </ui:define>
 </ui:composition>

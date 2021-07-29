@@ -7,39 +7,39 @@
 
 <ui:composition template="/WEB-INF/templates/userTemplate.xhtml">
     <ui:define name="title">
-        #{bundle['permissionCreate.pageTitle']}
+        #{bundle['roleCreate.pageTitle']}
     </ui:define>
 
      <ui:define name="content">
-        <h1 class="display-1">#{bundle['permissionCreate.pageTitle']}</h1>
-        <h:form rendered="#{not empty permissionCreate.permission}">
+        <h1 class="display-1">#{bundle['roleCreate.pageTitle']}</h1>
+        <h:form>
             <div class="mb-3">
                 <h:outputLabel for="label"
-                               styleClass="form-label">#{bundle['permission.label.inputLabel']}</h:outputLabel>
-                <h:inputText value="#{permissionCreate.permission.label}"
+                               styleClass="form-label">#{bundle['role.label.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{roleCreate.role.label}"
                              id="label"
                              styleClass="form-control"
                              required="true"
-                             requiredMessage="#{bundle['permission.label.requiredMessage']}"
-                             validatorMessage="#{bundle['permission.label.validationMessage']}">
+                             requiredMessage="#{bundle['role.label.requiredMessage']}"
+                             validatorMessage="#{bundle['role.label.validationMessage']}">
                     <f:validateLength minimum="1" maximum="100"/>
                 </h:inputText>
                 <h:message for="label" styleClass="text-danger"/>
             </div>
             <div class="mb-3">
                 <h:outputLabel for="description"
-                               styleClass="form-label">#{bundle['permission.description.inputLabel']}</h:outputLabel>
-                <h:inputText value="#{permissionCreate.permission.description}"
+                               styleClass="form-label">#{bundle['role.description.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{roleCreate.role.description}"
                              id="description"
                              styleClass="form-control"
                              required="true"
-                             requiredMessage="#{bundle['permission.description.requiredMessage']}"
-                             validatorMessage="#{bundle['permission.description.validationMessage']}">
+                             requiredMessage="#{bundle['role.description.requiredMessage']}"
+                             validatorMessage="#{bundle['role.description.validationMessage']}">
                     <f:validateLength minimum="1" maximum="2000"/>
                 </h:inputText>
                 <h:message for="description" styleClass="text-danger"/>
             </div>
-            <h:commandButton value="#{bundle['permissionCreate.submitButtonName']}" action="#{permissionCreate.save()}" styleClass="btn btn-primary"/>
+            <h:commandButton value="#{bundle['roleCreate.submitButtonName']}" action="#{roleCreate.save}" styleClass="btn btn-primary"/>
         </h:form>
     </ui:define>
 </ui:composition>

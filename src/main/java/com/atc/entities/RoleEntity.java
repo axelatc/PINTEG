@@ -1,6 +1,13 @@
 package com.atc.entities;
 
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -15,11 +22,29 @@ import java.util.Objects;
 )
 @Entity
 @Table(name = "roles", schema = "shapp", catalog = "")
-public class RoleEntity {
+@SessionScoped
+@Named
+public class RoleEntity implements Serializable {
+    @Positive
     private int id;
+
+    @NotBlank
+    @NotNull
+    @Size(min=1, max=100)
     private String label;
+
+    @NotBlank
+    @NotNull
+    @Size(min=1, max=2000)
     private String description;
     private Collection<RolePermissionEntity> rolesPermissionsById;
+
+
+    public RoleEntity() { }
+    public RoleEntity(@NotBlank @NotNull @Size(min = 1, max = 100) String label, @NotBlank @NotNull @Size(min = 1, max = 2000) String description) {
+        this.label = label;
+        this.description = description;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
