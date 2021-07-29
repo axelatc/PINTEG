@@ -38,12 +38,14 @@
         <navigation-case>
             <from-action>#{roleList.delete(role)}</from-action>
             <from-outcome>success</from-outcome>
-            <to-view-id>/success.xhtml</to-view-id>
+            <to-view-id>/admin/roleList.xhtml</to-view-id>
+            <redirect></redirect>
         </navigation-case>
         <navigation-case>
             <from-action>#{roleList.delete(role)}</from-action>
             <from-outcome>failure</from-outcome>
-            <to-view-id>/failure.xhtml</to-view-id>
+            <to-view-id>/admin/roleList.xhtml</to-view-id>
+            <redirect></redirect>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -51,12 +53,14 @@
         <navigation-case>
             <from-action>#{roleEdit.save}</from-action>
             <from-outcome>success</from-outcome>
-            <to-view-id>/success.xhtml</to-view-id>
+            <to-view-id>/admin/roleList.xhtml</to-view-id>
+            <redirect></redirect>
         </navigation-case>
         <navigation-case>
             <from-action>#{roleEdit.save}</from-action>
             <from-outcome>failure</from-outcome>
-            <to-view-id>/failure.xhtml</to-view-id>
+            <to-view-id>/admin/roleEdit.xhtml</to-view-id>
+            <redirect></redirect>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -64,12 +68,14 @@
         <navigation-case>
             <from-action>#{roleCreate.save}</from-action>
             <from-outcome>success</from-outcome>
-            <to-view-id>/success.xhtml</to-view-id>
+            <to-view-id>/admin/roleList.xhtml</to-view-id>
+            <redirect></redirect>
         </navigation-case>
         <navigation-case>
             <from-action>#{roleCreate.save}</from-action>
             <from-outcome>failure</from-outcome>
-            <to-view-id>/failure.xhtml</to-view-id>
+            <to-view-id>/admin/roleCreate.xhtml</to-view-id>
+            <redirect></redirect>
         </navigation-case>
     </navigation-rule>
 
