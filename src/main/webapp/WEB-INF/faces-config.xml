@@ -58,6 +58,10 @@
         </navigation-case>
     </navigation-rule>
 
+    <lifecycle>
+        <phase-listener>com.atc.listeners.PostRedirectGetListener</phase-listener>
+    </lifecycle>
+
     <application>
         <locale-config>
             <default-locale>fr</default-locale>
