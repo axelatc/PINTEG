@@ -10,7 +10,7 @@
     </ui:define>
     <ui:define name="content">
         <h1 class="display-1">#{bundle['roleList.pageTitle']}</h1>
-        <h:messages/>
+        <ui:include src="/WEB-INF/includes/InfoAndErrorMessages.xhtml" />
         <h:dataTable styleClass="table table-striped" value="#{roleList.getRoles()}" var="role">
             <h:column>
                 <f:facet name="header">ID</f:facet>
