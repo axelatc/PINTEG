@@ -18,8 +18,6 @@ import static com.atc.utils.JsfUtils.*;
 @SessionScoped
 public class LoginBean implements Serializable {
     private final static Logger LOG = Logger.getLogger(LoginBean.class);
-    private final static String SUCCESS_REDIRECT_URL = "app/dashboard.xml";
-    private final static String FAILURE_REDIRECT_URL = "login.xhtml";
     private final static String SUCCESS_LOCALE_MESSAGE_NAME = "login.success";
     private final static String GENERIC_FAILURE_LOCALE_MESSAGE_NAME = "login.genericFailure";
     private final static String INCORRECT_CREDENTIALS_LOCALE_MESSAGE_NAME = "login.incorrectCredentials";
