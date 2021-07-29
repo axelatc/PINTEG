@@ -36,10 +36,6 @@ public class LoginBean implements Serializable {
 
     public String submit() throws IOException {
 
-/*        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        ServletRequest req = (ServletRequest) externalContext.getRequest();
-        SavedRequest savedRequest = WebUtils.getAndClearSavedRequest(req);
-        externalContext.redirect(savedRequest != null ? savedRequest.getRequestUrl() : FAILURE_REDIRECT_URL);*/
         try {
             LOG.info("Attempting to log in client...");
             UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), getPassword());
@@ -47,7 +43,6 @@ public class LoginBean implements Serializable {
 
             //TODO set current user on Session
             addSuccessMessage(getLocaleMessageAsString(SUCCESS_LOCALE_MESSAGE_NAME));
-//            externalContext.redirect(savedRequest != null ? savedRequest.getRequestUrl() : SUCCESS_REDIRECT_URL);
             return "success";
 
         } catch (UnknownAccountException ex) {
