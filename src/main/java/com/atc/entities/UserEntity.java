@@ -67,12 +67,6 @@ public class UserEntity {
     private LocalDateTime creationDateTime;
 
     @NotNull
-    @NotBlank
-    @Size(min=1, max=2000)
-    @Pattern(regexp = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]")
-    private String pictureUri;
-
-    @NotNull
     private boolean isActive;
 
     @NotBlank
@@ -214,15 +208,6 @@ public class UserEntity {
         this.creationDateTime = creationDateTime;
     }
 
-    @Basic
-    @Column(name = "picture_URI", nullable = true, length = 2083)
-    public String getPictureUri() {
-        return pictureUri;
-    }
-
-    public void setPictureUri(String pictureUri) {
-        this.pictureUri = pictureUri;
-    }
 
     @Basic
     @Column(name = "active", nullable = false)

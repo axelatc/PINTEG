@@ -129,21 +129,6 @@
                 <h:message for="phoneNumber" styleClass="text-danger"/>
             </div>
             <div class="mb-3">
-                <h:outputLabel for="pictureUri"
-                               styleClass="form-label">#{bundle['register.pictureUri.inputLabel']}</h:outputLabel>
-                <h:inputText value="#{registerBean.user.pictureUri}"
-                               id="pictureUri"
-                               styleClass="form-control"
-                               required="false"
-                               requiredMessage="#{bundle['register.pictureUri.requiredMessage']}"
-                               validatorMessage="#{bundle['register.pictureUri.validationMessage']}">
-                    <f:validateLength minimum="1" maximum="2000"/>
-                    <f:validateRegex
-                            pattern="^(https?|ftp|file)://[-a-zA-Z0-9+&amp;@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&amp;@#/%=~_|]" />
-                </h:inputText>
-                <h:message for="pictureUri" styleClass="text-danger"/>
-            </div>
-            <div class="mb-3">
                 <h:outputLabel for="coachDegreeInfo"
                                styleClass="form-label">#{bundle['register.coachDegreeInfo.inputLabel']}</h:outputLabel>
                 <h:inputText value="#{registerBean.user.coachDegreeInfo}"

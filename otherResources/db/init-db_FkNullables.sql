@@ -108,7 +108,6 @@ CREATE TABLE IF NOT EXISTS `users` (
     `email_address` varchar(255) NOT NULL,
     `phone_number` varchar(16) NOT NULL,
     `creation_date_time` datetime NOT NULL DEFAULT NOW(),
-    `picture_URI` varchar(2000) NULL,
     `active` tinyint(1) NOT NULL DEFAULT 1,
     `coach_degree_info` varchar(2000) NULL,
     `coach_career_start_date` date NULL,
@@ -117,8 +116,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     CONSTRAINT PK_USERS PRIMARY KEY (`id`),
     CONSTRAINT UNIQUE_CONSTRAINT_USERS_username UNIQUE (`username`),
     CONSTRAINT UNIQUE_CONSTRAINT_USERS_email_address UNIQUE (`email_address`),
-    CONSTRAINT UNIQUE_CONSTRAINT_USERS_phone_number UNIQUE (`phone_number`),
-    CONSTRAINT UNIQUE_CONSTRAINT_USERS_picture_URI UNIQUE (`picture_URI`)
+    CONSTRAINT UNIQUE_CONSTRAINT_USERS_phone_number UNIQUE (`phone_number`)
 
 
 
@@ -1768,16 +1766,16 @@ INSERT INTO `roles` (`id`, `label`, `description`) VALUES
 
 -- The unencrypted password for all users is "Password1@"
 INSERT INTO `users` (`id`,`first_name`,`last_name`,`username`,`password`,`birthdate`,`gender`,`email_address`,`phone_number`,
-					`creation_date_time`,`picture_URI`,`active`,`coach_degree_info`,`coach_career_start_date`, `role_id`)
+					`creation_date_time`,`active`,`coach_degree_info`,`coach_career_start_date`, `role_id`)
 VALUES
 (1,'Arya','Secret','utilisateur01','$shiro1$SHA-256$500000$U6c6oOh4vW5QRvXotD8Ywg==$rQeHywWeulrE1cok0AcMLklqJ7stY0dtzWiJoA4Yp8M=','1970-03-03','Féminin','arya.secret@gmail.com','+32486444444',
-	'2020-10-02 12:30:03',NULL,1,NULL,NULL, 1),
+	'2020-10-02 12:30:03',1,NULL,NULL, 1),
 (2,'Gaspard','Ent','coach01','$shiro1$SHA-256$500000$U6c6oOh4vW5QRvXotD8Ywg==$rQeHywWeulrE1cok0AcMLklqJ7stY0dtzWiJoA4Yp8M=','1980-05-05','Masculin','gaspard.ent@gmail.com','+32486325645',
-	'2020-08-09 17:46:03',NULL,1,'Dîplomé de l\Ecole de Kinésithérapie de Wavre, Promotion 1999','2001-01-01', 1),
+	'2020-08-09 17:46:03',1,'Dîplomé de l\Ecole de Kinésithérapie de Wavre, Promotion 1999','2001-01-01', 1),
 (3,'Viktor','Ganise','admin01','$shiro1$SHA-256$500000$U6c6oOh4vW5QRvXotD8Ywg==$rQeHywWeulrE1cok0AcMLklqJ7stY0dtzWiJoA4Yp8M=','1991-01-01','Masculin','viktor.ganise@gmail.com','+32486888888',
-	'2020-08-09 17:46:03',NULL,1,NULL,NULL, 3),
+	'2020-08-09 17:46:03',1,NULL,NULL, 3),
 (4,'Jean','Seigne','admin02','$shiro1$SHA-256$500000$U6c6oOh4vW5QRvXotD8Ywg==$rQeHywWeulrE1cok0AcMLklqJ7stY0dtzWiJoA4Yp8M=','1985-02-02','Autre','jean.seigne@gmail.com','+32486555555',
-	'2020-10-05 10:46:03',NULL,1,NULL,NULL, 3);
+	'2020-10-05 10:46:03',1,NULL,NULL, 3);
 
 
 INSERT INTO `permissions` (`id`, `label`, `description`) VALUES
