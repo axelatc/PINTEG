@@ -1762,7 +1762,11 @@ ALTER TABLE equipment_items_link
 
 INSERT INTO `roles` (`id`, `label`, `description`) VALUES
 (1, 'administrator', 'Ce rôle est attribué aux utilisateurs identifiés en tant qu\'administrateurs'),
-(2, 'user_bronze', 'Ce rôle est attribué aux utilisateurs identifiés qui bénéficient de l\'abonnement gratuit `bronze`');
+(2, 'user_bronze', 'Ce rôle est attribué aux utilisateurs identifiés qui bénéficient de l\'abonnement gratuit `bronze`'),
+(3, 'user_silver', 'Ce rôle est attribué aux utilisateurs identifiés qui bénéficient de l\'abonnement payant `argent`'),
+(4, 'user_gold', 'Ce rôle est attribué aux utilisateurs identifiés qui bénéficient de l\'abonnement payant `or`'),
+(5, 'user_platinum', 'Ce rôle est attribué aux utilisateurs identifiés qui bénéficient de l\'abonnement payant `platine`'),
+(6, 'user_diamond', 'Ce rôle est attribué aux utilisateurs identifiés qui bénéficient de l\'abonnement payant `diamant`');
 
 -- The unencrypted password for all users is "Password1@"
 INSERT INTO `users` (`id`,`first_name`,`last_name`,`username`,`password`,`birthdate`,`gender`,`email_address`,`phone_number`,
