@@ -75,23 +75,15 @@ public class UserEntity {
 
     @PastOrPresent
     private LocalDate coachCareerStartDate;
-    private Collection<EventCommentEntity> eventCommentsById;
-    private Collection<EventParticipationEntity> eventParticipationsById;
-    private Collection<EventParticipationEntity> eventParticipationsById_0;
-    private Collection<EventPostEntity> eventPostsById;
-    private Collection<EventEntity> eventsById;
     private Collection<MeasureEntity> measuresById;
     private Collection<ScheduleLinkEntity> schedulesLinksById;
     private Collection<TeamCommentEntity> teamCommentsById;
     private Collection<TeamPostEntity> teamPostsById;
     private Collection<TeamEntity> teamsById;
     private Collection<TrainingPlanEntity> trainingPlansById;
-    private Collection<UserAddressEntity> usersAddressesById;
     private RoleEntity rolesByRoleId;
-    private Collection<UserOrganizationEntity> usersOrganizationsById;
     private Collection<UserSubscriptionEntity> usersSubscriptionsById;
     private Collection<UsersTeamEntity> usersTeamsById;
-    private Collection<WorkoutPlaceEntity> workoutPlacesById;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -239,51 +231,6 @@ public class UserEntity {
         this.coachCareerStartDate = coachCareerStartDate;
     }
 
-    @OneToMany(mappedBy = "usersByCreatorUserId")
-    public Collection<EventCommentEntity> getEventCommentsById() {
-        return eventCommentsById;
-    }
-
-    public void setEventCommentsById(Collection<EventCommentEntity> eventCommentsById) {
-        this.eventCommentsById = eventCommentsById;
-    }
-
-    @OneToMany(mappedBy = "usersByInviterUserId")
-    public Collection<EventParticipationEntity> getEventParticipationsById() {
-        return eventParticipationsById;
-    }
-
-    public void setEventParticipationsById(Collection<EventParticipationEntity> eventParticipationsById) {
-        this.eventParticipationsById = eventParticipationsById;
-    }
-
-    @OneToMany(mappedBy = "usersByInviteeUserId")
-    public Collection<EventParticipationEntity> getEventParticipationsById_0() {
-        return eventParticipationsById_0;
-    }
-
-    public void setEventParticipationsById_0(Collection<EventParticipationEntity> eventParticipationsById_0) {
-        this.eventParticipationsById_0 = eventParticipationsById_0;
-    }
-
-    @OneToMany(mappedBy = "usersByCreatorUserId")
-    public Collection<EventPostEntity> getEventPostsById() {
-        return eventPostsById;
-    }
-
-    public void setEventPostsById(Collection<EventPostEntity> eventPostsById) {
-        this.eventPostsById = eventPostsById;
-    }
-
-    @OneToMany(mappedBy = "usersByCreatorUserId")
-    public Collection<EventEntity> getEventsById() {
-        return eventsById;
-    }
-
-    public void setEventsById(Collection<EventEntity> eventsById) {
-        this.eventsById = eventsById;
-    }
-
     @OneToMany(mappedBy = "usersByUserId")
     public Collection<MeasureEntity> getMeasuresById() {
         return measuresById;
@@ -338,15 +285,6 @@ public class UserEntity {
         this.trainingPlansById = trainingPlansById;
     }
 
-    @OneToMany(mappedBy = "usersByUserId")
-    public Collection<UserAddressEntity> getUsersAddressesById() {
-        return usersAddressesById;
-    }
-
-    public void setUsersAddressesById(Collection<UserAddressEntity> usersAddressesById) {
-        this.usersAddressesById = usersAddressesById;
-    }
-
     @ManyToOne
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     public RoleEntity getRolesByRoleId() {
@@ -357,14 +295,6 @@ public class UserEntity {
         this.rolesByRoleId = rolesByRoleId;
     }
 
-    @OneToMany(mappedBy = "usersByUserId")
-    public Collection<UserOrganizationEntity> getUsersOrganizationsById() {
-        return usersOrganizationsById;
-    }
-
-    public void setUsersOrganizationsById(Collection<UserOrganizationEntity> usersOrganizationsById) {
-        this.usersOrganizationsById = usersOrganizationsById;
-    }
 
     @OneToMany(mappedBy = "usersByUserId")
     public Collection<UserSubscriptionEntity> getUsersSubscriptionsById() {
@@ -382,14 +312,5 @@ public class UserEntity {
 
     public void setUsersTeamsById(Collection<UsersTeamEntity> usersTeamsById) {
         this.usersTeamsById = usersTeamsById;
-    }
-
-    @OneToMany(mappedBy = "usersByCreatorUserId")
-    public Collection<WorkoutPlaceEntity> getWorkoutPlacesById() {
-        return workoutPlacesById;
-    }
-
-    public void setWorkoutPlacesById(Collection<WorkoutPlaceEntity> workoutPlacesById) {
-        this.workoutPlacesById = workoutPlacesById;
     }
 }
