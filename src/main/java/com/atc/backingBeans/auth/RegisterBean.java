@@ -21,6 +21,9 @@ import java.time.LocalDateTime;
 
 import static com.atc.utils.JsfUtils.*;
 
+/**
+ * @author axel
+ */
 @Named
 @SessionScoped
 public class RegisterBean implements Serializable {

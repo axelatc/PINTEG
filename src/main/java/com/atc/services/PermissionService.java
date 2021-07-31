@@ -10,6 +10,9 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+/**
+ * @author axel
+ */
 public class PermissionService extends ServiceImpl<PermissionEntity> {
 
     private final static Logger LOG = Logger.getLogger(PermissionService.class);

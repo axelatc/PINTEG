@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.io.Serializable;
 
 import static com.atc.utils.JsfUtils.*;
-
+/**
+ * @author axel
+ */
 @Named
 @SessionScoped
 public class LoginBean implements Serializable {

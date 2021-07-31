@@ -11,6 +11,9 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+/**
+ * @author axel
+ */
 @ApplicationScoped
 public class RoleService extends ServiceImpl<RoleEntity> {
 

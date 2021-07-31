@@ -14,6 +14,9 @@ import java.io.Serializable;
 
 import static com.atc.utils.JsfUtils.*;
 
+/**
+ * @author axel
+ */
 @SessionScoped
 @Named
 public class RoleCreate implements Serializable {

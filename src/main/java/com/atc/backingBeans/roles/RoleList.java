@@ -17,6 +17,9 @@ import java.util.List;
 import static com.atc.utils.JpaUtils.createEntityManager;
 import static com.atc.utils.JsfUtils.*;
 
+/**
+ * @author axel
+ */
 @Named
 @SessionScoped
 public class RoleList implements Serializable {

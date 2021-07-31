@@ -12,6 +12,9 @@ import javax.faces.convert.ConverterException;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 
+/**
+ * @author axel
+ */
 @Named
 @RequestScoped
 public class RoleConverter implements Converter {

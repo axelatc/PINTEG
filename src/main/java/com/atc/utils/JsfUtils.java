@@ -5,6 +5,9 @@ import javax.faces.context.FacesContext;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+/**
+ * @author axel
+ */
 public class JsfUtils {
     private static final String BUNDLE_BASE_NAME = "com.atc.i18n.messages";
 
