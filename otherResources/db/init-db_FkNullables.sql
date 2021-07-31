@@ -1183,7 +1183,7 @@ CREATE TABLE IF NOT EXISTS `muscles` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
     `description` varchar(2000) NULL,
-    `picture_URI` varchar(2083) DEFAULT NULL,
+    `picture_URI` varchar(2000) DEFAULT NULL,
 
 
 
@@ -1327,7 +1327,7 @@ CREATE TABLE IF NOT EXISTS `equipment_items_link` (
     `name` varchar(100) NOT NULL,
     `description` varchar(2000) NULL,
     `price` decimal(10,2) DEFAULT NULL,
-    `referal_buy_URL` varchar(2083) DEFAULT 'NONE',
+    `referal_buy_URL` varchar(2000) DEFAULT 'NONE',
 
 
 
