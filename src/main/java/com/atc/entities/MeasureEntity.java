@@ -5,6 +5,10 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+
+/**
+ * @author axel
+ */
 @Entity
 @Table(name = "measures", schema = "shapp", catalog = "")
 public class MeasureEntity {

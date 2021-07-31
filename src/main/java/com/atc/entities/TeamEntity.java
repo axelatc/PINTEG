@@ -5,6 +5,10 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Objects;
 
+/**
+ * @author axel
+ * Pour EII uniquement
+ */
 @Entity
 @Table(name = "teams", schema = "shapp", catalog = "")
 public class TeamEntity {

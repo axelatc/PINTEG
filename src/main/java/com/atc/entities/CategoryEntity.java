@@ -4,6 +4,10 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
+/**
+ * @author william
+ * temporaire: fonctionnalités à redéfinir
+ */
 @Entity
 @Table(name = "categories", schema = "shapp", catalog = "")
 public class CategoryEntity {

@@ -4,6 +4,10 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+/**
+ * @author william
+ * temporaire: fonctionnalités à redéfinir
+ */
 @Entity
 @Table(name = "equipment_items_link", schema = "shapp", catalog = "")
 public class EquipmentItemLinkEntity {

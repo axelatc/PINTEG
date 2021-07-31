@@ -11,6 +11,9 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Objects;
 
+/**
+ * @author axel
+ */
 @Entity
 @Table(name = "permissions", schema = "shapp", catalog = "")
 @NamedQueries(

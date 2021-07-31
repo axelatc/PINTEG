@@ -3,6 +3,9 @@ package com.atc.entities;
 import javax.persistence.*;
 import java.util.Objects;
 
+/**
+ * @author axel
+ */
 @Entity
 @Table(name = "roles_permissions", schema = "shapp", catalog = "")
 public class RolePermissionEntity {

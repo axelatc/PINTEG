@@ -4,6 +4,10 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/**
+ * @author axel
+ * Pour EII uniquement
+ */
 @Entity
 @Table(name = "team_comments", schema = "shapp", catalog = "")
 public class TeamCommentEntity {

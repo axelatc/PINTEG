@@ -4,6 +4,10 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/**
+ * @author william
+ * temporaire: fonctionnalités à redéfinir
+ */
 @Entity
 @Table(name = "schedules_link", schema = "shapp", catalog = "")
 public class ScheduleLinkEntity {

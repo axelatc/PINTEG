@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
+/**
+ * @author axel
+ */
 @Entity
 @Table(name = "units", schema = "shapp", catalog = "")
 public class UnitEntity {

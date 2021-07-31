@@ -9,6 +9,9 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Objects;
 
+/**
+ * @author axel
+ */
 @Entity
 @Table(name = "users", schema = "shapp", catalog = "")
 @NamedQueries(

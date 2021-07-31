@@ -4,6 +4,10 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
+
+/**
+ * @author axel
+ */
 @Entity
 @Table(name = "measurands", schema = "shapp", catalog = "")
 public class MeasurandEntity {

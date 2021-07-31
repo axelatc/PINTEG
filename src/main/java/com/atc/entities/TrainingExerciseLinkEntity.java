@@ -3,6 +3,10 @@ package com.atc.entities;
 import javax.persistence.*;
 import java.util.Objects;
 
+/**
+ * @author william
+ * temporaire: fonctionnalités à redéfinir
+ */
 @Entity
 @Table(name = "trainings_exercises_link", schema = "shapp", catalog = "")
 public class TrainingExerciseLinkEntity {

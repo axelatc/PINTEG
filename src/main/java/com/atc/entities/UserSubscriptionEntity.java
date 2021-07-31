@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/**
+ * @author axel
+ */
 @Entity
 @Table(name = "users_subscriptions", schema = "shapp", catalog = "")
 public class UserSubscriptionEntity {

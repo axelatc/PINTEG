@@ -5,6 +5,9 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Objects;
 
+/**
+ * @author axel
+ */
 @Entity
 @Table(name = "subscriptions", schema = "shapp", catalog = "")
 public class SubscriptionEntity {
