@@ -1,5 +1,7 @@
 package com.atc.entities;
 
+import com.sun.istack.internal.Nullable;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
@@ -69,8 +71,7 @@ public class UserEntity {
     @NotNull
     private boolean isActive;
 
-    @NotBlank
-    @Size(min=1, max=2000)
+    @Nullable
     private String coachDegreeInfo;
 
     @PastOrPresent
