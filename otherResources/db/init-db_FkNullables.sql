@@ -1772,14 +1772,15 @@ INSERT INTO `roles` (`id`, `label`, `description`) VALUES
 INSERT INTO `users` (`id`,`first_name`,`last_name`,`username`,`password`,`birthdate`,`gender`,`email_address`,`phone_number`,
 					`creation_date_time`,`active`,`coach_degree_info`,`coach_career_start_date`, `role_id`)
 VALUES
-(1,'Arya','Secret','utilisateur01','$shiro1$SHA-256$500000$U6c6oOh4vW5QRvXotD8Ywg==$rQeHywWeulrE1cok0AcMLklqJ7stY0dtzWiJoA4Yp8M=','1970-03-03','Féminin','arya.secret@gmail.com','+32486444444',
+(1,'Arya','Secret','admin','$shiro1$SHA-256$500000$U6c6oOh4vW5QRvXotD8Ywg==$rQeHywWeulrE1cok0AcMLklqJ7stY0dtzWiJoA4Yp8M=','1970-03-03','Féminin','arya.secret@gmail.com','+32486444444',
 	'2020-10-02 12:30:03',1,NULL,NULL, 1),
-(2,'Gaspard','Ent','coach01','$shiro1$SHA-256$500000$U6c6oOh4vW5QRvXotD8Ywg==$rQeHywWeulrE1cok0AcMLklqJ7stY0dtzWiJoA4Yp8M=','1980-05-05','Masculin','gaspard.ent@gmail.com','+32486325645',
-	'2020-08-09 17:46:03',1,'Dîplomé de l\Ecole de Kinésithérapie de Wavre, Promotion 1999','2001-01-01', 1),
-(3,'Viktor','Ganise','admin01','$shiro1$SHA-256$500000$U6c6oOh4vW5QRvXotD8Ywg==$rQeHywWeulrE1cok0AcMLklqJ7stY0dtzWiJoA4Yp8M=','1991-01-01','Masculin','viktor.ganise@gmail.com','+32486888888',
-	'2020-08-09 17:46:03',1,NULL,NULL, 3),
-(4,'Jean','Seigne','admin02','$shiro1$SHA-256$500000$U6c6oOh4vW5QRvXotD8Ywg==$rQeHywWeulrE1cok0AcMLklqJ7stY0dtzWiJoA4Yp8M=','1985-02-02','Autre','jean.seigne@gmail.com','+32486555555',
-	'2020-10-05 10:46:03',1,NULL,NULL, 3);
+(2,'Jean','Seigne','ubronze','$shiro1$SHA-256$500000$U6c6oOh4vW5QRvXotD8Ywg==$rQeHywWeulrE1cok0AcMLklqJ7stY0dtzWiJoA4Yp8M=','1985-02-02','Autre','jean.seigne@gmail.com','+32486555555',
+ '2020-10-05 10:46:03',1,NULL,NULL, 2),
+(3,'Gaspard','Ent','usilver','$shiro1$SHA-256$500000$U6c6oOh4vW5QRvXotD8Ywg==$rQeHywWeulrE1cok0AcMLklqJ7stY0dtzWiJoA4Yp8M=','1980-05-05','Masculin','gaspard.ent@gmail.com','+32486325645',
+	'2020-08-09 17:46:03',1,'Dîplomé de l\Ecole de Kinésithérapie de Wavre, Promotion 1999','2001-01-01', 3),
+(4,'Viktor','Ganise','ugold','$shiro1$SHA-256$500000$U6c6oOh4vW5QRvXotD8Ywg==$rQeHywWeulrE1cok0AcMLklqJ7stY0dtzWiJoA4Yp8M=','1991-01-01','Masculin','viktor.ganise@gmail.com','+32486888888',
+	'2020-08-09 17:46:03',1,NULL,NULL, 4);
+
 
 
 INSERT INTO `permissions` (`id`, `label`, `description`) VALUES
