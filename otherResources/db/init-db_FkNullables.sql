@@ -1761,8 +1761,8 @@ ALTER TABLE equipment_items_link
 --  -----------------------------------------------------------
 
 INSERT INTO `roles` (`id`, `label`, `description`) VALUES
-(1, 'user_bronze', 'Ce rôle est attribué aux utilisateurs identifiés qui bénéficient de l\'abonnement gratuit `bronze`'),
-(3, 'administrator', 'Ce rôle est attribué aux utilisateurs identifiés en tant qu\'administrateurs');
+(1, 'administrator', 'Ce rôle est attribué aux utilisateurs identifiés en tant qu\'administrateurs'),
+(2, 'user_bronze', 'Ce rôle est attribué aux utilisateurs identifiés qui bénéficient de l\'abonnement gratuit `bronze`');
 
 -- The unencrypted password for all users is "Password1@"
 INSERT INTO `users` (`id`,`first_name`,`last_name`,`username`,`password`,`birthdate`,`gender`,`email_address`,`phone_number`,
@@ -1814,26 +1814,26 @@ INSERT INTO `permissions` (`id`, `label`, `description`) VALUES
 
 INSERT INTO `roles_permissions` (`id`,`role_id`,`permission_id`) VALUES
 -- role utilisateur_bronze
-(1,1,2),
-(2,1,3),
-(3,1,4),
-(4,1,17),
-(5,1,18),
-(6,1,19),
-(7,1,20),
-(8,1,21),
-(9,1,22),
-(10,1,23),
-(11,1,24),
-(12,1,25),
-(13,1,26),
-(14,1,27),
-(15,1,28),
-(16,1,29),
-(17,1,30),
+(1,2,2),
+(2,2,3),
+(3,2,4),
+(4,2,17),
+(5,2,18),
+(6,2,19),
+(7,2,20),
+(8,2,21),
+(9,2,22),
+(10,2,23),
+(11,2,24),
+(12,2,25),
+(13,2,26),
+(14,2,27),
+(15,2,28),
+(16,2,29),
+(17,2,30),
 -- role admin
-(18,3,31),
-(19,3,32);
+(18,1,31),
+(19,1,32);
 
 
 INSERT INTO `units` (`id`, `name`, `symbol`, `description`) VALUES
