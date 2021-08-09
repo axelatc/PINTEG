@@ -17,22 +17,7 @@ Le name de la <Resource> concernée dans le context.xml correspond à ce qui sui
 Ici on a java:comp/env/jdbc/schoolUX donc la ressource concernée est <Resource name="jdbc/schoolUX"> dans context.xml
 -->
         <jta-data-source>java:comp/env/jdbc/DSshapp</jta-data-source>
-        <class>com.atc.entities.BrandEntity</class>
-        <class>com.atc.entities.CategoryEntity</class>
-        <class>com.atc.entities.EquipmentGenericEntity</class>
-        <class>com.atc.entities.EquipmentItemLinkEntity</class>
-        <class>com.atc.entities.ExerciseEntity</class>
-        <class>com.atc.entities.ExerciseMuscleLinkEntity</class>
-        <class>com.atc.entities.GoalEntity</class>
-        <class>com.atc.entities.LevelEntity</class>
-        <class>com.atc.entities.MuscleEntity</class>
-        <class>com.atc.entities.RequirementLinkEntity</class>
-        <class>com.atc.entities.ScheduleLinkEntity</class>
         <class>com.atc.entities.SubscriptionEntity</class>
-        <class>com.atc.entities.TrainingPlanEntity</class>
-        <class>com.atc.entities.TrainingTypeEntity</class>
-        <class>com.atc.entities.TrainingCategoryLinkEntity</class>
-        <class>com.atc.entities.TrainingExerciseLinkEntity</class>
         <class>com.atc.entities.UserEntity</class>
         <class>com.atc.entities.RoleEntity</class>
         <class>com.atc.entities.RolePermissionEntity</class>
@@ -45,7 +30,6 @@ Ici on a java:comp/env/jdbc/schoolUX donc la ressource concernée est <Resource 
         <class>com.atc.entities.UnitEntity</class>
         <class>com.atc.entities.UserSubscriptionEntity</class>
         <class>com.atc.entities.UsersTeamEntity</class>
-        <class>com.atc.entities.CategoryEntity</class>
 
         <!-- Les <class> juste au-dessus sont auto-générées lors de l'import DB
 Si on souhaite re-générer la db, il faudra les delete ici juste avant -->

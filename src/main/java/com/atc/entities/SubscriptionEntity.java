@@ -16,7 +16,6 @@ public class SubscriptionEntity {
     private BigDecimal pricePerMonth;
     private String description;
     private int rank;
-    private Collection<TrainingPlanEntity> trainingPlansById;
     private Collection<UserSubscriptionEntity> usersSubscriptionsById;
 
     @Id
@@ -82,15 +81,6 @@ public class SubscriptionEntity {
 
     public void setRank(int rank) {
         this.rank = rank;
-    }
-
-    @OneToMany(mappedBy = "subscriptionsBySubscriptionIdMinimumRank")
-    public Collection<TrainingPlanEntity> getTrainingPlansById() {
-        return trainingPlansById;
-    }
-
-    public void setTrainingPlansById(Collection<TrainingPlanEntity> trainingPlansById) {
-        this.trainingPlansById = trainingPlansById;
     }
 
     @OneToMany(mappedBy = "subscriptionsBySubscriptionId")

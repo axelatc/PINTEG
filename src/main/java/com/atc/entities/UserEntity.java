@@ -80,11 +80,9 @@ public class UserEntity {
     @PastOrPresent
     private LocalDate coachCareerStartDate;
     private Collection<MeasureEntity> measuresById;
-    private Collection<ScheduleLinkEntity> schedulesLinksById;
     private Collection<TeamCommentEntity> teamCommentsById;
     private Collection<TeamPostEntity> teamPostsById;
     private Collection<TeamEntity> teamsById;
-    private Collection<TrainingPlanEntity> trainingPlansById;
     private RoleEntity rolesByRoleId;
     private Collection<UserSubscriptionEntity> usersSubscriptionsById;
     private Collection<UsersTeamEntity> usersTeamsById;
@@ -245,15 +243,6 @@ public class UserEntity {
     }
 
     @OneToMany(mappedBy = "usersByUserId")
-    public Collection<ScheduleLinkEntity> getSchedulesLinksById() {
-        return schedulesLinksById;
-    }
-
-    public void setSchedulesLinksById(Collection<ScheduleLinkEntity> schedulesLinksById) {
-        this.schedulesLinksById = schedulesLinksById;
-    }
-
-    @OneToMany(mappedBy = "usersByUserId")
     public Collection<TeamCommentEntity> getTeamCommentsById() {
         return teamCommentsById;
     }
@@ -278,15 +267,6 @@ public class UserEntity {
 
     public void setTeamsById(Collection<TeamEntity> teamsById) {
         this.teamsById = teamsById;
-    }
-
-    @OneToMany(mappedBy = "usersByUserIdCreator")
-    public Collection<TrainingPlanEntity> getTrainingPlansById() {
-        return trainingPlansById;
-    }
-
-    public void setTrainingPlansById(Collection<TrainingPlanEntity> trainingPlansById) {
-        this.trainingPlansById = trainingPlansById;
     }
 
     @ManyToOne
