@@ -1,4 +1,4 @@
-package com.atc.entities;
+package com.atc.persistence.entities;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;

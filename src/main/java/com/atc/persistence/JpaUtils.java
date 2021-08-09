@@ -1,4 +1,4 @@
-package com.atc.utils;
+package com.atc.persistence;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

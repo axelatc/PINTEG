@@ -1,7 +1,7 @@
 package com.atc.services;
 
-import com.atc.entities.RoleEntity;
-import com.atc.utils.JpaUtils;
+import com.atc.persistence.entities.RoleEntity;
+import com.atc.persistence.JpaUtils;
 import com.atc.utils.ValidationUtils;
 import org.apache.log4j.Logger;
 

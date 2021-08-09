@@ -1,8 +1,8 @@
 package com.atc.converters;
 
-import com.atc.entities.RoleEntity;
+import com.atc.persistence.entities.RoleEntity;
 import com.atc.services.RoleService;
-import com.atc.utils.JpaUtils;
+import com.atc.persistence.JpaUtils;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.component.UIComponent;

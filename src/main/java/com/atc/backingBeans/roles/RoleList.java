@@ -1,8 +1,8 @@
 package com.atc.backingBeans.roles;
 
-import com.atc.entities.RoleEntity;
+import com.atc.persistence.entities.RoleEntity;
 import com.atc.services.RoleService;
-import com.atc.utils.JpaUtils;
+import com.atc.persistence.JpaUtils;
 import org.apache.log4j.Logger;
 
 import javax.annotation.PostConstruct;
@@ -14,7 +14,7 @@ import javax.persistence.EntityTransaction;
 import java.io.Serializable;
 import java.util.List;
 
-import static com.atc.utils.JpaUtils.createEntityManager;
+import static com.atc.persistence.JpaUtils.createEntityManager;
 import static com.atc.utils.JsfUtils.*;
 
 /**

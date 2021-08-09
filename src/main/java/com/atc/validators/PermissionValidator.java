@@ -1,7 +1,7 @@
 /* That's not the right way to use Jsf Validator, I'll use javax.annotations instead
 package com.atc.validators;
 
-import com.atc.entities.PermissionEntity;
+import com.atc.persistence.entities.PermissionEntity;
 import org.apache.log4j.Logger;
 
 import javax.faces.application.FacesMessage;

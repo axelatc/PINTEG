@@ -1,4 +1,4 @@
-package com.atc.entities;
+package com.atc.persistence.entities;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -9,8 +9,8 @@ import java.util.Objects;
  * Pour EII uniquement
  */
 @Entity
-@Table(name = "team_posts", schema = "shapp", catalog = "")
-public class TeamPostEntity {
+@Table(name = "team_comments", schema = "shapp", catalog = "")
+public class TeamCommentEntity {
     private int id;
     private LocalDateTime creationDateTime;
     private String message;
@@ -54,7 +54,7 @@ public class TeamPostEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TeamPostEntity that = (TeamPostEntity) o;
+        TeamCommentEntity that = (TeamCommentEntity) o;
         return Objects.equals(id, that.id) && Objects.equals(creationDateTime, that.creationDateTime) && Objects.equals(message, that.message);
     }
 

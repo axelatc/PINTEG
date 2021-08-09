@@ -1,12 +1,12 @@
 package com.atc.backingBeans.auth;
 
-import com.atc.entities.Gender;
-import com.atc.entities.RoleEntity;
-import com.atc.entities.UserEntity;
+import com.atc.persistence.entities.Gender;
+import com.atc.persistence.entities.RoleEntity;
+import com.atc.persistence.entities.UserEntity;
 import com.atc.services.RoleService;
 import com.atc.services.UserService;
 import com.atc.utils.AuthUtils;
-import com.atc.utils.JpaUtils;
+import com.atc.persistence.JpaUtils;
 import org.apache.log4j.Logger;
 
 import javax.annotation.PostConstruct;

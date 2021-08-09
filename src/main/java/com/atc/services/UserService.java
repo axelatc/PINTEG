@@ -1,6 +1,6 @@
 package com.atc.services;
 
-import com.atc.entities.UserEntity;
+import com.atc.persistence.entities.UserEntity;
 import com.atc.utils.ValidationUtils;
 import org.apache.log4j.Logger;
 

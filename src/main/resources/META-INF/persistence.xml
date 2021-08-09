@@ -17,19 +17,19 @@ Le name de la <Resource> concernée dans le context.xml correspond à ce qui sui
 Ici on a java:comp/env/jdbc/schoolUX donc la ressource concernée est <Resource name="jdbc/schoolUX"> dans context.xml
 -->
         <jta-data-source>java:comp/env/jdbc/DSshapp</jta-data-source>
-        <class>com.atc.entities.SubscriptionEntity</class>
-        <class>com.atc.entities.UserEntity</class>
-        <class>com.atc.entities.RoleEntity</class>
-        <class>com.atc.entities.RolePermissionEntity</class>
-        <class>com.atc.entities.MeasurandEntity</class>
-        <class>com.atc.entities.MeasureEntity</class>
-        <class>com.atc.entities.PermissionEntity</class>
-        <class>com.atc.entities.TeamCommentEntity</class>
-        <class>com.atc.entities.TeamPostEntity</class>
-        <class>com.atc.entities.TeamEntity</class>
-        <class>com.atc.entities.UnitEntity</class>
-        <class>com.atc.entities.UserSubscriptionEntity</class>
-        <class>com.atc.entities.UsersTeamEntity</class>
+        <class>com.atc.persistence.entities.SubscriptionEntity</class>
+        <class>com.atc.persistence.entities.UserEntity</class>
+        <class>com.atc.persistence.entities.RoleEntity</class>
+        <class>com.atc.persistence.entities.RolePermissionEntity</class>
+        <class>com.atc.persistence.entities.MeasurandEntity</class>
+        <class>com.atc.persistence.entities.MeasureEntity</class>
+        <class>com.atc.persistence.entities.PermissionEntity</class>
+        <class>com.atc.persistence.entities.TeamCommentEntity</class>
+        <class>com.atc.persistence.entities.TeamPostEntity</class>
+        <class>com.atc.persistence.entities.TeamEntity</class>
+        <class>com.atc.persistence.entities.UnitEntity</class>
+        <class>com.atc.persistence.entities.UserSubscriptionEntity</class>
+        <class>com.atc.persistence.entities.UsersTeamEntity</class>
 
         <!-- Les <class> juste au-dessus sont auto-générées lors de l'import DB
 Si on souhaite re-générer la db, il faudra les delete ici juste avant -->

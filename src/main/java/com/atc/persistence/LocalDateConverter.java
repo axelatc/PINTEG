@@ -1,4 +1,4 @@
-package com.atc;
+package com.atc.persistence;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

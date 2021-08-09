@@ -1,8 +1,8 @@
 package com.atc.backingBeans.roles;
 
-import com.atc.entities.RoleEntity;
+import com.atc.persistence.entities.RoleEntity;
 import com.atc.services.RoleService;
-import com.atc.utils.JpaUtils;
+import com.atc.persistence.JpaUtils;
 import org.apache.log4j.Logger;
 
 import javax.enterprise.context.SessionScoped;

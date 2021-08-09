@@ -1,4 +1,4 @@
-package com.atc.entities;
+package com.atc.persistence.entities;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
