@@ -1,5 +1,7 @@
 package com.atc.persistence.entities;
 
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -9,7 +11,10 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "units", schema = "shapp", catalog = "")
-public class UnitEntity {
+@SessionScoped
+@Named
+public class UnitEntity implements Serializable {
+
     private int id;
     private String name;
     private String symbol;
