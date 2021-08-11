@@ -1,14 +1,15 @@
 package com.atc.converters;
 
+import com.atc.persistence.JpaUtils;
 import com.atc.persistence.entities.RoleEntity;
 import com.atc.services.RoleService;
-import com.atc.persistence.JpaUtils;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 
@@ -20,7 +21,8 @@ import javax.persistence.EntityManager;
 public class RoleConverter implements Converter {
 
 
-    private RoleService roleService = new RoleService();
+    @Inject
+    private RoleService roleService;
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
