@@ -3,6 +3,11 @@ package com.atc.persistence.entities;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -15,9 +20,22 @@ import java.util.Objects;
 @Named
 public class UnitEntity implements Serializable {
 
+    @Positive
     private int id;
+
+    @NotBlank
+    @NotNull
+    @Size(min=1, max=100)
     private String name;
+
+    @NotBlank
+    @NotNull
+    @Size(min=1, max=100)
     private String symbol;
+
+    @NotBlank
+    @NotNull
+    @Size(min=1, max=2000)
     private String description;
     private Collection<MeasurandEntity> measurandsById;
 
