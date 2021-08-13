@@ -14,7 +14,7 @@
                         <ui:include src="/WEB-INF/includes/dashboardButton.xhtml" />
                         <h:panelGroup rendered="#{authUtils.subject.isPermitted('roles:*')}">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                <a class="nav-link dropdown-toggle" href="#" id="rolesNavDropdown" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     #{bundle['role.navDropdown']}
                                 </a>
@@ -23,6 +23,20 @@
                                             outcome="roleList"/>
                                     <h:link styleClass="dropdown-item" value="#{bundle['roleCreate.navButton']}"
                                             outcome="roleCreate"/>
+                                </ul>
+                            </li>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{authUtils.subject.isPermitted('own_measurands:*')}">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="measurandsNavDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    #{bundle['measurand.navDropdown']}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <h:link styleClass="dropdown-item" value="#{bundle['measurandList.navButton']}"
+                                            outcome="measurandList"/>
+                                    <h:link styleClass="dropdown-item" value="#{bundle['measurandCreate.navButton']}"
+                                            outcome="measurandCreate"/>
                                 </ul>
                             </li>
                         </h:panelGroup>
