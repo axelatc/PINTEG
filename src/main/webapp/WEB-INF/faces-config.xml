@@ -95,6 +95,68 @@
         </navigation-case>
     </navigation-rule>
 
+    <!--  Measurand CRUD  -->
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>measurandList</from-outcome>
+            <to-view-id>/app/measurands/measurandList.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>measurandCreate</from-outcome>
+            <to-view-id>/app/measurands/measurandCreate.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/app/measurands/measurandList.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>measurandEdit</from-outcome>
+            <to-view-id>/app/measurands/measurandEdit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{measurandList.delete(measurand)}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/app/measurands/measurandList.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{measurandList.delete(measurand)}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/app/measurands/measurandList.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/app/measurands/measurandEdit.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{measurandEdit.save}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/app/measurands/measurandList.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{measurandEdit.save}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/app/measurands/measurandEdit.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/app/measurands/measurandCreate.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{measurandCreate.save}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/app/measurands/measurandList.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{measurandCreate.save}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/app/measurands/measurandCreate.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>    
+
     <lifecycle>
         <phase-listener>com.atc.listeners.PostRedirectGetListener</phase-listener>
     </lifecycle>
