@@ -13,15 +13,15 @@
         <ui:include src="/WEB-INF/includes/InfoAndErrorMessages.xhtml" />
         <h:dataTable styleClass="table table-striped" value="#{roleList.roles}" var="role">
             <h:column>
-                <f:facet name="header">ID</f:facet>
+                <f:facet name="header">#{bundle['roleList.id.colHeader']}</f:facet>
                 #{role.id}
             </h:column>
             <h:column>
-                <f:facet name="header">Label</f:facet>
+                <f:facet name="header">#{bundle['roleList.label.colHeader']}</f:facet>
                 #{role.label}
             </h:column>
             <h:column>
-                <f:facet name="header">Description</f:facet>
+                <f:facet name="header">#{bundle['roleList.description.colHeader']}</f:facet>
                 #{role.description}
             </h:column>
             <h:column>
