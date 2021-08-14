@@ -25,20 +25,20 @@
                 <h:inputText
                              id="username"
                              value="#{loginBean.username}"
-                             styleClass="form-control"
+                             styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                              required="true"
                              requiredMessage="#{bundle['login.username.requiredMessage']}"
                              validatorMessage="#{bundle['login.username.validationMessage']}">
                     <f:validateLength minimum="1" maximum="100"/>
                 </h:inputText>
-                <h:message for="username" styleClass="text-danger" />
+                <h:message for="username" styleClass="invalid-feedback" />
             </div>
             <div class="mb-3">
                 <h:outputLabel for="password"
                                styleClass="form-label">#{bundle['login.password.inputLabel']}</h:outputLabel>
                 <h:inputSecret id="password"
                                value="#{loginBean.password}"
-                               styleClass="form-control"
+                               styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                                required="true"
                                requiredMessage="#{bundle['login.password.requiredMessage']}"
                                validatorMessage="#{bundle['login.password.validationMessage']}">
@@ -46,7 +46,7 @@
                     <f:validateRegex
                             pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,255})" />
                 </h:inputSecret>
-                <h:message for="password" styleClass="text-danger"/>
+                <h:message for="password" styleClass="invalid-feedback"/>
             </div>
             <div id="submitBtn" class="textPlacement">
                 <h:commandButton styleClass="btn btn-primary"
