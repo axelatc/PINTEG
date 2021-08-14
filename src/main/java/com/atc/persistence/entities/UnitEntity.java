@@ -14,6 +14,15 @@ import java.util.Objects;
 /**
  * @author axel
  */
+@NamedQueries(
+        value = {
+                @NamedQuery(name = "Unit.findAll",
+                        query = "SELECT p from UnitEntity p"),
+                @NamedQuery(name = "Unit.findOneByName",
+                        query = "SELECT p from UnitEntity p where p.name= :name")
+        }
+
+)
 @Entity
 @Table(name = "units", schema = "shapp", catalog = "")
 @SessionScoped
