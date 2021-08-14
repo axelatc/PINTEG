@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="/WEB-INF/templates/userTemplate.xhtml">
+    <ui:define name="title">
+        #{bundle['measurandList.pageTitle']}
+    </ui:define>
+    <ui:define name="content">
+        <h1 class="display-1">#{bundle['measurandList.pageTitle']}</h1>
+        <ui:include src="/WEB-INF/includes/InfoAndErrorMessages.xhtml" />
+        <h:dataTable styleClass="table table-striped" value="#{measurandList.measurands}" var="measurand">
+            <h:column>
+                <f:facet name="header">#{bundle['measurandList.id.colHeader']}</f:facet>
+                #{measurand.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">#{bundle['measurandList.label.colHeader']}</f:facet>
+                #{measurand.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">#{bundle['measurandList.unit.colHeader']}</f:facet>
+                #{empty measurand.unitsByUnitId ? bundle['measurandList.unit.none'] : measurand.unitsByUnitId.symbol}
+            </h:column>
+            <h:column>
+                <f:facet name="header">#{bundle['measurandList.description.colHeader']}</f:facet>
+                #{measurand.description}
+            </h:column>
+            <h:column>
+                <h:link value="#{bundle['measurandEdit.submitButtonName']}" outcome="measurandEdit">
+                    <f:param name="id" value="#{measurand.id}"/>
+                </h:link>
+            </h:column>
+            <h:column>
+                <h:form>
+                    <h:commandLink value="#{bundle['measurandDelete.actionName']}" action="#{measurandList.delete(measurand)}">
+                    </h:commandLink>
+                </h:form>
+            </h:column>
+        </h:dataTable>
+    </ui:define>
+</ui:composition>
+</html>

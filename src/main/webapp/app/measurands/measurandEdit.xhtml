@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/userTemplate.xhtml">
+    <ui:define name="title">
+        #{bundle['measurandEdit.pageTitle']}
+    </ui:define>
+
+    <f:metadata>
+        <f:viewParam name="id" value="#{measurandEdit.measurand}"
+                     converter="#{measurandConverter}"
+                     converterMessage="Unknown measurand, please use a link from within the system."
+                     required="true" requiredMessage="Bad request, please use a link from within the system."
+        />
+    </f:metadata>
+
+    <ui:define name="content">
+        <h1 class="display-1">#{bundle['measurandEdit.pageTitle']}</h1>
+        <ui:include src="/WEB-INF/includes/InfoAndErrorMessages.xhtml" />
+        <h:form rendered="#{not empty measurandEdit.measurand}">
+            <div class="mb-3">
+                <h:outputLabel for="label"
+                               styleClass="form-label">#{bundle['measurand.label.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{measurandEdit.measurand.name}"
+                             id="label"
+                             styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
+                             required="true"
+                             requiredMessage="#{bundle['measurand.label.requiredMessage']}"
+                             validatorMessage="#{bundle['measurand.label.validationMessage']}">
+                    <f:validateLength minimum="1" maximum="100"/>
+                </h:inputText>
+                <h:message for="label" styleClass="invalid-feedback"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="unit"
+                               styleClass="form-label">#{bundle['measurand.unit.inputLabel']}</h:outputLabel>
+                <h:selectOneMenu value="#{measurandEdit.measurand.unitsByUnitId}"
+                                 converter="#{unitConverter}"
+                                 id="unit"
+                                 styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
+                                 required="false"
+                                 requiredMessage="#{bundle['measurand.unit.required']}"
+                                 validatorMessage="#{bundle['measurand.unit.validation']}">
+                    <f:selectItem itemValue="#{null}" itemLabel="#{bundle['measurand.unit.selectNone']}" />
+                    <f:selectItems value="#{measurandEdit.units}" var="unit" itemValue="#{unit}" itemLabel="#{unit.name} [#{unit.symbol}] : #{unit.description}" />
+                </h:selectOneMenu>
+                <h:message for="unit" styleClass="invalid-feedback"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="description"
+                               styleClass="form-label">#{bundle['measurand.description.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{measurandEdit.measurand.description}"
+                             id="description"
+                             styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
+                             required="true"
+                             requiredMessage="#{bundle['measurand.description.requiredMessage']}"
+                             validatorMessage="#{bundle['measurand.description.validationMessage']}">
+                    <f:validateLength minimum="1" maximum="2000"/>
+                </h:inputText>
+                <h:message for="description" styleClass="invalid-feedback"/>
+            </div>
+            <h:commandButton value="#{bundle['measurandEdit.submitButtonName']}"
+                             action="#{measurandEdit.save}"
+                             styleClass="btn btn-primary"/>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

@@ -1,6 +1,9 @@
 package com.atc.persistence.entities;
 
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -19,12 +22,24 @@ import java.util.Objects;
 )
 @Entity
 @Table(name = "measurands", schema = "shapp", catalog = "")
-public class MeasurandEntity {
+@SessionScoped
+@Named
+public class MeasurandEntity implements Serializable {
     private int id;
     private String name;
     private String description;
     private UnitEntity unitsByUnitId;
     private Collection<MeasureEntity> measuresById;
+
+    public MeasurandEntity(String name, String description, UnitEntity unitsByUnitId) {
+        this.name = name;
+        this.description = description;
+        this.unitsByUnitId = unitsByUnitId;
+    }
+
+    public MeasurandEntity() {
+
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,6 +80,17 @@ public class MeasurandEntity {
         if (o == null || getClass() != o.getClass()) return false;
         MeasurandEntity that = (MeasurandEntity) o;
         return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(description, that.description);
+    }
+
+    @Override
+    public String toString() {
+        return "MeasurandEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", unitsByUnitId=" + unitsByUnitId +
+                ", measuresById=" + measuresById +
+                '}';
     }
 
     @Override
