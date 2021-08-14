@@ -8,6 +8,15 @@ import java.util.Objects;
 /**
  * @author axel
  */
+@NamedQueries(
+        value = {
+                @NamedQuery(name = "Measurand.findAll",
+                        query = "SELECT p from MeasurandEntity p"),
+                @NamedQuery(name = "Measurand.findOneByName",
+                        query = "SELECT p from MeasurandEntity p where p.name= :name")
+        }
+
+)
 @Entity
 @Table(name = "measurands", schema = "shapp", catalog = "")
 public class MeasurandEntity {
