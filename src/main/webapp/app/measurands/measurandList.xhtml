@@ -29,15 +29,39 @@
                 #{measurand.description}
             </h:column>
             <h:column>
-                <h:link value="#{bundle['measurandEdit.submitButtonName']}" outcome="measurandEdit">
+                <f:facet name="header">#{bundle['anyTable.actions.colHeader']}</f:facet>
+                <h:button outcome="measurandEdit"
+                          value="#{bundle['measurandEdit.submitButtonName']}"
+                          styleClass="btn btn-primary">
                     <f:param name="id" value="#{measurand.id}"/>
-                </h:link>
-            </h:column>
-            <h:column>
-                <h:form>
-                    <h:commandLink value="#{bundle['measurandDelete.actionName']}" action="#{measurandList.delete(measurand)}">
-                    </h:commandLink>
-                </h:form>
+                </h:button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteItemConfirmationModal">
+                    #{bundle['measurandDelete.actionName']}
+                </button>
+                <!-- Delete Item Modal -->
+                <div class="modal fade" id="deleteItemConfirmationModal" tabindex="-1" aria-labelledby="deleteItemConfirmationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteItemConfirmationModalLabel">#{bundle['measurandList.confirmationModal.title']}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="#{bundle['anyModal.closeButton']}"></button>
+                            </div>
+                            <div class="modal-body">
+                                #{bundle['measurandList.confirmationModal.body']}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">#{bundle['anyModal.closeButton']}</button>
+                                <h:form>
+                                    <h:commandLink value="#{bundle['measurandDelete.actionName']}"
+                                                   action="#{measurandList.delete(measurand)}"
+                                                   styleClass="btn btn-danger">
+                                    </h:commandLink>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </h:column>
         </h:dataTable>
     </ui:define>
