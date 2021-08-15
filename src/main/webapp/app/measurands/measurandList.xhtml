@@ -11,7 +11,7 @@
     <ui:define name="content">
         <h1 class="display-1">#{bundle['measurandList.pageTitle']}</h1>
         <ui:include src="/WEB-INF/includes/InfoAndErrorMessages.xhtml" />
-        <h:dataTable styleClass="table table-striped" value="#{measurandList.measurands}" var="measurand">
+        <h:dataTable styleClass="table table-striped table-hover table-responsive" value="#{measurandList.measurands}" var="measurand">
             <h:column>
                 <f:facet name="header">#{bundle['measurandList.id.colHeader']}</f:facet>
                 #{measurand.id}
