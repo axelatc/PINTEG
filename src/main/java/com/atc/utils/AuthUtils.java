@@ -29,7 +29,7 @@ public class AuthUtils {
      * @param password the password in clear text
      * @return the encrypted password
      */
-    public final static String hashAndSalt(String password) {
+    public static String hashAndSalt(String password) {
         PasswordService passwordService = new DefaultPasswordService();
         return passwordService.encryptPassword(password);
     }
