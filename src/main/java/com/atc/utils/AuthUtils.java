@@ -18,10 +18,10 @@ import javax.inject.Named;
 public class AuthUtils {
     private final static Logger LOG = Logger.getLogger(AuthUtils.class);
 
-    public Subject getSubject() {
+    public static Subject getSubject() {
         return SecurityUtils.getSubject();
     }
-    public String getUsername() {
+    public static String getUsername() {
         return (String) SecurityUtils.getSubject().getPrincipal();
     }
 
