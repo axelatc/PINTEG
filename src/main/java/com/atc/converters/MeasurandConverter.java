@@ -40,8 +40,11 @@ public class MeasurandConverter implements Converter {
             LOG.info("getAsObject(): measurand entity found from String value is : " + measurandEntity.toString());
             return measurandEntity;
         } catch (NumberFormatException e) {
-            LOG.info(String.format("getAsObject(): the string value [%s] is not a valid Measurand ID: ",value));
+            LOG.info(String.format("getAsObject(): the string value [%s] is not a valid Measurand ID: ", value));
             throw new ConverterException(String.format("getAsObject() : the value [%s] is not a valid Measurand ID", value), e);
+        } catch (Exception e) {
+            LOG.info(String.format("getAsObject(): no measurand entity was found in the data store for Measurand ID [%s]", value), e);
+            throw new ConverterException(String.format("getAsObject(): no measurand entity was found in the data store for Measurand ID [%s]", value), e);
         } finally {
             em.clear();
             em.close();

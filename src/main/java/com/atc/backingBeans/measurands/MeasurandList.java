@@ -27,6 +27,7 @@ public class MeasurandList implements Serializable {
     private final static Logger LOG = Logger.getLogger(MeasurandList.class);
     private final static String SUCCESS_LOCALE_MESSAGE_NAME = "measurandDelete.successMessage";
     private final static String FAILURE_LOCALE_MESSAGE_NAME = "measurandDelete.failureMessage";
+    public static final String FAILURE_ENTITY_UNFOUND_MESSAGE_NAME = "measurandDelete.failure.unfound";
 
     @Inject
     private MeasurandService measurandService;
@@ -42,13 +43,17 @@ public class MeasurandList implements Serializable {
     public String delete(MeasurandEntity measurandToDelete) {
         EntityManager em = createEntityManager();
 
+        MeasurandEntity foundMeasurand = measurandService.findOneByIdOrNull(measurandToDelete.getId(), em);
+        if(foundMeasurand == null) {
+            LOG.info("Deletion of measurand entity " + measurandToDelete.toString() + " has failed: no measurand entity has been found.");
+            addErrorMessage(getLocaleMessageAsString(FAILURE_ENTITY_UNFOUND_MESSAGE_NAME));
+            em.clear();
+            em.close();
+            return "failure";
+        }
+
         EntityTransaction tx = null;
         try {
-            MeasurandEntity foundMeasurand = measurandService.findOneByIdOrNull(measurandToDelete.getId(), em);
-            if(foundMeasurand == null) {
-                throw new RuntimeException("Can't delete measurand in data store: it doesn't exist");
-            }
-
             tx = em.getTransaction();
             tx.begin();
             measurandService.delete(foundMeasurand, em);

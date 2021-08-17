@@ -29,6 +29,7 @@ public class MeasurandEdit implements Serializable {
     private final static Logger LOG = Logger.getLogger(MeasurandEdit.class);
     private final static String SUCCESS_LOCALE_MESSAGE_NAME = "measurandEdit.successMessage";
     private final static String FAILURE_LOCALE_MESSAGE_NAME = "measurandEdit.failureMessage";
+    public static final String FAILURE_ENTITY_UNFOUND_MESSAGE_NAME = "measurandEdit.failure.unfound";
 
     private MeasurandEntity measurand;
     @Inject
@@ -49,13 +50,19 @@ public class MeasurandEdit implements Serializable {
     public String save() {
 
         EntityManager em = JpaUtils.createEntityManager();
+        MeasurandEntity foundMeasurand = measurandService.findOneByIdOrNull(this.measurand.getId(), em);
+        if(foundMeasurand == null) {
+            LOG.info("Updating of measurand entity " + foundMeasurand.toString() + " has failed: no measurand entity has been found.");
+            addErrorMessage(getLocaleMessageAsString(FAILURE_ENTITY_UNFOUND_MESSAGE_NAME));
+            em.clear();
+            em.close();
+            return "failure";
+        }
+
         EntityTransaction tx = null;
         try {
 
-            MeasurandEntity foundMeasurand = measurandService.findOneByIdOrNull(this.measurand.getId(), em);
-            if(foundMeasurand == null) {
-                throw new RuntimeException("Can't update measurand in data store: it doesn't exist");
-            }
+
             foundMeasurand.setName(measurand.getName());
             foundMeasurand.setDescription(measurand.getDescription());
             foundMeasurand.setUnitsByUnitId(measurand.getUnitsByUnitId());
