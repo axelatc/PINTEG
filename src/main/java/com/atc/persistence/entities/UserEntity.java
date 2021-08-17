@@ -112,6 +112,25 @@ public class UserEntity implements Serializable {
         return Objects.hash(id);
     }
 
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", birthdate=" + birthdate +
+                ", gender=" + gender +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", creationDateTime=" + creationDateTime +
+                ", isActive=" + isActive +
+                ", coachDegreeInfo='" + coachDegreeInfo + '\'' +
+                ", coachCareerStartDate=" + coachCareerStartDate +
+                '}';
+    }
+
     public void setId(int id) {
         this.id = id;
     }
