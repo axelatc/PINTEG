@@ -2,8 +2,11 @@ package com.atc.persistence.entities;
 
 import com.sun.istack.internal.Nullable;
 
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -23,7 +26,9 @@ import java.util.Objects;
         }
 
 )
-public class UserEntity {
+@SessionScoped
+@Named
+public class UserEntity implements Serializable {
     @Positive
     private int id;
 
