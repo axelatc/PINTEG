@@ -58,14 +58,14 @@ public class MeasurandList implements Serializable {
             tx.begin();
             measurandService.delete(foundMeasurand, em);
             tx.commit();
-            LOG.info("Measurand entity is removed.");
+            LOG.info("Measurand entity " + measurandToDelete.toString() + " is removed.");
             addSuccessMessage(getLocaleMessageAsString(SUCCESS_LOCALE_MESSAGE_NAME));
             return "success";
         } catch (Exception ex) {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
             }
-            LOG.info("Deletion of measurand entity has failed.", ex);
+            LOG.info("Deletion of measurand entity " + measurandToDelete.toString() + " has failed.", ex);
             addErrorMessage(getLocaleMessageAsString(FAILURE_LOCALE_MESSAGE_NAME));
             return "failure";
         } finally {
