@@ -84,7 +84,6 @@ public class MeasurandEdit implements Serializable {
             addErrorMessage(getLocaleMessageAsString(FAILURE_LOCALE_MESSAGE_NAME));
             return "failure";
         } finally {
-            em.clear();
             em.close();
         }
 
