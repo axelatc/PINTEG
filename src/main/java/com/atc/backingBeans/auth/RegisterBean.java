@@ -5,7 +5,6 @@ import com.atc.persistence.entities.RoleEntity;
 import com.atc.persistence.entities.UserEntity;
 import com.atc.services.RoleService;
 import com.atc.services.UserService;
-import com.atc.utils.AuthUtils;
 import com.atc.persistence.JpaUtils;
 import org.apache.log4j.Logger;
 
@@ -61,7 +60,7 @@ public class RegisterBean implements Serializable {
             LOG.info("Begin transaction to persist newly registered user...");
             tx.begin();
             UserEntity userToInsert = this.user;
-            String encryptedPassword = AuthUtils.hashAndSalt(this.user.getPassword());
+            String encryptedPassword = AuthBean.hashAndSalt(this.user.getPassword());
             userToInsert.setPassword(encryptedPassword);
             LOG.info("Finding the role appropriate for a newly registered user");
             RoleEntity roleForNewlyRegisteredUser = roleService.findRoleForNewlyRegisteredUserOrNull();

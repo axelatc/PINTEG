@@ -1,6 +1,6 @@
 //import com.main.schoolux.validations.CommonValidation;
 
-import static com.atc.utils.AuthUtils.hashAndSalt;
+import static com.atc.backingBeans.auth.AuthBean.hashAndSalt;
 
 public class test {
 
