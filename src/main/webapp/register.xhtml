@@ -20,7 +20,7 @@
                                styleClass="form-label">#{bundle['register.firstName.inputLabel']}</h:outputLabel>
                 <h:inputText value="#{registerBean.user.firstName}"
                              id="firstName"
-                             styleClass="form-control"
+                             styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                              required="true"
                              requiredMessage="#{bundle['register.firstName.requiredMessage']}"
                              validatorMessage="#{bundle['register.firstName.validationMessage']}">
@@ -33,7 +33,7 @@
                                styleClass="form-label">#{bundle['register.lastName.inputLabel']}</h:outputLabel>
                 <h:inputText value="#{registerBean.user.lastName}"
                              id="lastName"
-                             styleClass="form-control"
+                             styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                              required="true"
                              requiredMessage="#{bundle['register.lastName.requiredMessage']}"
                              validatorMessage="#{bundle['register.lastName.validationMessage']}">
@@ -46,7 +46,7 @@
                                styleClass="form-label">#{bundle['register.username.inputLabel']}</h:outputLabel>
                 <h:inputText value="#{registerBean.user.username}"
                              id="username"
-                             styleClass="form-control"
+                             styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                              required="true"
                              requiredMessage="#{bundle['register.username.requiredMessage']}"
                              validatorMessage="#{bundle['register.username.validationMessage']}">
@@ -59,7 +59,7 @@
                                styleClass="form-label">#{bundle['register.password.inputLabel']}</h:outputLabel>
                 <h:inputSecret value="#{registerBean.user.password}"
                              id="password"
-                             styleClass="form-control"
+                             styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                              required="true"
                              requiredMessage="#{bundle['register.password.requiredMessage']}"
                              validatorMessage="#{bundle['register.password.validationMessage']}">
@@ -77,7 +77,7 @@
                                a:min="1900-01-01"
                                a:max="#{registerBean.today}"
                                id="birthdate"
-                               styleClass="form-control"
+                               styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                                required="true"
                                requiredMessage="#{bundle['register.birthdate.requiredMessage']}"
                                validatorMessage="#{bundle['register.birthdate.validationMessage']}">
@@ -90,7 +90,7 @@
                                styleClass="form-label">#{bundle['register.gender.inputLabel']}</h:outputLabel>
                 <h:selectOneMenu value="#{registerBean.user.gender}"
                                  id="gender"
-                                 styleClass="form-control"
+                                 styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                                  required="true"
                                  requiredMessage="#{bundle['register.gender.requiredMessage']}"
                                  validatorMessage="#{bundle['register.gender.validationMessage']}">
@@ -103,7 +103,7 @@
                                styleClass="form-label">#{bundle['register.emailAddress.inputLabel']}</h:outputLabel>
                 <h:inputText value="#{registerBean.user.emailAddress}"
                                id="emailAddress"
-                               styleClass="form-control"
+                               styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                                required="true"
                                requiredMessage="#{bundle['register.emailAddress.requiredMessage']}"
                                validatorMessage="#{bundle['register.emailAddress.validationMessage']}">
@@ -118,7 +118,7 @@
                                styleClass="form-label">#{bundle['register.phoneNumber.inputLabel']}</h:outputLabel>
                 <h:inputText value="#{registerBean.user.phoneNumber}"
                                id="phoneNumber"
-                               styleClass="form-control"
+                               styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                                required="true"
                                requiredMessage="#{bundle['register.phoneNumber.requiredMessage']}"
                                validatorMessage="#{bundle['register.phoneNumber.validationMessage']}">
@@ -133,7 +133,7 @@
                                styleClass="form-label">#{bundle['register.coachDegreeInfo.inputLabel']}</h:outputLabel>
                 <h:inputText value="#{registerBean.user.coachDegreeInfo}"
                              id="coachDegreeInfo"
-                             styleClass="form-control"
+                             styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                              required="false"
                              requiredMessage="#{bundle['register.coachDegreeInfo.requiredMessage']}"
                              validatorMessage="#{bundle['register.coachDegreeInfo.validationMessage']}">
@@ -149,7 +149,7 @@
                              a:min="1900-01-01"
                              a:max="#{registerBean.today}"
                              id="coachCareerStartDate"
-                             styleClass="form-control"
+                             styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                              required="false"
                              requiredMessage="#{bundle['register.coachCareerStartDate.requiredMessage']}"
                              validatorMessage="#{bundle['register.coachCareerStartDate.validationMessage']}">
