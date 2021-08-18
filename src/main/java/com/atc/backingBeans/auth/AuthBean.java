@@ -1,5 +1,6 @@
 package com.atc.backingBeans.auth;
 
+import com.atc.persistence.entities.UserEntity;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.credential.DefaultPasswordService;
@@ -30,5 +31,15 @@ public class AuthBean implements Serializable {
     public static String hashAndSalt(String password) {
         PasswordService passwordService = new DefaultPasswordService();
         return passwordService.encryptPassword(password);
+    }
+
+    private UserEntity currentUser;
+
+    public UserEntity getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(UserEntity currentUser) {
+        this.currentUser = currentUser;
     }
 }

@@ -1,5 +1,8 @@
 package com.atc.backingBeans.auth;
 
+import com.atc.persistence.JpaUtils;
+import com.atc.persistence.entities.UserEntity;
+import com.atc.services.UserService;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -8,7 +11,9 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
 import java.io.IOException;
 import java.io.Serializable;
 
@@ -27,6 +32,10 @@ public class LoginBean implements Serializable {
 
     private String username;
     private String password;
+    @Inject
+    private UserService userService;
+    @Inject
+    AuthBean authBean;
 
     @PostConstruct
     public void init() {
@@ -41,7 +50,17 @@ public class LoginBean implements Serializable {
             UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), getPassword());
             SecurityUtils.getSubject().login(token);
 
-            //TODO set current user on Session
+            EntityManager em = JpaUtils.createEntityManager();
+            UserEntity foundUserEntity = userService.findUserByUsernameOrNull(getUsername(), em);
+            if(foundUserEntity == null) {
+                LOG.info("UserEntity " + foundUserEntity.toString() + " not found in data store");
+                addErrorMessage(getLocaleMessageAsString(GENERIC_FAILURE_LOCALE_MESSAGE_NAME));
+                em.clear();
+                em.close();
+                return "failure";
+            }
+
+            authBean.setCurrentUser(foundUserEntity);
             addSuccessMessage(getLocaleMessageAsString(SUCCESS_LOCALE_MESSAGE_NAME));
             return "success";
 
