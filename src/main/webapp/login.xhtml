@@ -15,7 +15,7 @@
         <ui:include src="/WEB-INF/includes/InfoAndErrorMessages.xhtml" />
         <ui:fragment rendered="#{authBean.subject.authenticated}">
             <div class="alert alert-danger">
-                #{authBean.username}: #{bundle['login.isAuthenticated']}
+                #{authBean.principal}: #{bundle['login.isAuthenticated']}
             </div>
         </ui:fragment>
         <h:form id="loginForm">
