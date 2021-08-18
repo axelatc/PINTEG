@@ -26,7 +26,7 @@
                              validatorMessage="#{bundle['register.firstName.validationMessage']}">
                     <f:validateLength minimum="1" maximum="100"/>
                 </h:inputText>
-                <h:message for="firstName" styleClass="text-danger"/>
+                <h:message for="firstName" styleClass="invalid-feedback"/>
             </div>
             <div class="mb-3">
                 <h:outputLabel for="lastName"
@@ -39,7 +39,7 @@
                              validatorMessage="#{bundle['register.lastName.validationMessage']}">
                     <f:validateLength minimum="1" maximum="100"/>
                 </h:inputText>
-                <h:message for="lastName" styleClass="text-danger"/>
+                <h:message for="lastName" styleClass="invalid-feedback"/>
             </div>
             <div class="mb-3">
                 <h:outputLabel for="username"
@@ -52,7 +52,7 @@
                              validatorMessage="#{bundle['register.username.validationMessage']}">
                     <f:validateLength minimum="1" maximum="100"/>
                 </h:inputText>
-                <h:message for="username" styleClass="text-danger"/>
+                <h:message for="username" styleClass="invalid-feedback"/>
             </div>
             <div class="mb-3">
                 <h:outputLabel for="password"
@@ -67,7 +67,7 @@
                     <f:validateRegex
                             pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,255})" />
                 </h:inputSecret>
-                <h:message for="password" styleClass="text-danger"/>
+                <h:message for="password" styleClass="invalid-feedback"/>
             </div>
             <div class="mb-3">
                 <h:outputLabel for="birthdate"
@@ -83,7 +83,7 @@
                                validatorMessage="#{bundle['register.birthdate.validationMessage']}">
                     <f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
                 </h:inputText>
-                <h:message for="birthdate" styleClass="text-danger"/>
+                <h:message for="birthdate" styleClass="invalid-feedback"/>
             </div>
             <div class="mb-3">
                 <h:outputLabel for="gender"
@@ -96,7 +96,7 @@
                                  validatorMessage="#{bundle['register.gender.validationMessage']}">
                     <f:selectItems value="#{registerBean.genders}" />
                 </h:selectOneMenu>
-                <h:message for="gender" styleClass="text-danger"/>
+                <h:message for="gender" styleClass="invalid-feedback"/>
             </div>
             <div class="mb-3">
                 <h:outputLabel for="emailAddress"
@@ -111,7 +111,7 @@
                     <f:validateRegex
                             pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
                 </h:inputText>
-                <h:message for="emailAddress" styleClass="text-danger"/>
+                <h:message for="emailAddress" styleClass="invalid-feedback"/>
             </div>
             <div class="mb-3">
                 <h:outputLabel for="phoneNumber"
@@ -126,7 +126,7 @@
                     <f:validateRegex
                             pattern="^([+]?[\d]+)?$" />
                 </h:inputText>
-                <h:message for="phoneNumber" styleClass="text-danger"/>
+                <h:message for="phoneNumber" styleClass="invalid-feedback"/>
             </div>
             <div class="mb-3">
                 <h:outputLabel for="coachDegreeInfo"
@@ -139,7 +139,7 @@
                              validatorMessage="#{bundle['register.coachDegreeInfo.validationMessage']}">
                     <f:validateLength minimum="1" maximum="2000"/>
                 </h:inputText>
-                <h:message for="coachDegreeInfo" styleClass="text-danger"/>
+                <h:message for="coachDegreeInfo" styleClass="invalid-feedback"/>
             </div>
             <div class="mb-3">
                 <h:outputLabel for="coachCareerStartDate"
@@ -155,7 +155,7 @@
                              validatorMessage="#{bundle['register.coachCareerStartDate.validationMessage']}">
                     <f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
                 </h:inputText>
-                <h:message for="coachCareerStartDate" styleClass="text-danger"/>
+                <h:message for="coachCareerStartDate" styleClass="invalid-feedback"/>
             </div>
             <div id="submitBtn"  class="textPlacement">
                 <h:commandButton styleClass="btn btn-primary"
