@@ -11,6 +11,10 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 
+/**
+ * Provide utilities related to authentification
+ * @author axel
+ */
 @SessionScoped
 @Named
 public class AuthBean implements Serializable {
@@ -27,6 +31,9 @@ public class AuthBean implements Serializable {
 
     private UserEntity currentUser;
 
+    /**
+     * @return Apache Shiro's subject. In this context, the subject is a real user.
+     */
     public Subject getSubject() {
         return SecurityUtils.getSubject();
     }
@@ -35,10 +42,16 @@ public class AuthBean implements Serializable {
         return (String) SecurityUtils.getSubject().getPrincipal();
     }
 
+    /**
+     * @return the currently authenticated user
+     */
     public UserEntity getCurrentUser() {
         return currentUser;
     }
 
+    /**
+     * @param currentUser the currently authenticated user
+     */
     public void setCurrentUser(UserEntity currentUser) {
         this.currentUser = currentUser;
     }
