@@ -13,9 +13,9 @@
     <ui:define name="content">
         <h1 class="display-1">#{bundle['login.pageTitle']}</h1>
         <ui:include src="/WEB-INF/includes/InfoAndErrorMessages.xhtml" />
-        <ui:fragment rendered="#{authUtils.subject.authenticated}">
+        <ui:fragment rendered="#{authBean.subject.authenticated}">
             <div class="alert alert-danger">
-                #{authUtils.username}: #{bundle['login.isAuthenticated']}
+                #{authBean.username}: #{bundle['login.isAuthenticated']}
             </div>
         </ui:fragment>
         <h:form id="loginForm">
