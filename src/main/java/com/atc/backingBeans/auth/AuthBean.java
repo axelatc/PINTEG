@@ -16,14 +16,6 @@ import java.io.Serializable;
 public class AuthBean implements Serializable {
     private final static Logger LOG = Logger.getLogger(AuthBean.class);
 
-    public static Subject getSubject() {
-        return SecurityUtils.getSubject();
-    }
-
-    public static String getUsername() {
-        return (String) SecurityUtils.getSubject().getPrincipal();
-    }
-
     /**
      * @param password the password in clear text
      * @return the encrypted password
@@ -34,6 +26,14 @@ public class AuthBean implements Serializable {
     }
 
     private UserEntity currentUser;
+
+    public Subject getSubject() {
+        return SecurityUtils.getSubject();
+    }
+
+    public String getUsername() {
+        return (String) SecurityUtils.getSubject().getPrincipal();
+    }
 
     public UserEntity getCurrentUser() {
         return currentUser;
