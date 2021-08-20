@@ -39,10 +39,10 @@ public class AuthBean implements Serializable {
     }
 
     /**
-     * @return Apache Shiro's principal. In this case, the username.
+     * @return The username of the authenticated user.
      */
-    public String getPrincipal() {
-        return (String) SecurityUtils.getSubject().getPrincipal();
+    public String getUsername() {
+        return this.currentUser.getUsername();
     }
 
     /**
