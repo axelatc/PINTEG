@@ -92,6 +92,7 @@ public class UserEntity implements Serializable {
     private Collection<UserSubscriptionEntity> usersSubscriptionsById;
     private Collection<UsersTeamEntity> usersTeamsById;
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -110,6 +111,10 @@ public class UserEntity implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public UserEntity() {
+
     }
 
     public UserEntity(UserEntity other) {
