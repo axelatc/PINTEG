@@ -49,7 +49,7 @@ public class AuthBean implements Serializable {
      * @return the currently authenticated user
      */
     public UserEntity getCurrentUser() {
-        return currentUser;
+        return new UserEntity(this.currentUser);
     }
 
     /**
