@@ -33,6 +33,52 @@
         </navigation-case>
     </navigation-rule>
 
+    <!--  Manage account  -->
+    <navigation-rule>
+        <from-view-id>/app/*</from-view-id>
+        <navigation-case>
+            <from-outcome>accountConsult</from-outcome>
+            <to-view-id>/app/myaccount/accountConsult.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/app/myaccount/accountConsult.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>accountEdit</from-outcome>
+            <to-view-id>/app/myaccount/accountEdit.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/app/myaccount/accountEdit.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{personalAccount.saveEdit}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/app/myaccount/accountConsult.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{personalAccount.saveEdit}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/app/myaccount/accountConsult.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/app/myaccount/accountConsult.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{personalAccount.deactivate}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{personalAccount.deactivate}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/app/myaccount/accountConsult.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+
     <!--  Role CRUD  -->
     <navigation-rule>
         <from-view-id>/*</from-view-id>

@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">>
+
+<ui:composition template="/WEB-INF/templates/userTemplate.xhtml">
+    <ui:define name="title">
+        #{bundle['accountConsult.pageTitle']}
+    </ui:define>
+
+    <ui:define name="content">
+        <h1 class="display-1">#{bundle['accountConsult.pageTitle']}</h1>
+        <ui:include src="/WEB-INF/includes/InfoAndErrorMessages.xhtml"/>
+        <h:form rendered="#{not empty personalAccount.currentUser}" id="personalAccountConsultForm">
+            <div class="mb-3">
+                <h:outputLabel for="firstName"
+                               styleClass="form-label">#{bundle['accountConsult.firstName.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{personalAccount.currentUser.firstName}"
+                             id="firstName"
+                             disabled="true"
+                             styleClass="form-control">
+                </h:inputText>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="lastName"
+                               styleClass="form-label">#{bundle['accountConsult.lastName.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{personalAccount.currentUser.lastName}"
+                             id="lastName"
+                             disabled="true"
+                             styleClass="form-control">
+                </h:inputText>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="username"
+                               styleClass="form-label">#{bundle['accountConsult.username.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{personalAccount.currentUser.username}"
+                             id="username"
+                             disabled="true"
+                             styleClass="form-control">
+                </h:inputText>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="birthdate"
+                               styleClass="form-label">#{bundle['accountConsult.birthdate.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{personalAccount.currentUser.birthdate}"
+                             id="birthdate"
+                             disabled="true"
+                             styleClass="form-control">
+                </h:inputText>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="gender"
+                               styleClass="form-label">#{bundle['accountConsult.gender.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{personalAccount.currentUser.gender}"
+                                 id="gender"
+                                 disabled="true"
+                                 styleClass="form-control">
+                </h:inputText>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="emailAddress"
+                               styleClass="form-label">#{bundle['accountConsult.emailAddress.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{personalAccount.currentUser.emailAddress}"
+                             id="emailAddress"
+                             disabled="true"
+                             styleClass="form-control">
+                </h:inputText>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="phoneNumber"
+                               styleClass="form-label">#{bundle['accountConsult.phoneNumber.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{personalAccount.currentUser.phoneNumber}"
+                             id="phoneNumber"
+                             disabled="true"
+                             styleClass="form-control">
+                </h:inputText>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="coachDegreeInfo"
+                               styleClass="form-label">#{bundle['accountConsult.coachDegreeInfo.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{personalAccount.currentUser.coachDegreeInfo}"
+                             id="coachDegreeInfo"
+                             disabled="true"
+                             styleClass="form-control">
+                </h:inputText>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="coachCareerStartDate"
+                               styleClass="form-label">#{bundle['accountConsult.coachCareerStartDate.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{personalAccount.currentUser.coachCareerStartDate}"
+                             id="coachCareerStartDate"
+                             disabled="true"
+                             styleClass="form-control">
+                </h:inputText>
+            </div>
+        </h:form>
+        <h:button outcome="accountEdit"
+                  value="#{bundle['accountConsult.editButton']}"
+                  styleClass="btn btn-primary">
+        </h:button>
+        <h:form>
+            <h:commandLink value="#{bundle['accountConsult.deactivateButton']}"
+                           action="#{personalAccount.deactivate}"
+                           styleClass="btn btn-danger">
+            </h:commandLink>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>
+
