@@ -50,13 +50,6 @@ public class PersonalAccount implements Serializable {
         userToDeactivate = authBean.getCurrentUser();
     }
 
-    public Gender[] getGenders() {
-        return Gender.values();
-    }
-
-    public LocalDate getToday() {
-        return LocalDate.now();
-    }
 
     /**
      * Update the current authenticated user
@@ -139,6 +132,13 @@ public class PersonalAccount implements Serializable {
         }
     }
 
+    public Gender[] getGenders() {
+        return Gender.values();
+    }
+
+    public LocalDate getToday() {
+        return LocalDate.now();
+    }
     public UserEntity getCurrentUser() {
         return authBean.getCurrentUser();
     }
