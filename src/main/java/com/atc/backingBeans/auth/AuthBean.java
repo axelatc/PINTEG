@@ -58,4 +58,12 @@ public class AuthBean implements Serializable {
     public void setCurrentUser(UserEntity currentUser) {
         this.currentUser = currentUser;
     }
+
+    /**
+     * Log out the Shiro's Subject and set the current authenticated user to null
+     */
+    public void logout() {
+        SecurityUtils.getSubject().logout();
+        this.setCurrentUser(null);
+    }
 }
