@@ -73,9 +73,6 @@ public class PersonalAccount implements Serializable {
             return "failure";
         }
 
-        String encryptedPassword = AuthBean.hashAndSalt(this.userToEdit.getPassword());
-        this.userToEdit.setPassword(encryptedPassword);
-
         EntityTransaction tx = null;
         try {
             tx = em.getTransaction();

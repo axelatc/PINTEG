@@ -55,21 +55,6 @@
                 <h:message for="username" styleClass="invalid-feedback"/>
             </div>
             <div class="mb-3">
-                <h:outputLabel for="password"
-                               styleClass="form-label">#{bundle['accountEdit.password.inputLabel']}</h:outputLabel>
-                <h:inputSecret value="#{personalAccount.userToEdit.password}"
-                               id="password"
-                               styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
-                               required="true"
-                               requiredMessage="#{bundle['accountEdit.password.requiredMessage']}"
-                               validatorMessage="#{bundle['accountEdit.password.validationMessage']}">
-                    <f:validateLength minimum="6" maximum="255"/>
-                    <f:validateRegex
-                            pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,255})" />
-                </h:inputSecret>
-                <h:message for="password" styleClass="invalid-feedback"/>
-            </div>
-            <div class="mb-3">
                 <h:outputLabel for="birthdate"
                                styleClass="form-label">#{bundle['accountEdit.birthdate.inputLabel']}</h:outputLabel>
                 <h:inputText value="#{personalAccount.userToEdit.birthdate}"
