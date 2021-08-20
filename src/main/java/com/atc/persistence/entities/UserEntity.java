@@ -112,6 +112,29 @@ public class UserEntity implements Serializable {
         return Objects.hash(id);
     }
 
+    public UserEntity(UserEntity other) {
+        this.id = other.id;
+        this.firstName = other.firstName;
+        this.lastName = other.lastName;
+        this.username = other.username;
+        this.password = other.password;
+        this.birthdate = other.birthdate;
+        this.gender = other.gender;
+        this.emailAddress = other.emailAddress;
+        this.phoneNumber = other.phoneNumber;
+        this.creationDateTime = other.creationDateTime;
+        this.isActive = other.isActive;
+        this.coachDegreeInfo = other.coachDegreeInfo;
+        this.coachCareerStartDate = other.coachCareerStartDate;
+        this.measuresById = other.measuresById;
+        this.teamCommentsById = other.teamCommentsById;
+        this.teamPostsById = other.teamPostsById;
+        this.teamsById = other.teamsById;
+        this.rolesByRoleId = other.rolesByRoleId;
+        this.usersSubscriptionsById = other.usersSubscriptionsById;
+        this.usersTeamsById = other.usersTeamsById;
+    }
+
     @Override
     public String toString() {
         return "UserEntity{" +
