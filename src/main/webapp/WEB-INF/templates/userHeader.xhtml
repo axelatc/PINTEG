@@ -41,6 +41,20 @@
                             </li>
                         </h:panelGroup>
                     </ul>
+                    <h:panelGroup rendered="#{authBean.subject.isPermitted('own_account:*')}">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="accountsNavDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                #{bundle['account.navDropdown']}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <h:link styleClass="dropdown-item" value="#{bundle['accountConsult.navButton']}"
+                                        outcome="accountConsult"/>
+                                <a class="dropdown-item"
+                                   href="#{request.contextPath}/logout">#{bundle['logout.button']}</a>
+                            </ul>
+                        </li>
+                    </h:panelGroup>
                     <ui:include src="/WEB-INF/includes/languagePicker.xhtml" />
                     <ui:include src="/WEB-INF/includes/logoutButton.xhtml" />
                 </div>
