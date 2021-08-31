@@ -40,6 +40,20 @@
                                 </ul>
                             </li>
                         </h:panelGroup>
+                        <h:panelGroup rendered="#{authBean.subject.isPermitted('user_accounts:*')}">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="usersNavDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    #{bundle['user.navDropdown']}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <h:link styleClass="dropdown-item" value="#{bundle['userList.navButton']}"
+                                            outcome="userList"/>
+                                    <h:link styleClass="dropdown-item" value="#{bundle['userCreate.navButton']}"
+                                            outcome="userCreate"/>
+                                </ul>
+                            </li>
+                        </h:panelGroup>
                     </ul>
                     <h:panelGroup rendered="#{authBean.subject.isPermitted('own_account:*')}"
                                   layout="block"
