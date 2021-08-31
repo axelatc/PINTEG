@@ -148,7 +148,7 @@ public class PersonalAccount implements Serializable {
     }
 
     public UserEntity getUserToEdit() {
-        return authBean.getCurrentUser();
+        return this.userToEdit;
     }
 
     public void setUserToEdit(UserEntity userToEdit) {
