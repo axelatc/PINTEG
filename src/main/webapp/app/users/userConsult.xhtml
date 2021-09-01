@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">>
+
+<ui:composition template="/WEB-INF/templates/userTemplate.xhtml">
+    <ui:define name="title">
+        #{bundle['userConsult.pageTitle']}
+    </ui:define>
+
+    <f:metadata>
+        <f:viewParam name="id" value="#{userConsult.user}"
+                     converter="#{userConverter}"
+                     converterMessage="Unknown user, please use a link from within the system."
+        />
+    </f:metadata>
+    
+    <ui:define name="content">
+        <h1 class="display-1">#{bundle['userConsult.pageTitle']}</h1>
+        <ui:include src="/WEB-INF/includes/InfoAndErrorMessages.xhtml"/>
+        <h:form rendered="#{not empty userConsult.user}" id="userConsultForm">
+            <div class="mb-3">
+                <h:selectBooleanCheckbox value="#{userConsult.user.active}"
+                                 id="active"
+                                 disabled="true"
+                                 styleClass="form-check-input"
+                                 >
+                </h:selectBooleanCheckbox>
+                <h:outputLabel for="active"
+                               styleClass="form-check-label"> #{bundle['userConsult.active.inputLabel']}</h:outputLabel>
+                <h:message for="active" styleClass="invalid-feedback"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="firstName"
+                               styleClass="form-label">#{bundle['userConsult.firstName.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{userConsult.user.firstName}"
+                             id="firstName"
+                             disabled="true"
+                             styleClass="form-control"
+                             >
+                <f:validateLength minimum="1" maximum="100"/>
+                </h:inputText>
+                <h:message for="firstName" styleClass="invalid-feedback"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="lastName"
+                               styleClass="form-label">#{bundle['userConsult.lastName.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{userConsult.user.lastName}"
+                             id="lastName"
+                             disabled="true"
+                             styleClass="form-control"
+                             >
+               <f:validateLength minimum="1" maximum="100"/>
+                </h:inputText>
+                <h:message for="lastName" styleClass="invalid-feedback"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="username"
+                               styleClass="form-label">#{bundle['userConsult.username.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{userConsult.user.username}"
+                             id="username"
+                             disabled="true"
+                             styleClass="form-control"
+                             >
+               <f:validateLength minimum="1" maximum="100"/>
+                </h:inputText>
+                <h:message for="username" styleClass="invalid-feedback"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="birthdate"
+                               styleClass="form-label">#{bundle['userConsult.birthdate.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{userConsult.user.birthdate}"
+                             id="birthdate"
+                             disabled="true"
+                             styleClass="form-control"
+                             >
+                <f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
+                </h:inputText>
+                <h:message for="birthdate" styleClass="invalid-feedback"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="gender"
+                               styleClass="form-label">#{bundle['accountConsult.gender.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{personalAccount.currentUser.gender}"
+                             id="gender"
+                             disabled="true"
+                             styleClass="form-control">
+                </h:inputText>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="emailAddress"
+                               styleClass="form-label">#{bundle['userConsult.emailAddress.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{userConsult.user.emailAddress}"
+                             id="emailAddress"
+                             disabled="true"
+                             styleClass="form-control"
+                             >
+                   <f:validateLength minimum="3" maximum="254"/>
+                    <f:validateRegex
+                            pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
+                </h:inputText>
+                <h:message for="emailAddress" styleClass="invalid-feedback"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="phoneNumber"
+                               styleClass="form-label">#{bundle['userConsult.phoneNumber.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{userConsult.user.phoneNumber}"
+                             id="phoneNumber"
+                             disabled="true"
+                             styleClass="form-control"
+                             >
+                  <f:validateLength minimum="8" maximum="16"/>
+                    <f:validateRegex
+                            pattern="^([+]?[\d]+)?$"/>
+                </h:inputText>
+                <h:message for="phoneNumber" styleClass="invalid-feedback"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="creationDateTime"
+                               styleClass="form-label">#{bundle['userConsult.creationDateTime.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{userConsult.user.creationDateTime}"
+                             id="creationDateTime"
+                             disabled="true"
+                             styleClass="form-control"
+                             >
+                    <f:convertDateTime type="localDateTime" pattern="yyyy-MM-dd, h:mm"/>
+                </h:inputText>
+                <h:message for="creationDateTime" styleClass="invalid-feedback"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="coachDegreeInfo"
+                               styleClass="form-label">#{bundle['userConsult.coachDegreeInfo.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{userConsult.user.coachDegreeInfo}"
+                             id="coachDegreeInfo"
+                             disabled="true"
+                             styleClass="form-control"
+                             >
+                    <f:validateLength minimum="1" maximum="2000"/>
+                </h:inputText>
+                <h:message for="coachDegreeInfo" styleClass="invalid-feedback"/>
+            </div>
+            <div class="mb-3">
+                <h:outputLabel for="coachCareerStartDate"
+                               styleClass="form-label">#{bundle['userConsult.coachCareerStartDate.inputLabel']}</h:outputLabel>
+                <h:inputText value="#{userConsult.user.coachCareerStartDate}"
+                             a:type="date"
+                             id="coachCareerStartDate"
+                             disabled="true"
+                             styleClass="form-control"
+                             >
+                </h:inputText>
+                <h:message for="coachCareerStartDate" styleClass="invalid-feedback"/>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>
+
