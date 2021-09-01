@@ -1,6 +1,7 @@
 package com.atc.persistence.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Objects;
@@ -11,10 +12,26 @@ import java.util.Objects;
 @Entity
 @Table(name = "subscriptions", schema = "shapp", catalog = "")
 public class SubscriptionEntity {
+    @Positive
     private int id;
+
+    @NotBlank
+    @NotNull
+    @Size(min=1, max=100)
     private String name;
+
+    @NotNull
+    @DecimalMin(value = "0.0", inclusive = true)
+    @DecimalMin(value = "10000000000.0", inclusive = true)
+    @Digits(integer=11, fraction=2)
     private BigDecimal pricePerMonth;
+
+    @NotBlank
+    @NotNull
+    @Size(min=1, max=2000)
     private String description;
+
+    @PositiveOrZero
     private int rank;
     private Collection<UserSubscriptionEntity> usersSubscriptionsById;
 
