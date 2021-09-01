@@ -25,6 +25,7 @@
                 #{role.description}
             </h:column>
             <h:column>
+                <f:facet name="header">#{bundle['anyTable.actions.colHeader']}</f:facet>
                 <h:link value="#{bundle['roleEdit.submitButtonName']}" outcome="roleEdit">
                     <f:param name="id" value="#{role.id}"/>
                 </h:link>
