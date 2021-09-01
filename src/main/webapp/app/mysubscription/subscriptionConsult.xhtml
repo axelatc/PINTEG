@@ -11,6 +11,8 @@
     <ui:define name="content">
         <h1 class="display-1">#{bundle['subscriptionConsult.pageTitle']}</h1>
         <ui:include src="/WEB-INF/includes/InfoAndErrorMessages.xhtml" />
+        <p class="lead">#{bundle['subscriptionConsult.active.nameIntro']} #{subscriptionBean.activeSubscription.name}</p>
+        <p class="lead"> #{bundle['subscriptionConsult.active.remainingDaysIntro']} #{subscriptionBean.remainingDaysOfActiveSubscription}</p>
         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
             <ui:repeat value="#{subscriptionBean.allSubscriptions}" var="subscription">
                 <div class="col">

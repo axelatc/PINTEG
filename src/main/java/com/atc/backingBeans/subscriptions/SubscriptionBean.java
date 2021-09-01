@@ -19,6 +19,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.atc.persistence.JpaUtils.createEntityManager;
@@ -151,6 +153,10 @@ public class SubscriptionBean implements Serializable {
                 this.activeSubscription.getPricePerMonth(),
                 this.nextSubscription.getPricePerMonth()
         );
+    }
+
+    public long getRemainingDaysOfActiveSubscription() {
+        return Duration.between(LocalDateTime.now(), activeUserSubscription.getEndDateTime()).toDays();
     }
 }
 
