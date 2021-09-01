@@ -144,21 +144,6 @@
             <redirect></redirect>
         </navigation-case>
     </navigation-rule>
-    <navigation-rule>
-        <from-view-id>/app/users/userList.xhtml</from-view-id>
-        <navigation-case>
-            <from-action>#{userList.deactivate(user)}</from-action>
-            <from-outcome>success</from-outcome>
-            <to-view-id>/userList.xhtml</to-view-id>
-            <redirect></redirect>
-        </navigation-case>
-        <navigation-case>
-            <from-action>#{userList.deactivate(user)}</from-action>
-            <from-outcome>failure</from-outcome>
-            <to-view-id>/userList.xhtml</to-view-id>
-            <redirect></redirect>
-        </navigation-case>
-    </navigation-rule>
 
     <!--  Role CRUD  -->
     <navigation-rule>
