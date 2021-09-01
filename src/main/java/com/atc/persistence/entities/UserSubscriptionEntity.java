@@ -1,8 +1,11 @@
 package com.atc.persistence.entities;
 
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -11,7 +14,9 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "users_subscriptions", schema = "shapp", catalog = "")
-public class UserSubscriptionEntity {
+@SessionScoped
+@Named
+public class UserSubscriptionEntity implements Serializable {
     @Positive
     private int id;
 
