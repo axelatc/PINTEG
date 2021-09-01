@@ -1,11 +1,11 @@
 package com.atc.backingBeans.auth;
 
-import com.atc.persistence.entities.Gender;
-import com.atc.persistence.entities.RoleEntity;
-import com.atc.persistence.entities.UserEntity;
+import com.atc.persistence.entities.*;
 import com.atc.services.RoleService;
+import com.atc.services.SubscriptionService;
 import com.atc.services.UserService;
 import com.atc.persistence.JpaUtils;
+import com.atc.services.UserSubscriptionService;
 import org.apache.log4j.Logger;
 
 import javax.annotation.PostConstruct;
@@ -36,6 +36,10 @@ public class RegisterBean implements Serializable {
     private UserService userService;
     @Inject
     private RoleService roleService;
+    @Inject
+    private UserSubscriptionService userSubscriptionService;
+    @Inject
+    private SubscriptionService subscriptionService;
 
     @PostConstruct
     public void init() {
@@ -63,12 +67,22 @@ public class RegisterBean implements Serializable {
             LOG.info("Finding the role appropriate for a newly registered user");
             RoleEntity roleForNewlyRegisteredUser = roleService.findRoleForNewlyRegisteredUserOrNull();
             userToInsert.setRolesByRoleId(roleForNewlyRegisteredUser);
-
+            LOG.info("Finding the role appropriate for a newly registered user");
             userToInsert.setCreationDateTime(LocalDateTime.now());
             userToInsert.setActive(true);
-
             LOG.info("Inserting new user");
             userService.insert(userToInsert, em);
+
+            SubscriptionEntity freeBasicSubscription = subscriptionService.findBasicFreeSubscription();
+            UserSubscriptionEntity userSubscriptionEntity = new UserSubscriptionEntity(
+                    LocalDateTime.now(),
+                    LocalDateTime.now().plusDays(SubscriptionService.DURATION_IN_DAYS_OF_ALL_SUBSCRIPTIONS),
+                    userToInsert,
+                    freeBasicSubscription
+            );
+            LOG.info("Inserting basic free userSubscription " + userSubscriptionEntity.toString());
+            userSubscriptionService.insert(userSubscriptionEntity, em);
+
             tx.commit();
             LOG.info("Transaction committed. New user is persisted successfully.");
 

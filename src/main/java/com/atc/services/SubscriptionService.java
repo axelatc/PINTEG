@@ -26,8 +26,9 @@ import java.util.List;
 @ApplicationScoped
 public class SubscriptionService extends ServiceImpl<SubscriptionEntity> {
 
+    private final static String FREE_BASIC_SUBSCRIPTION_NAME = "Bronze";
     private final static String GENERIC_PREFIX_OF_ROLE_NAME = "user_";
-    private final static int DURATION_IN_DAYS_OF_ALL_SUBSCRIPTIONS = 30;
+    public final static int DURATION_IN_DAYS_OF_ALL_SUBSCRIPTIONS = 30;
     private final static Logger LOG = Logger.getLogger(SubscriptionService.class);
 
     @Inject
@@ -79,6 +80,10 @@ public class SubscriptionService extends ServiceImpl<SubscriptionEntity> {
             em.close();
             throw new IllegalArgumentException("Can't query subscription in database: the name is null or empty");
         }
+    }
+
+    public SubscriptionEntity findBasicFreeSubscription() {
+        return findSubscriptionByNameOrNull(FREE_BASIC_SUBSCRIPTION_NAME);
     }
 
     /**
