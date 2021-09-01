@@ -48,6 +48,19 @@
                 </h:inputText>
                 <h:message for="description" styleClass="text-danger"/>
             </div>
+            <div class="mb-3">
+                <h:outputLabel for="permissions"
+                               styleClass="form-label">#{bundle['role.selectPermissions.inputLabel']}</h:outputLabel>
+                <h:selectManyListbox value="#{roleEdit.selectedPermissions}"
+                                     id="permissions"
+                                     styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
+                                     required="true"
+                                     requiredMessage="#{bundle['role.selectPermissions.validationMessage']}"
+                                     validatorMessage="#{bundle['role.selectPermissions.validationMessage']}">
+                    <f:selectItems value="#{roleEdit.availablePermissions}" />
+                </h:selectManyListbox>
+                <h:message for="permissions" styleClass="invalid-feedback"/>
+            </div>
             <h:commandButton value="#{bundle['roleEdit.submitButtonName']}" action="#{roleEdit.save}" styleClass="btn btn-primary"/>
         </h:form>
     </ui:define>
