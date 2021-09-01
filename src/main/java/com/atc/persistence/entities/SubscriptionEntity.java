@@ -17,7 +17,7 @@ import java.util.Objects;
 @NamedQueries(
         value = {
                 @NamedQuery(name = "Subscription.findAll",
-                        query = "SELECT p from SubscriptionEntity p"),
+                        query = "SELECT p from SubscriptionEntity p ORDER BY p.rank asc"),
                 @NamedQuery(name = "Subscription.findOneByName",
                         query = "SELECT p from SubscriptionEntity p where p.name= :name"),
         }
