@@ -678,11 +678,11 @@ INSERT INTO `measures` (`id`, `creation_date_time`, `measured_value`, `note`, `u
 
 
 INSERT INTO `subscriptions` (`id`, `name`,`price_per_month`,`description`,`rank`) VALUES
-(1, 'Bronze',0,'Blabla desc', 1),
-(2, 'Silver',10,'Blabla desc',2),
-(3, 'Gold',15,'Blabla desc',3),
-(4, 'Platinum',20, 'Blabla desc',4),
-(5, 'Diamond',25,'Blabla desc',5);
+(1, 'Bronze',0,'Abonnement gratuit `bronze`. Vous donne accès au fonctionnalités basiques gratuites: la gestion de votre compte et la gestion de vos mesures personnelles', 1),
+(2, 'Silver',10,'Abonnement payant `argent`. Vous donne accès aux fonctionnalités des plans inférieurs et aux fonctionnalités supplémentaires suivantes: la gestion personnalisée des plans d\'entrainements',2),
+(3, 'Gold',15,'Abonnement payant `or`. Vous donne accès aux fonctionnalités des plans inférieurs et aux fonctionnalités supplémentaires suivantes: lorem ipsum',3),
+(4, 'Platinum',20, 'Abonnement payant `platine`. Vous donne accès aux fonctionnalités des plans inférieurs et aux fonctionnalités supplémentaires suivantes: lorem ipsum',4),
+(5, 'Diamond',25,'Abonnement payant `diamant`. Vous donne accès aux fonctionnalités des plans inférieurs et aux fonctionnalités supplémentaires suivantes: lorem ipsum',5);
 
 INSERT INTO `users_subscriptions` (`id`,`begin_date_time`,`end_date_time`,`user_id`,`subscription_id`) VALUES
 (1,'2020-08-11 17:46:03','2020-09-11 17:46:03',1,1),
