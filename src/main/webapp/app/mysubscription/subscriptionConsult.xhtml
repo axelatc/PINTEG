@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="/WEB-INF/templates/userTemplate.xhtml">
+    <ui:define name="title">
+        #{bundle['subscriptionConsult.pageTitle']}
+    </ui:define>
+    <ui:define name="content">
+        <h1 class="display-1">#{bundle['subscriptionConsult.pageTitle']}</h1>
+        <ui:include src="/WEB-INF/includes/InfoAndErrorMessages.xhtml" />
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+            <ui:repeat value="#{subscriptionBean.allSubscriptions}" var="subscription">
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal">#{subscription.name}</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">€ #{subscription.pricePerMonth}<small class="text-muted fw-light">#{bundle['subscriptionConsult.duration']}</small></h1>
+                            <p class="card-text">#{subscription.description}</p>
+                            <h:button rendered="#{subscription.id != subscriptionBean.activeSubscription.id}"
+                                        outcome="subscriptionSwitch"
+                                      value="#{bundle['subscriptionConsult.switchingButton']}"
+                                      styleClass="w-100 btn btn-lg btn-primary">
+                                <f:param name="id" value="#{subscription.id}"/>
+                            </h:button>
+                        </div>
+                    </div>
+                </div>
+            </ui:repeat>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

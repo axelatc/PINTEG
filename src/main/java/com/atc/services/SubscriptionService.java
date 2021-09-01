@@ -124,6 +124,7 @@ public class SubscriptionService extends ServiceImpl<SubscriptionEntity> {
             activeUserSubscription.setEndDateTime(LocalDateTime.now());
             userSubscriptionService.update(activeUserSubscription, em);
             UserSubscriptionEntity newUserSubscriptionToSave = new UserSubscriptionEntity(LocalDateTime.now(), LocalDateTime.now().plusDays(30L), user, newSubscription);
+            userSubscriptionService.insert(newUserSubscriptionToSave, em);
             LOG.info("Insert new active userSubscription " + newUserSubscriptionToSave.toString());
         } catch (Exception e) {
             LOG.info("The updating of the active userSubscription or the insert of a new one failed", e);
