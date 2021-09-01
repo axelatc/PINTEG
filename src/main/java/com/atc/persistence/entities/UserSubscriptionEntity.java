@@ -1,6 +1,8 @@
 package com.atc.persistence.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -10,10 +12,18 @@ import java.util.Objects;
 @Entity
 @Table(name = "users_subscriptions", schema = "shapp", catalog = "")
 public class UserSubscriptionEntity {
+    @Positive
     private int id;
+
+    @NotNull
     private LocalDateTime beginDateTime;
+
+    @NotNull
     private LocalDateTime endDateTime;
+
+    @Positive
     private UserEntity usersByUserId;
+    @Positive
     private SubscriptionEntity subscriptionsBySubscriptionId;
 
     @Id
