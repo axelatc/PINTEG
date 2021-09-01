@@ -63,7 +63,17 @@ public class SubscriptionEntity implements Serializable {
         return Objects.hash(id);
     }
 
-
+    @Override
+    public String toString() {
+        return "SubscriptionEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", pricePerMonth=" + pricePerMonth +
+                ", description='" + description + '\'' +
+                ", rank=" + rank +
+                ", usersSubscriptionsById=" + usersSubscriptionsById +
+                '}';
+    }
 
     @Basic
     @Column(name = "name", nullable = false, length = 100)

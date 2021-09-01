@@ -75,6 +75,17 @@ public class UserSubscriptionEntity implements Serializable {
         return Objects.hash(id, beginDateTime, endDateTime);
     }
 
+    @Override
+    public String toString() {
+        return "UserSubscriptionEntity{" +
+                "id=" + id +
+                ", beginDateTime=" + beginDateTime +
+                ", endDateTime=" + endDateTime +
+                ", usersByUserId=" + usersByUserId +
+                ", subscriptionsBySubscriptionId=" + subscriptionsBySubscriptionId +
+                '}';
+    }
+
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     public UserEntity getUsersByUserId() {
