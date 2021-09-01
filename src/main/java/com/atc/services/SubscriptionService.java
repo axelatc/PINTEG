@@ -98,7 +98,7 @@ public class SubscriptionService extends ServiceImpl<SubscriptionEntity> {
     public BigDecimal computeSwitchingPriceFromOldToNew(LocalDateTime expirationMomentOfActiveSubscription,
                                                         BigDecimal pricePerMonthOfActiveSubscription,
                                                         BigDecimal pricePerMonthOfNewSubscription) {
-        long remainingDaysOfActiveSubscriptionAsLong = Duration.between(expirationMomentOfActiveSubscription, LocalDateTime.now()).toDays();
+        long remainingDaysOfActiveSubscriptionAsLong = Duration.between(LocalDateTime.now(), expirationMomentOfActiveSubscription).toDays();
         BigDecimal remainingDaysOfActiveSubscription = new BigDecimal(remainingDaysOfActiveSubscriptionAsLong);
         BigDecimal durationInDaysOfAllSubscriptions = new BigDecimal(DURATION_IN_DAYS_OF_ALL_SUBSCRIPTIONS);
         BigDecimal priceValueOfActiveSubscriptionRemainingDays = pricePerMonthOfActiveSubscription.multiply(remainingDaysOfActiveSubscription.divide(durationInDaysOfAllSubscriptions, 2, RoundingMode.FLOOR));
