@@ -26,9 +26,9 @@
             </h:column>
             <h:column>
                 <f:facet name="header">#{bundle['anyTable.actions.colHeader']}</f:facet>
-                <h:link value="#{bundle['roleEdit.submitButtonName']}" outcome="roleEdit">
+                <h:button value="#{bundle['roleEdit.submitButtonName']}" outcome="roleEdit" styleClass="btn btn-primary">
                     <f:param name="id" value="#{role.id}"/>
-                </h:link>
+                </h:button>
                 <h:form>
                     <h:commandLink value="#{bundle['roleDelete.actionName']}" action="#{roleList.delete(role)}">
                     </h:commandLink>
