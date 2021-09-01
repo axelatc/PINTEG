@@ -28,48 +28,48 @@
                                  id="active"
                                  styleClass="#{component.valid ? 'form-check-input' : 'form-check-input is-invalid'}"
                                  required="true"
-                                 requiredMessage="#{bundle['userEdit.active.validationMessage']}"
-                                 validatorMessage="#{bundle['userEdit.active.validationMessage']}">
+                                 requiredMessage="#{bundle['user.active.validationMessage']}"
+                                 validatorMessage="#{bundle['user.active.validationMessage']}">
                 </h:selectBooleanCheckbox>
                 <h:outputLabel for="active"
-                               styleClass="form-check-label">#{bundle['userEdit.active.inputLabel']}</h:outputLabel>
+                               styleClass="form-check-label">#{bundle['user.active.inputLabel']}</h:outputLabel>
                 <h:message for="active" styleClass="invalid-feedback"/>
             </div>
             <div class="mb-3">
                 <h:outputLabel for="firstName"
-                               styleClass="form-label">#{bundle['userEdit.firstName.inputLabel']}</h:outputLabel>
+                               styleClass="form-label">#{bundle['user.firstName.inputLabel']}</h:outputLabel>
                 <h:inputText value="#{userEdit.user.firstName}"
                              id="firstName"
                              styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                              required="true"
-                             requiredMessage="#{bundle['userEdit.firstName.validationMessage']}"
-                             validatorMessage="#{bundle['userEdit.firstName.validationMessage']}">
+                             requiredMessage="#{bundle['user.firstName.validationMessage']}"
+                             validatorMessage="#{bundle['user.firstName.validationMessage']}">
                     <f:validateLength minimum="1" maximum="100"/>
                 </h:inputText>
                 <h:message for="firstName" styleClass="invalid-feedback"/>
             </div>
             <div class="mb-3">
                 <h:outputLabel for="lastName"
-                               styleClass="form-label">#{bundle['userEdit.lastName.inputLabel']}</h:outputLabel>
+                               styleClass="form-label">#{bundle['user.lastName.inputLabel']}</h:outputLabel>
                 <h:inputText value="#{userEdit.user.lastName}"
                              id="lastName"
                              styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                              required="true"
-                             requiredMessage="#{bundle['userEdit.lastName.validationMessage']}"
-                             validatorMessage="#{bundle['userEdit.lastName.validationMessage']}">
+                             requiredMessage="#{bundle['user.lastName.validationMessage']}"
+                             validatorMessage="#{bundle['user.lastName.validationMessage']}">
                     <f:validateLength minimum="1" maximum="100"/>
                 </h:inputText>
                 <h:message for="lastName" styleClass="invalid-feedback"/>
             </div>
             <div class="mb-3">
                 <h:outputLabel for="username"
-                               styleClass="form-label">#{bundle['userEdit.username.inputLabel']}</h:outputLabel>
+                               styleClass="form-label">#{bundle['user.username.inputLabel']}</h:outputLabel>
                 <h:inputText value="#{userEdit.user.username}"
                              id="username"
                              styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                              required="true"
-                             requiredMessage="#{bundle['userEdit.username.validationMessage']}"
-                             validatorMessage="#{bundle['userEdit.username.validationMessage']}">
+                             requiredMessage="#{bundle['user.username.validationMessage']}"
+                             validatorMessage="#{bundle['user.username.validationMessage']}">
                     <f:validateLength minimum="1" maximum="100"/>
                 </h:inputText>
                 <h:message for="username" styleClass="invalid-feedback"/>
@@ -91,7 +91,7 @@
             </div>
             <div class="mb-3">
                 <h:outputLabel for="birthdate"
-                               styleClass="form-label">#{bundle['userEdit.birthdate.inputLabel']}</h:outputLabel>
+                               styleClass="form-label">#{bundle['user.birthdate.inputLabel']}</h:outputLabel>
                 <h:inputText value="#{userEdit.user.birthdate}"
                              a:type="date"
                              a:min="1900-01-01"
@@ -99,34 +99,34 @@
                              id="birthdate"
                              styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                              required="true"
-                             requiredMessage="#{bundle['userEdit.birthdate.validationMessage']}"
-                             validatorMessage="#{bundle['userEdit.birthdate.validationMessage']}">
+                             requiredMessage="#{bundle['user.birthdate.validationMessage']}"
+                             validatorMessage="#{bundle['user.birthdate.validationMessage']}">
                     <f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
                 </h:inputText>
                 <h:message for="birthdate" styleClass="invalid-feedback"/>
             </div>
             <div class="mb-3">
                 <h:outputLabel for="gender"
-                               styleClass="form-label">#{bundle['userEdit.gender.inputLabel']}</h:outputLabel>
+                               styleClass="form-label">#{bundle['user.gender.inputLabel']}</h:outputLabel>
                 <h:selectOneMenu value="#{userEdit.user.gender}"
                                  id="gender"
                                  styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                                  required="true"
-                                 requiredMessage="#{bundle['userEdit.gender.validationMessage']}"
-                                 validatorMessage="#{bundle['userEdit.gender.validationMessage']}">
+                                 requiredMessage="#{bundle['user.gender.validationMessage']}"
+                                 validatorMessage="#{bundle['user.gender.validationMessage']}">
                     <f:selectItems value="#{userEdit.genders}"/>
                 </h:selectOneMenu>
                 <h:message for="gender" styleClass="invalid-feedback"/>
             </div>
             <div class="mb-3">
                 <h:outputLabel for="emailAddress"
-                               styleClass="form-label">#{bundle['userEdit.emailAddress.inputLabel']}</h:outputLabel>
+                               styleClass="form-label">#{bundle['user.emailAddress.inputLabel']}</h:outputLabel>
                 <h:inputText value="#{userEdit.user.emailAddress}"
                              id="emailAddress"
                              styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                              required="true"
-                             requiredMessage="#{bundle['userEdit.emailAddress.validationMessage']}"
-                             validatorMessage="#{bundle['userEdit.emailAddress.validationMessage']}">
+                             requiredMessage="#{bundle['user.emailAddress.validationMessage']}"
+                             validatorMessage="#{bundle['user.emailAddress.validationMessage']}">
                     <f:validateLength minimum="3" maximum="254"/>
                     <f:validateRegex
                             pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
@@ -135,13 +135,13 @@
             </div>
             <div class="mb-3">
                 <h:outputLabel for="phoneNumber"
-                               styleClass="form-label">#{bundle['userEdit.phoneNumber.inputLabel']}</h:outputLabel>
+                               styleClass="form-label">#{bundle['user.phoneNumber.inputLabel']}</h:outputLabel>
                 <h:inputText value="#{userEdit.user.phoneNumber}"
                              id="phoneNumber"
                              styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                              required="true"
-                             requiredMessage="#{bundle['userEdit.phoneNumber.validationMessage']}"
-                             validatorMessage="#{bundle['userEdit.phoneNumber.validationMessage']}">
+                             requiredMessage="#{bundle['user.phoneNumber.validationMessage']}"
+                             validatorMessage="#{bundle['user.phoneNumber.validationMessage']}">
                     <f:validateLength minimum="8" maximum="16"/>
                     <f:validateRegex
                             pattern="^([+]?[\d]+)?$"/>
@@ -150,20 +150,20 @@
             </div>
             <div class="mb-3">
                 <h:outputLabel for="coachDegreeInfo"
-                               styleClass="form-label">#{bundle['userEdit.coachDegreeInfo.inputLabel']}</h:outputLabel>
+                               styleClass="form-label">#{bundle['user.coachDegreeInfo.inputLabel']}</h:outputLabel>
                 <h:inputText value="#{userEdit.user.coachDegreeInfo}"
                              id="coachDegreeInfo"
                              styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                              required="false"
-                             requiredMessage="#{bundle['userEdit.coachDegreeInfo.validationMessage']}"
-                             validatorMessage="#{bundle['userEdit.coachDegreeInfo.validationMessage']}">
+                             requiredMessage="#{bundle['user.coachDegreeInfo.validationMessage']}"
+                             validatorMessage="#{bundle['user.coachDegreeInfo.validationMessage']}">
                     <f:validateLength minimum="1" maximum="2000"/>
                 </h:inputText>
                 <h:message for="coachDegreeInfo" styleClass="invalid-feedback"/>
             </div>
             <div class="mb-3">
                 <h:outputLabel for="coachCareerStartDate"
-                               styleClass="form-label">#{bundle['userEdit.coachCareerStartDate.inputLabel']}</h:outputLabel>
+                               styleClass="form-label">#{bundle['user.coachCareerStartDate.inputLabel']}</h:outputLabel>
                 <h:inputText value="#{userEdit.user.coachCareerStartDate}"
                              a:type="date"
                              a:min="1900-01-01"
@@ -171,8 +171,8 @@
                              id="coachCareerStartDate"
                              styleClass="#{component.valid ? 'form-control' : 'form-control is-invalid'}"
                              required="false"
-                             requiredMessage="#{bundle['userEdit.coachCareerStartDate.validationMessage']}"
-                             validatorMessage="#{bundle['userEdit.coachCareerStartDate.validationMessage']}">
+                             requiredMessage="#{bundle['user.coachCareerStartDate.validationMessage']}"
+                             validatorMessage="#{bundle['user.coachCareerStartDate.validationMessage']}">
                     <f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
                 </h:inputText>
                 <h:message for="coachCareerStartDate" styleClass="invalid-feedback"/>
