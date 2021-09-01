@@ -269,6 +269,35 @@
         </navigation-case>
     </navigation-rule>    
 
+
+    <!-- User: manage subscription -->
+    <navigation-rule>
+        <from-view-id>/app/*</from-view-id>
+        <navigation-case>
+            <from-outcome>subscriptionConsult</from-outcome>
+            <to-view-id>/app/mysubscription/subscriptionConsult.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>subscriptionSwitch</from-outcome>
+            <to-view-id>/app/mysubscription/subscriptionSwitch.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/app/mysubscription/subscriptionSwitch.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{subscriptionBean.submit}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/app/mysubscription/subscriptionConsult.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{subscriptionBean.submit}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/app/mysubscription/subscriptionConsult.xhtml</to-view-id>
+            <redirect></redirect>
+        </navigation-case>
+    </navigation-rule>
+
     <lifecycle>
         <phase-listener>com.atc.listeners.PostRedirectGetListener</phase-listener>
     </lifecycle>
