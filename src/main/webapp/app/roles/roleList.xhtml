@@ -29,8 +29,8 @@
                 <h:button value="#{bundle['roleEdit.submitButtonName']}" outcome="roleEdit" styleClass="btn btn-primary">
                     <f:param name="id" value="#{role.id}"/>
                 </h:button>
-                <h:form>
-                    <h:commandLink value="#{bundle['roleDelete.actionName']}" action="#{roleList.delete(role)}">
+                <h:form style="display: inline;">
+                    <h:commandLink value="#{bundle['roleDelete.actionName']}" action="#{roleList.delete(role)}" styleClass="btn btn-danger">
                     </h:commandLink>
                 </h:form>
             </h:column>
