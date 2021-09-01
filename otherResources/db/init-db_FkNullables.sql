@@ -678,7 +678,7 @@ INSERT INTO `measures` (`id`, `creation_date_time`, `measured_value`, `note`, `u
 
 
 INSERT INTO `subscriptions` (`id`, `name`,`price_per_month`,`description`,`rank`) VALUES
-(1, 'Bronze',5,'Blabla desc', 1),
+(1, 'Bronze',0,'Blabla desc', 1),
 (2, 'Silver',10,'Blabla desc',2),
 (3, 'Gold',15,'Blabla desc',3),
 (4, 'Platinum',20, 'Blabla desc',4),
