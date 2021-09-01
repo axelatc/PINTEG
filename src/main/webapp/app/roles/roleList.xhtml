@@ -26,11 +26,15 @@
             </h:column>
             <h:column>
                 <f:facet name="header">#{bundle['anyTable.actions.colHeader']}</f:facet>
-                <h:button value="#{bundle['roleEdit.submitButtonName']}" outcome="roleEdit" styleClass="btn btn-primary">
+                <h:button value="#{bundle['roleEdit.submitButtonName']}"
+                          outcome="roleEdit"
+                          styleClass="btn btn-primary">
                     <f:param name="id" value="#{role.id}"/>
                 </h:button>
                 <h:form style="display: inline;">
-                    <h:commandLink value="#{bundle['roleDelete.actionName']}" action="#{roleList.delete(role)}" styleClass="btn btn-danger">
+                    <h:commandLink value="#{bundle['roleDelete.actionName']}"
+                                   action="#{roleList.delete(role)}"
+                                   styleClass="btn btn-danger">
                     </h:commandLink>
                 </h:form>
             </h:column>
