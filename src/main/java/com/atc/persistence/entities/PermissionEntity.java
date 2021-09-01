@@ -1,6 +1,6 @@
 package com.atc.entities;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -25,7 +25,7 @@ import java.util.Objects;
         }
 
 )
-@RequestScoped
+@SessionScoped
 @Named
 public class PermissionEntity implements Serializable {
     @Positive
