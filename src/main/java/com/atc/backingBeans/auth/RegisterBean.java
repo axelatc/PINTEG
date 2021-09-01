@@ -51,8 +51,6 @@ public class RegisterBean implements Serializable {
 
             boolean alreadyExist = userService.exist(user, em);
             if(alreadyExist) {
-                //todo: instead of throwing an exception, add a validator to check if the username already exist: better UX if the user get a message about the username
-                //todo: do the same for unique role_name
                 throw new RuntimeException("Can't persist user in data store: it already exists");
             }
 
