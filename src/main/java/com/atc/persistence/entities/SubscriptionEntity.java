@@ -1,7 +1,10 @@
 package com.atc.persistence.entities;
 
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Objects;
@@ -11,7 +14,9 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "subscriptions", schema = "shapp", catalog = "")
-public class SubscriptionEntity {
+@SessionScoped
+@Named
+public class SubscriptionEntity implements Serializable {
     @Positive
     private int id;
 
