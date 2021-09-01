@@ -14,6 +14,15 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "users_subscriptions", schema = "shapp", catalog = "")
+@NamedQueries(
+        value = {
+                @NamedQuery(name = "UserSubscription.findAll",
+                        query = "SELECT p from UserSubscriptionEntity p"),
+                @NamedQuery(name = "UserSubscription.findMostRecentUserSubscriptionForUser",
+                        query = "SELECT u_s from UserSubscriptionEntity u_s where u_s.usersByUserId = :userId ORDER BY u_s.beginDateTime desc")
+        }
+
+)
 @SessionScoped
 @Named
 public class UserSubscriptionEntity implements Serializable {
@@ -30,6 +39,17 @@ public class UserSubscriptionEntity implements Serializable {
     private UserEntity usersByUserId;
     @Positive
     private SubscriptionEntity subscriptionsBySubscriptionId;
+
+    public UserSubscriptionEntity(@NotNull LocalDateTime beginDateTime, @NotNull LocalDateTime endDateTime, @Positive UserEntity usersByUserId, @Positive SubscriptionEntity subscriptionsBySubscriptionId) {
+        this.beginDateTime = beginDateTime;
+        this.endDateTime = endDateTime;
+        this.usersByUserId = usersByUserId;
+        this.subscriptionsBySubscriptionId = subscriptionsBySubscriptionId;
+    }
+
+    public UserSubscriptionEntity() {
+
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

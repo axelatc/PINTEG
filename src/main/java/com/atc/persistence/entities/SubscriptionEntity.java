@@ -14,6 +14,15 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "subscriptions", schema = "shapp", catalog = "")
+@NamedQueries(
+        value = {
+                @NamedQuery(name = "Subscription.findAll",
+                        query = "SELECT p from SubscriptionEntity p"),
+                @NamedQuery(name = "Subscription.findOneByName",
+                        query = "SELECT p from SubscriptionEntity p where p.name= :name"),
+        }
+
+)
 @SessionScoped
 @Named
 public class SubscriptionEntity implements Serializable {
