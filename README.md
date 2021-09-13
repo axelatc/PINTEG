@@ -1,5 +1,6 @@
 # Projet d'intégration ATC 2020-2021
-Technologies: Java 8, JPA, EclipseLink, JSF 2.3 (sans PrimeFaces), MySQL 5.7, Maven
+Application de gestion de vie fitness  
+Technologies: Java 8, JPA, EclipseLink, JSF 2.3 (sans PrimeFaces), MySQL 5.7, Maven  
 Framework de sécurité: Apache Shiro
 ## Setup 
 - Initialiser la DB en exécutant le fichier `otherResources/db/init-db_FkNullables.sql`
